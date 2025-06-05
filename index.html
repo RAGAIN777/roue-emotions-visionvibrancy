@@ -881,12 +881,9 @@
     });
 
     // Fonction pour ouvrir le guide PDF complet
-    function openPDFGuide() {
-      const pdfWindow = window.open('', '_blank');
-      pdfWindow.document.write(getPDFContent());
-      pdfWindow.document.close();
-    }
-
+function openPDFGuide() {
+window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotions-visionvibrancy/main/guide-emotions-visionvibrancy.pdf';
+}
     // Contenu PDF complet et parfait
     function getPDFContent() {
       return `<!DOCTYPE html>
