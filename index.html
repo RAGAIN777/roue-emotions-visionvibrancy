@@ -479,7 +479,7 @@
             📧 Recevoir mon guide gratuit
           </button>
           
-          <button type="button" class="download-pdf-btn" onclick="openPDFGuide()">
+          <button type="button" class="download-pdf-btn" onclick="downloadPDFGuide()">
             📄 Télécharger le guide PDF complet
           </button>
           
@@ -500,7 +500,7 @@
   </div>
 
   <script>
-    // Données complètes des émotions
+    // Données COMPLÈTES des 12 émotions - VERSION EXPERTE
     const emotions = [
       {
         name: "Joie",
@@ -744,7 +744,7 @@
       }
     ];
 
-    // Fonction pour créer la roue des émotions
+    // Fonction pour créer la roue des émotions - VERSION EXPERTE
     function createWheel() {
       const svg = document.getElementById('emotion-segments');
       const totalEmotions = emotions.length;
@@ -811,7 +811,7 @@
       });
     }
 
-    // Fonction pour afficher les informations d'une émotion
+    // Fonction pour afficher les informations d'une émotion - VERSION EXPERTE
     function showEmotionInfo(emotionIndex) {
       const emotion = emotions[emotionIndex];
       const display = document.getElementById('emotion-display');
@@ -841,7 +841,7 @@
       segments[emotionIndex].classList.add('pulse');
     }
 
-    // Gestion du formulaire Mailchimp
+    // Gestion du formulaire Mailchimp - VERSION EXPERTE
     document.getElementById('emotion-form').addEventListener('submit', function(e) {
       e.preventDefault();
       
@@ -849,18 +849,28 @@
       const successMsg = document.getElementById('success-message');
       const errorMsg = document.getElementById('error-message');
       
+      // Validation des champs requis
+      const fname = document.getElementById('mce-FNAME').value.trim();
+      const email = document.getElementById('mce-EMAIL').value.trim();
+      
+      if (!fname || !email) {
+        errorMsg.textContent = '❌ Veuillez remplir tous les champs obligatoires.';
+        errorMsg.style.display = 'block';
+        successMsg.style.display = 'none';
+        return;
+      }
+      
       // Afficher le spinner
       submitBtn.innerHTML = '<div class="loading-spinner"></div>Envoi en cours...';
       submitBtn.disabled = true;
       
-      // Collecter les données
+      // Construire l'URL Mailchimp avec les paramètres
       const formData = {
-        FNAME: document.getElementById('mce-FNAME').value,
-        EMAIL: document.getElementById('mce-EMAIL').value,
+        FNAME: fname,
+        EMAIL: email,
         EMOTION: document.getElementById('mce-EMOTION').value
       };
       
-      // Construire l'URL Mailchimp avec les paramètres
       const params = new URLSearchParams(formData);
       const mailchimpUrl = `http://eepurl.com/jgpkRM?${params.toString()}`;
       
@@ -880,12 +890,15 @@
       }, 3000);
     });
 
-    // Fonction pour ouvrir le guide PDF complet
-function openPDFGuide() {
-window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotions-visionvibrancy/main/guide-emotions-visionvibrancy.pdf';
-}
-    // Contenu PDF complet et parfait
-    function getPDFContent() {
+    // Fonction pour télécharger le guide PDF - VERSION EXPERTE CORRIGÉE
+    function downloadPDFGuide() {
+      const pdfWindow = window.open('', '_blank');
+      pdfWindow.document.write(getCompletePDFContent());
+      pdfWindow.document.close();
+    }
+
+    // Contenu PDF COMPLET - VERSION EXPERTE avec TOUTES les émotions
+    function getCompletePDFContent() {
       return `<!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -906,7 +919,7 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
             line-height: 1.6;
             color: #5b4b57;
             background: white;
-            font-size: 14px;
+            font-size: 12px;
         }
         
         .pdf-controls {
@@ -940,85 +953,85 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
         .container {
             max-width: 800px;
             margin: 0 auto;
-            padding: 30px;
+            padding: 20px;
             background: white;
         }
         
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            padding: 30px;
+            margin-bottom: 30px;
+            padding: 25px;
             background: linear-gradient(135deg, #fdf3f6 0%, #f4e7f7 100%);
-            border-radius: 20px;
-            border: 3px solid #a87ca0;
+            border-radius: 15px;
+            border: 2px solid #a87ca0;
         }
         
         .logo {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             background: linear-gradient(135deg, #6A2C70 0%, #8E44AD 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .title {
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #a87ca0;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         
         .subtitle {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             color: #6e5e68;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .author {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: #a87ca0;
             font-weight: 600;
-            margin-top: 20px;
+            margin-top: 15px;
         }
         
         .intro-section {
             background: linear-gradient(135deg, #fff2e6 0%, #f0f8ff 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
-            border-left: 5px solid #a87ca0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #a87ca0;
         }
         
         .intro-title {
             color: #a87ca0;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         .steps-section {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 30px 0;
+            gap: 15px;
+            margin: 20px 0;
         }
         
         .step {
             background: white;
-            padding: 20px;
-            border-radius: 15px;
+            padding: 15px;
+            border-radius: 10px;
             border: 2px solid #f0f0f0;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
         }
         
         .step-number {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .step-1 { border-left: 4px solid #FF8C00; }
@@ -1033,57 +1046,57 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
         .emotions-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 25px;
-            margin: 30px 0;
+            gap: 15px;
+            margin: 20px 0;
         }
         
         .emotion-card {
             background: white;
             border: 2px solid #f0f0f0;
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
             page-break-inside: avoid;
         }
         
         .emotion-header {
             display: flex;
             align-items: center;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
             border-bottom: 2px solid #f0f0f0;
         }
         
         .emotion-emoji {
-            font-size: 2rem;
-            margin-right: 15px;
+            font-size: 1.5rem;
+            margin-right: 10px;
         }
         
         .emotion-name {
-            font-size: 1.4rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: #a87ca0;
         }
         
         .emotion-description {
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             color: #6e5e68;
-            line-height: 1.5;
-            margin-bottom: 15px;
+            line-height: 1.4;
+            margin-bottom: 10px;
             text-align: justify;
         }
         
         .emotion-section {
-            margin: 12px 0;
+            margin: 8px 0;
         }
         
         .emotion-section-title {
-            font-size: 0.85rem;
+            font-size: 0.75rem;
             font-weight: 600;
             color: #a87ca0;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             border-bottom: 1px solid #dca2cb;
-            padding-bottom: 3px;
+            padding-bottom: 2px;
         }
         
         .emotion-list {
@@ -1092,44 +1105,44 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
         }
         
         .emotion-list li {
-            font-size: 0.8rem;
-            margin: 6px 0;
-            padding: 6px 10px;
+            font-size: 0.7rem;
+            margin: 4px 0;
+            padding: 4px 8px;
             background: linear-gradient(90deg, #f8f0f4 0%, #f4e7f7 100%);
-            border-radius: 6px;
-            border-left: 3px solid #dca2cb;
-            line-height: 1.3;
+            border-radius: 4px;
+            border-left: 2px solid #dca2cb;
+            line-height: 1.2;
         }
         
         .tools-section {
             background: linear-gradient(135deg, #f0fff0 0%, #e6f3ff 100%);
-            padding: 25px;
-            border-radius: 15px;
-            margin: 30px 0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
             border: 2px solid #a87ca0;
         }
         
         .tools-title {
             color: #a87ca0;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-align: center;
         }
         
         .ritual-section {
             background: white;
-            padding: 20px;
-            border-radius: 10px;
-            margin: 15px 0;
-            border-left: 4px solid #87CEEB;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 3px solid #87CEEB;
         }
         
         .ritual-title {
             color: #4682B4;
-            font-size: 1.1rem;
+            font-size: 1rem;
             font-weight: 600;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .ritual-steps {
@@ -1139,23 +1152,23 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
         
         .ritual-steps li {
             background: #f8f9fa;
-            margin: 5px 0;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 0.9rem;
+            margin: 4px 0;
+            padding: 6px 10px;
+            border-radius: 4px;
+            font-size: 0.8rem;
         }
         
         .tracking-table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 0.85rem;
+            margin: 15px 0;
+            font-size: 0.75rem;
         }
         
         .tracking-table th,
         .tracking-table td {
             border: 1px solid #ddd;
-            padding: 8px;
+            padding: 6px;
             text-align: left;
         }
         
@@ -1168,38 +1181,38 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
         .affirmations-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 20px 0;
+            gap: 8px;
+            margin: 15px 0;
         }
         
         .affirmation {
             background: white;
-            padding: 10px;
-            border-radius: 8px;
-            border-left: 3px solid #dca2cb;
-            font-size: 0.8rem;
+            padding: 8px;
+            border-radius: 6px;
+            border-left: 2px solid #dca2cb;
+            font-size: 0.7rem;
         }
         
         .footer {
             text-align: center;
             color: #a87ca0;
-            padding: 30px;
+            padding: 20px;
             background: linear-gradient(135deg, #fdf3f6 0%, #f4e7f7 100%);
-            border-radius: 15px;
-            margin-top: 40px;
+            border-radius: 10px;
+            margin-top: 30px;
             border: 2px solid #dca2cb;
         }
         
         .footer h3 {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         @media print {
             .pdf-controls { display: none; }
-            body { font-size: 12px; }
-            .container { margin: 0; padding: 15px; }
+            body { font-size: 10px; }
+            .container { margin: 0; padding: 10px; }
             .emotion-card { page-break-inside: avoid; }
-            @page { margin: 1cm; size: A4; }
+            @page { margin: 0.5cm; size: A4; }
         }
         
         @media (max-width: 768px) {
@@ -1219,7 +1232,7 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
         <!-- En-tête -->
         <div class="header">
             <div class="logo">VISION VIBRANCY</div>
-            <div style="font-size: 3rem; margin: 15px 0;">🎭✨💝</div>
+            <div style="font-size: 2rem; margin: 10px 0;">🎭✨💝</div>
             <h1 class="title">Guide Complet des Émotions</h1>
             <p class="subtitle">Votre compagnon pour une transformation intérieure profonde</p>
             <p class="author">Par Élise Ragain - Life Coach Holistique</p>
@@ -1229,11 +1242,11 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
         <div class="intro-section">
             <h3 class="intro-title">🌟 Bienvenue dans votre voyage émotionnel</h3>
             <p>Ce guide vous accompagne pour reconnaître, comprendre et accueillir chacune de vos émotions avec bienveillance. Chaque émotion est un messager précieux qui mérite d'être écouté et respecté.</p>
-            <p style="margin-top: 15px;"><strong>Les émotions ne sont ni bonnes ni mauvaises</strong> - elles sont simplement des informations précieuses sur notre état intérieur et nos besoins profonds.</p>
+            <p style="margin-top: 10px;"><strong>Les émotions ne sont ni bonnes ni mauvaises</strong> - elles sont simplement des informations précieuses sur notre état intérieur et nos besoins profonds.</p>
         </div>
 
         <!-- Les 3 étapes -->
-        <h2 style="color: #a87ca0; text-align: center; margin: 30px 0;">🎯 Les 3 étapes de la transformation émotionnelle</h2>
+        <h2 style="color: #a87ca0; text-align: center; margin: 20px 0;">🎯 Les 3 étapes de la transformation émotionnelle</h2>
         <div class="steps-section">
             <div class="step step-1">
                 <div class="step-number">1️⃣</div>
@@ -1252,8 +1265,8 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
             </div>
         </div>
 
-        <!-- Grille des émotions -->
-        <h2 style="color: #a87ca0; text-align: center; margin: 40px 0 30px;">🎭 Les 12 Émotions Fondamentales</h2>
+        <!-- Grille des TOUTES les émotions -->
+        <h2 style="color: #a87ca0; text-align: center; margin: 30px 0 20px;">🎭 Les 12 Émotions Fondamentales</h2>
         <div class="emotions-grid">
             ${emotions.map(emotion => `
                 <div class="emotion-card">
@@ -1266,14 +1279,14 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
                     <div class="emotion-section">
                         <div class="emotion-section-title">🔍 Je reconnais cette émotion quand :</div>
                         <ul class="emotion-list">
-                            ${emotion.signs.slice(0, 3).map(sign => `<li>• ${sign}</li>`).join('')}
+                            ${emotion.signs.map(sign => `<li>• ${sign}</li>`).join('')}
                         </ul>
                     </div>
                     
                     <div class="emotion-section">
                         <div class="emotion-section-title">💝 Comment l'accueillir :</div>
                         <ul class="emotion-list">
-                            ${emotion.tips.slice(0, 3).map(tip => `<li>💡 ${tip}</li>`).join('')}
+                            ${emotion.tips.map(tip => `<li>💡 ${tip}</li>`).join('')}
                         </ul>
                     </div>
                 </div>
@@ -1295,8 +1308,8 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
                 </ol>
             </div>
 
-            <div style="background: white; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                <h3 style="color: #a87ca0; margin-bottom: 15px;">📊 Mon baromètre émotionnel hebdomadaire</h3>
+            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <h3 style="color: #a87ca0; margin-bottom: 10px;">📊 Mon baromètre émotionnel hebdomadaire</h3>
                 <table class="tracking-table">
                     <thead>
                         <tr>
@@ -1318,8 +1331,8 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
                 </table>
             </div>
 
-            <div style="background: white; padding: 20px; border-radius: 10px; margin: 20px 0;">
-                <h3 style="color: #a87ca0; margin-bottom: 15px;">✨ Affirmations pour chaque émotion</h3>
+            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                <h3 style="color: #a87ca0; margin-bottom: 10px;">✨ Affirmations pour chaque émotion</h3>
                 <div class="affirmations-grid">
                     <div class="affirmation">💛 <strong>Joie :</strong> "Je mérite de vivre pleinement ma joie"</div>
                     <div class="affirmation">💙 <strong>Tristesse :</strong> "Ma tristesse mérite d'être accueillie"</div>
@@ -1341,19 +1354,23 @@ window.location.href = 'https://raw.githubusercontent.com/RAGAIN777/roue-emotion
         <div class="footer">
             <h3>🌟 Vision Vibrancy - Élise Ragain</h3>
             <p>Votre accompagnatrice en transformation holistique</p>
-            <p style="margin-top: 15px;"><strong>✨ Continuez votre voyage avec la roue des émotions interactive ✨</strong></p>
-            <p style="margin-top: 10px; font-style: italic;">Pour aller plus loin dans votre exploration émotionnelle, utilisez notre roue interactive en ligne.</p>
+            <p style="margin-top: 10px;"><strong>✨ Continuez votre voyage avec la roue des émotions interactive ✨</strong></p>
+            <p style="margin-top: 8px; font-style: italic;">Pour aller plus loin dans votre exploration émotionnelle, utilisez notre roue interactive en ligne.</p>
         </div>
     </div>
 </body>
 </html>`;
     }
 
-    // Initialisation au chargement de la page
+    // Initialisation au chargement de la page - VERSION EXPERTE
     document.addEventListener('DOMContentLoaded', () => {
       createWheel();
-      console.log('✅ Système Vision Vibrancy initialisé avec succès');
+      console.log('✅ Système Vision Vibrancy EXPERT initialisé avec succès - TOUTES les 12 émotions intégrées');
     });
   </script>
 </body>
 </html>
+  </script>
+</body>
+</html>
+Mise à jour version experte
