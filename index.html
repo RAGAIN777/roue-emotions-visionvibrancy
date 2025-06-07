@@ -12,6 +12,7 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
     body {
@@ -20,10 +21,14 @@
       min-height: 100vh;
       color: #5b4b57;
       overflow-x: hidden;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
     }
 
     .container {
-      max-width: 1400px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 20px;
     }
@@ -34,7 +39,7 @@
     }
 
     .logo-text {
-      font-size: 2.8rem;
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
       font-weight: 700;
       color: #6A2C70;
       margin: 0 auto 20px;
@@ -52,7 +57,7 @@
     }
 
     h1 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
       color: #a87ca0;
       margin-bottom: 0.5rem;
       font-weight: 700;
@@ -60,14 +65,14 @@
     }
 
     .subtitle {
-      font-size: 1.2rem;
+      font-size: clamp(1rem, 3vw, 1.2rem);
       color: #6e5e68;
       margin-bottom: 10px;
       font-weight: 400;
     }
 
     .copyright {
-      font-size: 0.9rem;
+      font-size: clamp(0.8rem, 2.5vw, 0.9rem);
       color: #a87ca0;
       font-weight: 500;
       margin-bottom: 30px;
@@ -75,8 +80,8 @@
 
     .main-content {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
       align-items: start;
     }
 
@@ -88,10 +93,11 @@
 
     .wheel-container {
       position: relative;
-      width: 400px;
-      height: 400px;
+      width: min(500px, 90vw);
+      height: min(500px, 90vw);
       margin: 20px auto;
       cursor: pointer;
+      touch-action: manipulation;
     }
 
     .wheel-svg {
@@ -108,16 +114,21 @@
     }
 
     .emotion-segment:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+
+    .emotion-segment:active {
       filter: brightness(1.2);
-      stroke-width: 3;
+      transform: scale(1.05);
     }
 
     .emotion-label {
-      font-size: 12px;
+      font-size: clamp(10px, 2.5vw, 13px);
       font-weight: 600;
       text-anchor: middle;
       fill: white;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+      text-shadow: 0 1px 2px rgba(0,0,0,0.3);
       pointer-events: none;
     }
 
@@ -129,7 +140,7 @@
     }
 
     .center-text {
-      font-size: 14px;
+      font-size: clamp(12px, 3vw, 16px);
       font-weight: 600;
       text-anchor: middle;
       fill: #a87ca0;
@@ -139,7 +150,7 @@
     .info-section {
       background: white;
       border-radius: 20px;
-      padding: 25px;
+      padding: 30px;
       box-shadow: 0 10px 40px rgba(0,0,0,0.1);
       border: 1px solid rgba(168, 124, 160, 0.1);
       height: fit-content;
@@ -151,27 +162,31 @@
       min-height: 400px;
     }
 
+    .emotion-info.hidden {
+      display: none;
+    }
+
     .emotion-title {
       color: #a87ca0;
-      font-size: 1.8rem;
+      font-size: clamp(1.5rem, 4vw, 2rem);
       font-weight: 700;
       margin-bottom: 15px;
       text-align: center;
     }
 
     .emotion-description {
-      font-size: 1rem;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
       line-height: 1.6;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       color: #5b4b57;
       text-align: justify;
     }
 
     .section-title {
       color: #a87ca0;
-      font-size: 1.1rem;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
       font-weight: 600;
-      margin: 20px 0 10px;
+      margin: 25px 0 15px;
       border-bottom: 2px solid #dca2cb;
       padding-bottom: 5px;
     }
@@ -183,13 +198,12 @@
 
     .tips-list li {
       background: linear-gradient(90deg, #f8f0f4 0%, #f4e7f7 100%);
-      margin: 8px 0;
-      padding: 12px;
-      border-radius: 8px;
-      border-left: 3px solid #dca2cb;
+      margin: 10px 0;
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 4px solid #dca2cb;
       transition: transform 0.2s ease;
-      font-size: 0.9rem;
-      line-height: 1.4;
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
     }
 
     .tips-list li:hover {
@@ -199,179 +213,153 @@
     .default-message {
       text-align: center;
       color: #6e5e68;
-      font-size: 1rem;
-      padding: 50px 15px;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      padding: 50px 20px;
     }
 
     .default-message .icon {
-      font-size: 3rem;
+      font-size: clamp(2.5rem, 6vw, 3rem);
       margin-bottom: 20px;
       opacity: 0.6;
     }
 
-    /* Section Formulaire */
-    .form-section {
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-      border: 1px solid rgba(168, 124, 160, 0.1);
-      height: fit-content;
-      position: sticky;
-      top: 20px;
-    }
-
-    .form-title {
-      color: #a87ca0;
-      font-size: 1.8rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-      text-align: center;
-    }
-
-    .form-description {
-      text-align: center;
-      color: #6e5e68;
-      margin-bottom: 25px;
-      line-height: 1.6;
-    }
-
-    .form-group {
-      margin-bottom: 20px;
-    }
-
-    .form-label {
-      display: block;
-      color: #a87ca0;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .form-input {
-      width: 100%;
-      padding: 12px 15px;
-      border: 2px solid #f0f0f0;
-      border-radius: 10px;
-      font-size: 1rem;
-      transition: all 0.3s ease;
-      background: #fafafa;
-      color: #333333;
-    }
-
-    .form-input:focus {
-      outline: none;
-      border-color: #a87ca0;
-      background: white;
-      box-shadow: 0 0 0 3px rgba(168, 124, 160, 0.1);
-      color: #333333;
-    }
-
-    .submit-btn {
+    .mailchimp-button {
       background: linear-gradient(45deg, #a87ca0, #dca2cb);
       color: white;
       padding: 15px 30px;
       border: none;
       border-radius: 25px;
-      font-size: 1.1rem;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
       font-weight: 600;
       cursor: pointer;
-      width: 100%;
       transition: all 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
       box-shadow: 0 5px 15px rgba(168, 124, 160, 0.3);
+      touch-action: manipulation;
     }
 
-    .submit-btn:hover {
+    .mailchimp-button:hover, .mailchimp-button:active {
       transform: translateY(-2px);
       box-shadow: 0 8px 25px rgba(168, 124, 160, 0.4);
     }
 
-    .submit-btn:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .download-pdf-btn {
-      background: linear-gradient(45deg, #6A2C70, #8E44AD);
+    /* NOUVEAU : Bouton de téléchargement du guide */
+    .download-section {
+      background: linear-gradient(135deg, #6A2C70, #8E44AD);
       color: white;
-      padding: 12px 25px;
-      border: none;
+      padding: 30px;
       border-radius: 20px;
-      font-size: 1rem;
-      font-weight: 600;
+      margin: 30px 0;
+      text-align: center;
+      box-shadow: 0 10px 40px rgba(106, 44, 112, 0.3);
+    }
+
+    .download-title {
+      font-size: clamp(1.3rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    .download-description {
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+
+    .download-button {
+      background: white;
+      color: #6A2C70;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 25px;
+      font-size: clamp(1rem, 2.5vw, 1.1rem);
+      font-weight: 700;
       cursor: pointer;
-      width: 100%;
-      margin-top: 15px;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 12px rgba(106, 44, 112, 0.3);
+      text-decoration: none;
+      display: inline-block;
+      margin: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      touch-action: manipulation;
     }
 
-    .download-pdf-btn:hover {
+    .download-button:hover, .download-button:active {
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(106, 44, 112, 0.4);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
-    .success-message {
-      background: #d4edda;
-      color: #155724;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 15px;
-      text-align: center;
-      display: none;
+    .download-button.secondary {
+      background: transparent;
+      color: white;
+      border: 2px solid white;
     }
 
-    .error-message {
-      background: #f8d7da;
-      color: #721c24;
-      padding: 15px;
-      border-radius: 10px;
-      margin-top: 15px;
-      text-align: center;
-      display: none;
+    /* Instructions d'utilisation améliorées */
+    .instructions {
+      background: rgba(168, 124, 160, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      margin: 20px 0;
+      border-left: 4px solid #a87ca0;
     }
 
-    .privacy-note {
-      font-size: 0.8rem;
-      color: #6e5e68;
-      text-align: center;
-      margin-top: 15px;
-      font-style: italic;
+    .instructions h3 {
+      color: #6A2C70;
+      margin-bottom: 15px;
+      font-size: clamp(1.1rem, 3vw, 1.3rem);
     }
 
-    @media (max-width: 1200px) {
-      .main-content {
-        grid-template-columns: 1fr 1fr;
-        gap: 25px;
-      }
-      
-      .form-section {
-        grid-column: 1 / -1;
-      }
+    .instructions p {
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
+      line-height: 1.5;
+      margin-bottom: 10px;
     }
 
     @media (max-width: 768px) {
       .main-content {
         grid-template-columns: 1fr;
-        gap: 20px;
+        gap: 30px;
       }
       
       .wheel-container {
-        width: 350px;
-        height: 350px;
+        width: min(400px, 95vw);
+        height: min(400px, 95vw);
       }
       
-      h1 {
-        font-size: 2rem;
-      }
-      
-      .logo-text {
-        font-size: 2.2rem;
-      }
-      
-      .info-section, .form-section {
+      .info-section {
         position: static;
         margin-top: 20px;
+        padding: 20px;
+      }
+
+      .container {
+        padding: 15px;
+      }
+
+      header {
+        padding: 15px 0 30px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .wheel-container {
+        width: min(350px, 95vw);
+        height: min(350px, 95vw);
+      }
+      
+      .container {
+        padding: 10px;
+      }
+
+      .download-section {
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .instructions {
+        padding: 15px;
       }
     }
 
@@ -385,20 +373,27 @@
       100% { transform: scale(1); }
     }
 
-    .loading-spinner {
-      border: 2px solid #f3f3f3;
-      border-top: 2px solid #a87ca0;
-      border-radius: 50%;
-      width: 20px;
-      height: 20px;
-      animation: spin 1s linear infinite;
-      display: inline-block;
-      margin-right: 10px;
+    /* Animation d'entrée */
+    .fade-in {
+      animation: fadeIn 0.5s ease-in;
     }
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Amélioration des interactions tactiles */
+    @media (hover: none) and (pointer: coarse) {
+      .emotion-segment:hover {
+        filter: none;
+        transform: none;
+      }
+      
+      .emotion-segment:active {
+        filter: brightness(1.2);
+        transform: scale(1.03);
+      }
     }
   </style>
 </head>
@@ -411,340 +406,224 @@
       <p class="copyright">© Vision Vibrancy - Elise Ragain, Life Coach</p>
     </header>
 
-    <div class="main-content">
-      <!-- Section Roue -->
+    <!-- NOUVEAU : Section de téléchargement du guide -->
+    <div class="download-section">
+      <h2 class="download-title">📚 Guide Complet des Émotions</h2>
+      <p class="download-description">
+        Recevez votre guide personnalisé pour mieux comprendre et accueillir vos émotions au quotidien
+      </p>
+      <a href="https://mailchi.mp/visionvibrancy/guide-emotions" class="download-button" target="_blank">
+        📧 Recevoir le Guide Gratuit
+      </a>
+      <a href="#wheel" class="download-button secondary">
+        🎭 Explorer la Roue Interactive
+      </a>
+    </div>
+
+    <!-- Instructions d'utilisation -->
+    <div class="instructions">
+      <h3>🎯 Comment utiliser cette roue des émotions :</h3>
+      <p><strong>1.</strong> Prenez un moment pour vous connecter à ce que vous ressentez en ce moment</p>
+      <p><strong>2.</strong> Cliquez ou touchez l'émotion qui correspond le mieux à votre ressenti</p>
+      <p><strong>3.</strong> Découvrez les signaux de cette émotion et comment l'accueillir avec bienveillance</p>
+      <p><strong>4.</strong> Rappelez-vous : toutes les émotions sont légitimes et porteuses de messages précieux</p>
+    </div>
+
+    <div class="main-content" id="wheel">
       <div class="wheel-section">
-        <h3 style="color: #a87ca0; margin-bottom: 15px; text-align: center;">🎭 Roue Interactive</h3>
         <div class="wheel-container">
-          <svg class="wheel-svg" viewBox="0 0 400 400">
+          <svg class="wheel-svg" viewBox="0 0 500 500">
+            <!-- Segments de la roue -->
             <g id="emotion-segments"></g>
-            <circle class="center-circle" cx="200" cy="200" r="50"/>
-            <text class="center-text" x="200" y="195" dy="5">Cliquez sur</text>
-            <text class="center-text" x="200" y="195" dy="20">une émotion</text>
+            
+            <!-- Cercle central -->
+            <circle class="center-circle" cx="250" cy="250" r="60"/>
+            <text class="center-text" x="250" y="245" dy="5">
+              Cliquez sur
+            </text>
+            <text class="center-text" x="250" y="255" dy="5">
+              une émotion
+            </text>
           </svg>
         </div>
       </div>
 
-      <!-- Section Info -->
       <div class="info-section">
-        <h3 style="color: #a87ca0; margin-bottom: 15px; text-align: center;">📝 Découverte Émotionnelle</h3>
         <div class="emotion-info" id="emotion-display">
           <div class="default-message">
             <div class="icon">🎭</div>
             <h3>Bienvenue dans votre exploration émotionnelle</h3>
             <p>Cliquez sur une émotion de la roue pour découvrir sa signification et apprendre comment l'accueillir avec bienveillance.</p>
-            <p style="margin-top: 15px; font-style: italic;">Chaque émotion est un messager précieux qui mérite d'être écouté.</p>
+            <p style="margin-top: 20px; font-style: italic;">Chaque émotion est un messager précieux qui mérite d'être écouté.</p>
+            <a href="https://mailchi.mp/visionvibrancy/guide-emotions" class="mailchimp-button" target="_blank">
+              📧 Recevez votre guide des émotions gratuit
+            </a>
           </div>
         </div>
-      </div>
-
-      <!-- Section Formulaire -->
-      <div class="form-section">
-        <h2 class="form-title">🎁 Recevez votre guide gratuit</h2>
-        <p class="form-description">
-          Inscrivez-vous pour recevoir le guide complet des émotions et commencer votre transformation intérieure dès aujourd'hui.
-        </p>
-        
-        <form id="emotion-form">
-          <div class="form-group">
-            <label for="mce-FNAME" class="form-label">Prénom *</label>
-            <input type="text" id="mce-FNAME" name="FNAME" class="form-input" required placeholder="Votre prénom">
-          </div>
-          
-          <div class="form-group">
-            <label for="mce-EMAIL" class="form-label">Email *</label>
-            <input type="email" id="mce-EMAIL" name="EMAIL" class="form-input" required placeholder="votre@email.com">
-          </div>
-          
-          <div class="form-group">
-            <label for="mce-EMOTION" class="form-label">Quelle émotion vous interpelle le plus aujourd'hui ?</label>
-            <select id="mce-EMOTION" name="EMOTION" class="form-input">
-              <option value="">Choisissez une émotion...</option>
-              <option value="Joie">😊 Joie</option>
-              <option value="Tristesse">😢 Tristesse</option>
-              <option value="Colère">😤 Colère</option>
-              <option value="Peur">😰 Peur</option>
-              <option value="Surprise">😲 Surprise</option>
-              <option value="Dégoût">🤢 Dégoût</option>
-              <option value="Anxiété">😰 Anxiété</option>
-              <option value="Honte">😳 Honte</option>
-              <option value="Culpabilité">😔 Culpabilité</option>
-              <option value="Envie">😒 Envie</option>
-              <option value="Espoir">🌅 Espoir</option>
-              <option value="Amour">💖 Amour</option>
-            </select>
-          </div>
-          
-          <button type="submit" class="submit-btn" id="submit-btn">
-            📧 Recevoir mon guide gratuit
-          </button>
-          
-          <button type="button" class="download-pdf-btn" onclick="downloadPDFGuide()">
-            📄 Télécharger le guide PDF complet
-          </button>
-          
-          <div class="success-message" id="success-message">
-            ✅ Parfait ! Votre inscription est confirmée. Vérifiez votre email pour recevoir votre guide des émotions.
-          </div>
-          
-          <div class="error-message" id="error-message">
-            ❌ Une erreur s'est produite. Veuillez réessayer.
-          </div>
-          
-          <p class="privacy-note">
-            🔒 Vos données sont protégées. Pas de spam, vous pouvez vous désabonner à tout moment.
-          </p>
-        </form>
       </div>
     </div>
   </div>
 
   <script>
-    // Données COMPLÈTES des 12 émotions - VERSION EXPERTE
     const emotions = [
       {
         name: "Joie",
         color: "#FFD700",
-        emoji: "😊✨",
-        description: "La joie est une émotion positive intense qui nous connecte au moment présent et nous ouvre aux autres. Elle naît de la satisfaction, de l'accomplissement ou de la connexion profonde avec ce qui nous anime vraiment.",
-        signs: [
-          "Mon sourire vient naturellement et illumine mon visage",
-          "Je ressens une énergie débordante et revitalisante",
-          "J'ai envie de partager cette belle émotion avec les autres",
-          "Une sensation de légèreté m'habite tout entier",
-          "L'optimisme colore naturellement ma vision du monde"
-        ],
+        description: "La joie est une émotion positive intense qui nous connecte au moment présent et nous ouvre aux autres. Elle naît de la satisfaction, de l'accomplissement ou de la connexion.",
+        signs: ["Sourire spontané", "Énergie débordante", "Envie de partager", "Sensation de légèreté", "Optimisme naturel"],
         tips: [
-          "Savourez pleinement ces moments précieux sans aucune culpabilité",
-          "Partagez votre joie avec vos proches pour la multiplier",
-          "Gardez des traces de ces instants magiques (photos, journal, souvenirs)",
-          "Utilisez cette énergie positive pour vos nouveaux projets et rêves",
-          "Pratiquez la gratitude quotidienne pour amplifier ce ressenti bienfaisant"
+          "Savourez pleinement ces moments sans culpabilité",
+          "Partagez votre joie avec vos proches",
+          "Gardez des traces de ces instants (photos, journal)",
+          "Utilisez cette énergie pour entreprendre de nouveaux projets",
+          "Pratiquez la gratitude pour amplifier ce ressenti"
         ]
       },
       {
         name: "Tristesse",
         color: "#4682B4",
-        emoji: "😢💙",
-        description: "La tristesse est une émotion naturelle et importante qui nous aide à traiter les pertes et les déceptions. Elle nous invite à la réflexion profonde et peut considérablement approfondir notre empathie envers nous-mêmes et les autres.",
-        signs: [
-          "Les larmes viennent naturellement ou l'envie de pleurer me prend",
-          "Une sensation de lourdeur émotionnelle m'habite",
-          "J'ai besoin de solitude et de moments de recueillement",
-          "Mon énergie semble ralentie, comme au ralenti",
-          "La nostalgie de moments passés me visite régulièrement"
-        ],
+        description: "La tristesse est une émotion naturelle qui nous aide à traiter les pertes et les déceptions. Elle nous invite à la réflexion et peut approfondir notre empathie.",
+        signs: ["Larmes ou envie de pleurer", "Sensation de lourdeur", "Besoin de solitude", "Manque d'énergie", "Nostalgie"],
         tips: [
-          "Acceptez cette émotion sans la juger - elle est légitime et nécessaire",
-          "Accordez-vous généreusement du temps pour ressentir et pleurer si besoin",
-          "Cherchez du soutien authentique auprès de personnes bienveillantes",
-          "Exprimez vos sentiments profonds par l'écriture, l'art ou la musique",
-          "Soyez infiniment patient avec votre processus naturel de guérison"
+          "Acceptez cette émotion sans la juger",
+          "Accordez-vous du temps pour ressentir et pleurer",
+          "Cherchez du soutien auprès de personnes bienveillantes",
+          "Exprimez vos sentiments par l'écriture ou l'art",
+          "Soyez patient avec votre processus de guérison"
         ]
       },
       {
         name: "Colère",
         color: "#DC143C",
-        emoji: "😤🔥",
-        description: "La colère signale souvent qu'une de nos limites importantes a été franchie ou qu'une injustice s'est produite. Elle peut devenir un moteur de changement positif et constructif quand elle est bien comprise et canalisée intelligemment.",
-        signs: [
-          "Mes muscles se tendent et se contractent involontairement",
-          "Je ressens une chaleur intense dans tout mon corps",
-          "L'irritabilité monte progressivement en moi",
-          "J'ai une forte envie de crier ou de réagir impulsivement",
-          "Mes pensées deviennent accusatrices et critiques"
-        ],
+        description: "La colère signale souvent qu'une de nos limites a été franchie ou qu'une injustice s'est produite. Elle peut être un moteur de changement positif quand elle est bien canalisée.",
+        signs: ["Tension musculaire", "Chaleur corporelle", "Irritabilité", "Envie de crier ou frapper", "Pensées accusatrices"],
         tips: [
-          "Respirez profondément plusieurs fois avant de réagir ou parler",
-          "Identifiez clairement le besoin non satisfait derrière votre colère",
-          "Exprimez-vous de manière assertive et respectueuse, non agressive",
-          "Utilisez l'exercice physique pour évacuer sainement cette tension",
-          "Cherchez activement des solutions constructives et durables au problème"
+          "Respirez profondément avant de réagir",
+          "Identifiez le besoin non satisfait derrière la colère",
+          "Exprimez-vous de manière assertive, non agressive",
+          "Utilisez l'exercice physique pour évacuer la tension",
+          "Cherchez des solutions constructives au problème"
         ]
       },
       {
         name: "Peur",
         color: "#800080",
-        emoji: "😰🛡️",
-        description: "La peur est un mécanisme naturel de protection qui nous alerte intelligemment face aux dangers réels ou perçus. Elle nous invite à développer une prudence éclairée et peut nous aider efficacement à nous préparer aux défis de la vie.",
-        signs: [
-          "Mon cœur s'accélère et bat plus fort dans ma poitrine",
-          "Des sueurs froides ou chaudes apparaissent sur ma peau",
-          "Une tension générale envahit tout mon être",
-          "Ma vigilance et mon attention s'accroissent considérablement",
-          "J'ai une envie instinctive de fuir ou de me cacher"
-        ],
+        description: "La peur est un mécanisme de protection qui nous alerte face aux dangers réels ou perçus. Elle nous invite à la prudence et peut nous aider à nous préparer.",
+        signs: ["Accélération cardiaque", "Sueurs", "Tension", "Vigilance accrue", "Envie de fuir ou se cacher"],
         tips: [
-          "Identifiez calmement si votre peur est rationnelle ou irrationnelle",
-          "Respirez lentement et profondément pour apaiser votre système nerveux",
-          "Décomposez la situation intimidante en petites étapes gérables",
-          "Cherchez des informations fiables pour réduire l'incertitude angoissante",
-          "Rappelez-vous avec fierté vos réussites passées face aux défis"
+          "Identifiez si la peur est rationnelle ou irrationnelle",
+          "Respirez lentement pour calmer votre système nerveux",
+          "Décomposez la situation intimidante en petites étapes",
+          "Cherchez des informations pour réduire l'incertitude",
+          "Rappelez-vous vos réussites passées face aux défis"
         ]
       },
       {
         name: "Surprise",
         color: "#FF8C00",
-        emoji: "😲⚡",
-        description: "La surprise interrompt bénéfiquement notre routine mentale habituelle et nous ouvre généreusement à de nouvelles possibilités inattendues. Elle stimule naturellement notre curiosité innée et développe notre précieuse adaptabilité face au changement.",
-        signs: [
-          "Mes sourcils se lèvent automatiquement d'étonnement",
-          "Ma bouche s'ouvre spontanément sous l'effet de la surprise",
-          "Je marque un arrêt momentané dans mes actions",
-          "Mon attention se focalise intensément sur l'élément surprenant",
-          "Un questionnement naturel émerge en moi"
-        ],
+        description: "La surprise interrompt notre routine mentale et nous ouvre à de nouvelles possibilités. Elle stimule notre curiosité et notre adaptabilité.",
+        signs: ["Sourcils levés", "Bouche ouverte", "Arrêt momentané", "Attention focalisée", "Questionnement"],
         tips: [
-          "Accueillez l'inattendu avec une curiosité bienveillante et ouverte",
-          "Prenez consciemment un moment pour traiter cette nouvelle information",
-          "Explorez avec enthousiasme les opportunités que révèle cette surprise",
-          "Restez mentalement ouvert aux changements positifs de perspective",
-          "Cultivez activement votre flexibilité mentale et votre adaptabilité"
+          "Accueillez l'inattendu avec curiosité",
+          "Prenez un moment pour traiter l'information",
+          "Explorez les opportunités que révèle cette surprise",
+          "Restez ouvert aux changements de perspective",
+          "Cultivez votre flexibilité mentale"
         ]
       },
       {
         name: "Dégoût",
         color: "#9ACD32",
-        emoji: "🤢🛡️",
-        description: "Le dégoût nous protège intelligemment de ce qui pourrait nous nuire physiquement, émotionnellement ou moralement. Il exprime clairement nos valeurs profondes et nos limites personnelles essentielles qu'il convient de respecter absolument.",
-        signs: [
-          "Une sensation de nausée ou malaise m'envahit",
-          "Je recule instinctivement physiquement de la source",
-          "Mon expression faciale se contracte involontairement",
-          "Un rejet instinctif et puissant se manifeste en moi",
-          "Une sensation d'aversion profonde m'habite complètement"
-        ],
+        description: "Le dégoût nous protège de ce qui pourrait nous nuire physiquement ou moralement. Il exprime nos valeurs profondes et nos limites personnelles.",
+        signs: ["Nausée", "Recul physique", "Expression faciale contractée", "Rejet instinctif", "Sensation d'aversion"],
         tips: [
-          "Respectez absolument cette émotion comme un signal d'alarme important",
-          "Identifiez précisément ce qui transgresse vos valeurs fondamentales",
-          "Éloignez-vous physiquement de la source si c'est nécessaire",
-          "Explorez consciemment vos limites personnelles et vos boundaries",
-          "Ne vous forcez jamais à accepter ce qui est inacceptable pour vous"
+          "Respectez cette émotion comme un signal important",
+          "Identifiez ce qui transgresse vos valeurs",
+          "Éloignez-vous de la source si nécessaire",
+          "Explorez vos limites personnelles",
+          "Ne vous forcez pas à accepter l'inacceptable"
         ]
       },
       {
         name: "Anxiété",
         color: "#DDA0DD",
-        emoji: "😰🌪️",
-        description: "L'anxiété nous prépare mentalement aux défis futurs mais peut malheureusement devenir limitante et paralysante quand elle devient excessive. Elle révèle souvent avec précision nos préoccupations les plus profondes et nos peurs cachées.",
-        signs: [
-          "Mes pensées tournent en boucle de manière obsédante",
-          "Une tension physique constante habite mon corps",
-          "J'éprouve des difficultés importantes de concentration",
-          "Mon anticipation devient négative et catastrophiste",
-          "Une agitation mentale et physique m'envahit complètement"
-        ],
+        description: "L'anxiété nous prépare aux défis futurs mais peut devenir limitante quand excessive. Elle révèle souvent nos préoccupations les plus profondes.",
+        signs: ["Pensées en boucle", "Tension physique", "Difficultés de concentration", "Anticipation négative", "Agitation"],
         tips: [
-          "Pratiquez régulièrement la pleine conscience pour revenir au moment présent",
-          "Distinguez clairement ce qui dépend de vous de ce qui n'en dépend pas",
-          "Utilisez quotidiennement des techniques de respiration profonde et apaisante",
-          "Préparez-vous concrètement et méthodiquement quand c'est possible",
-          "Cherchez un soutien professionnel qualifié si l'anxiété persiste"
+          "Pratiquez la pleine conscience pour revenir au présent",
+          "Distinguez ce qui dépend de vous de ce qui n'en dépend pas",
+          "Utilisez des techniques de respiration apaisantes",
+          "Préparez-vous concrètement quand c'est possible",
+          "Cherchez du soutien professionnel si nécessaire"
         ]
       },
       {
         name: "Honte",
         color: "#CD853F",
-        emoji: "😳🙈",
-        description: "La honte nous signale douloureusement mais utilement un écart entre nos actions et nos valeurs profondes. Bien qu'inconfortable et difficile à vivre, elle peut nous guider progressivement vers plus d'authenticité personnelle et de croissance spirituelle.",
-        signs: [
-          "J'ai une envie irrésistible de me cacher ou disparaître",
-          "Le rougissement envahit naturellement mon visage",
-          "Mon regard devient fuyant et évite le contact",
-          "Une autocritique particulièrement sévère m'envahit",
-          "Je tends vers l'isolement social et le retrait"
-        ],
+        description: "La honte nous signale un écart entre nos actions et nos valeurs. Bien qu'inconfortable, elle peut nous guider vers plus d'authenticité et de croissance.",
+        signs: ["Envie de se cacher", "Rougissement", "Regard fuyant", "Autocritique sévère", "Isolement social"],
         tips: [
-          "Différenciez clairement la honte (sentiment d'être) de la culpabilité (regret de faire)",
-          "Partagez courageusement avec une personne de confiance absolue",
-          "Pratiquez quotidiennement l'auto-compassion et la bienveillance envers vous",
-          "Identifiez précisément les leçons importantes à tirer de cette expérience",
-          "Travaillez patiemment sur l'acceptation de votre humanité naturellement imparfaite"
+          "Différenciez la honte (être) de la culpabilité (faire)",
+          "Partagez avec une personne de confiance",
+          "Pratiquez l'auto-compassion",
+          "Identifiez les leçons à tirer de l'expérience",
+          "Travaillez sur l'acceptation de votre humanité imparfaite"
         ]
       },
       {
         name: "Culpabilité",
         color: "#708090",
-        emoji: "😔⚖️",
-        description: "La culpabilité indique clairement que nos actions passées ne correspondent pas à nos valeurs morales profondes. Elle peut heureusement nous motiver puissamment à réparer nos erreurs et à mieux agir à l'avenir.",
-        signs: [
-          "Des remords profonds et persistants m'habitent",
-          "J'éprouve un besoin urgent et sincère de réparer",
-          "Une autocritique constante résonne dans ma tête",
-          "Des ruminations mentales incessantes m'envahissent",
-          "J'ai de grandes difficultés à me pardonner sincèrement"
-        ],
+        description: "La culpabilité indique que nos actions ne correspondent pas à nos valeurs morales. Elle peut nous motiver à réparer et à mieux agir.",
+        signs: ["Remords", "Besoin de réparer", "Autocritique", "Ruminations", "Difficultés à se pardonner"],
         tips: [
-          "Assumez pleinement et courageusement la responsabilité de vos actions",
-          "Présentez des excuses authentiques et sincères si c'est nécessaire",
-          "Réparez concrètement les dommages causés quand c'est encore possible",
-          "Apprenez profondément de cette erreur pour éviter sa répétition future",
-          "Pratiquez activement le pardon authentique envers vous-même"
+          "Assumez la responsabilité de vos actions",
+          "Présentez des excuses sincères si nécessaire",
+          "Réparez les dommages quand c'est possible",
+          "Apprenez de l'erreur pour éviter la répétition",
+          "Pratiquez le pardon envers vous-même"
         ]
       },
       {
         name: "Envie",
         color: "#228B22",
-        emoji: "😒💚",
-        description: "L'envie révèle souvent nos désirs les plus profonds et peut potentiellement nous motiver à poursuivre nos objectifs authentiques. Elle devient malheureusement toxique et destructrice quand elle se transforme en ressentiment amer.",
-        signs: [
-          "Je fais constamment des comparaisons avec les autres",
-          "Un sentiment d'injustice profonde m'habite régulièrement",
-          "Je désire ardemment avoir ce que l'autre possède",
-          "Une amertume sourde grandit progressivement en moi",
-          "Je tends vers la dévalorisation systématique de moi-même"
-        ],
+        description: "L'envie révèle nos désirs profonds et peut nous motiver à poursuivre nos objectifs. Elle devient toxique quand elle se transforme en ressentiment.",
+        signs: ["Comparaisons constantes", "Sentiment d'injustice", "Désir d'avoir ce que l'autre possède", "Amertume", "Dévalorisation de soi"],
         tips: [
-          "Identifiez clairement ce que l'envie révèle sur vos vraies aspirations profondes",
-          "Transformez constructivement cette envie en inspiration positive et motivation",
-          "Focalisez consciemment sur votre propre chemin unique et vos progrès personnels",
-          "Pratiquez quotidiennement la gratitude sincère pour ce que vous possédez déjà",
-          "Célébrez généreusement les succès des autres comme des possibilités inspirantes"
+          "Identifiez ce que l'envie révèle sur vos vraies aspirations",
+          "Transformez l'envie en inspiration et motivation",
+          "Focalisez sur votre propre chemin et progrès",
+          "Pratiquez la gratitude pour ce que vous avez",
+          "Célébrez les succès des autres comme des possibilités"
         ]
       },
       {
         name: "Espoir",
         color: "#87CEEB",
-        emoji: "🌅✨",
-        description: "L'espoir nous donne la force précieuse de persévérer courageusement dans les moments les plus difficiles. Il nourrit profondément notre résilience naturelle et développe notre capacité extraordinaire à envisager un avenir meilleur et plus lumineux.",
-        signs: [
-          "Un optimisme prudent mais réel renaît progressivement en moi",
-          "Je retrouve une énergie renouvelée pour agir et avancer",
-          "Je commence naturellement à planifier et envisager l'avenir",
-          "Ma patience et ma persévérance reviennent progressivement",
-          "Je recherche activement des solutions et des possibilités nouvelles"
-        ],
+        description: "L'espoir nous donne la force de persévérer dans les moments difficiles. Il nourrit notre résilience et notre capacité à envisager un avenir meilleur.",
+        signs: ["Optimisme prudent", "Énergie renouvelée", "Planification d'avenir", "Patience accrue", "Recherche de solutions"],
         tips: [
-          "Nourrissez quotidiennement votre espoir par de petites actions concrètes et réalisables",
-          "Entourez-vous consciemment de personnes positives, soutenantes et inspirantes",
-          "Visualisez régulièrement et positivement votre avenir désiré avec précision",
-          "Célébrez avec gratitude chaque petit progrès et chaque victoire",
-          "Gardez consciemment un équilibre sain entre espoir réaliste et pragmatisme"
+          "Nourrissez votre espoir par de petites actions concrètes",
+          "Entourez-vous de personnes positives et soutenantes",
+          "Visualisez positivement votre avenir désiré",
+          "Célébrez chaque petit progrès",
+          "Gardez un équilibre entre espoir et réalisme"
         ]
       },
       {
         name: "Amour",
         color: "#FF69B4",
-        emoji: "💖🌹",
-        description: "L'amour est l'émotion la plus puissante qui nous connecte profondément aux autres et à nous-mêmes. Il nourrit généreusement notre besoin fondamental d'appartenance authentique et donne un sens profond à notre existence humaine.",
-        signs: [
-          "Une chaleur douce et bienfaisante se répand dans ma poitrine",
-          "J'éprouve un désir naturel et sincère de proximité émotionnelle",
-          "La bienveillance m'habite spontanément et naturellement",
-          "Je ressens un sentiment de complétude et de plénitude",
-          "L'empathie et la compassion m'animent profondément"
-        ],
+        description: "L'amour est l'émotion qui nous connecte profondément aux autres et à nous-mêmes. Il nourrit notre besoin fondamental d'appartenance et de sens.",
+        signs: ["Chaleur dans la poitrine", "Désir de proximité", "Bienveillance naturelle", "Oubli de soi", "Sentiment de complétude"],
         tips: [
-          "Exprimez régulièrement votre amour par des mots tendres et des gestes attentionnés",
-          "Cultivez aussi l'amour de soi avec la même tendresse que pour les autres",
-          "Créez consciemment des moments de qualité authentique avec vos proches",
-          "Pratiquez quotidiennement l'écoute active et l'empathie sincère",
-          "Acceptez courageusement que l'amour véritable implique aussi la vulnérabilité"
+          "Exprimez votre amour régulièrement par des mots et des gestes",
+          "Cultivez aussi l'amour de soi avec la même tendresse",
+          "Créez des moments de qualité avec vos proches",
+          "Pratiquez l'écoute active et l'empathie",
+          "Acceptez que l'amour implique aussi la vulnérabilité"
         ]
       }
     ];
 
-    // Fonction pour créer la roue des émotions - VERSION EXPERTE
     function createWheel() {
       const svg = document.getElementById('emotion-segments');
       const totalEmotions = emotions.length;
@@ -760,17 +639,17 @@
         
         // Calculer les points du segment
         const largeArcFlag = angleStep > 180 ? 1 : 0;
-        const outerRadius = 180;
-        const innerRadius = 50;
+        const outerRadius = 220;
+        const innerRadius = 60;
         
-        const x1 = 200 + outerRadius * Math.cos(startRad);
-        const y1 = 200 + outerRadius * Math.sin(startRad);
-        const x2 = 200 + outerRadius * Math.cos(endRad);
-        const y2 = 200 + outerRadius * Math.sin(endRad);
-        const x3 = 200 + innerRadius * Math.cos(endRad);
-        const y3 = 200 + innerRadius * Math.sin(endRad);
-        const x4 = 200 + innerRadius * Math.cos(startRad);
-        const y4 = 200 + innerRadius * Math.sin(startRad);
+        const x1 = 250 + outerRadius * Math.cos(startRad);
+        const y1 = 250 + outerRadius * Math.sin(startRad);
+        const x2 = 250 + outerRadius * Math.cos(endRad);
+        const y2 = 250 + outerRadius * Math.sin(endRad);
+        const x3 = 250 + innerRadius * Math.cos(endRad);
+        const y3 = 250 + innerRadius * Math.sin(endRad);
+        const x4 = 250 + innerRadius * Math.cos(startRad);
+        const y4 = 250 + innerRadius * Math.sin(startRad);
         
         const pathData = [
           `M ${x1} ${y1}`,
@@ -793,8 +672,8 @@
         const textAngle = startAngle + angleStep / 2;
         const textRad = (textAngle * Math.PI) / 180;
         const textRadius = (outerRadius + innerRadius) / 2;
-        const textX = 200 + textRadius * Math.cos(textRad);
-        const textY = 200 + textRadius * Math.sin(textRad);
+        const textX = 250 + textRadius * Math.cos(textRad);
+        const textY = 250 + textRadius * Math.sin(textRad);
         
         const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
         text.setAttribute('x', textX);
@@ -806,571 +685,113 @@
         svg.appendChild(segment);
         svg.appendChild(text);
         
-        // Ajouter l'événement click
-        segment.addEventListener('click', () => showEmotionInfo(index));
+        // Amélioration des événements pour mobile
+        let touchStarted = false;
+        
+        // Événement tactile
+        segment.addEventListener('touchstart', (e) => {
+          touchStarted = true;
+          e.preventDefault();
+          // Vibration haptique si disponible
+          if ('vibrate' in navigator) {
+            navigator.vibrate(30);
+          }
+        }, { passive: false });
+        
+        segment.addEventListener('touchend', (e) => {
+          if (touchStarted) {
+            e.preventDefault();
+            e.stopPropagation();
+            showEmotionInfo(index);
+          }
+          touchStarted = false;
+        }, { passive: false });
+        
+        // Événement souris (desktop)
+        segment.addEventListener('click', (e) => {
+          if (!touchStarted) {
+            e.preventDefault();
+            e.stopPropagation();
+            showEmotionInfo(index);
+          }
+        });
+        
+        segment.addEventListener('touchcancel', () => {
+          touchStarted = false;
+        });
       });
     }
 
-    // Fonction pour afficher les informations d'une émotion - VERSION EXPERTE
     function showEmotionInfo(emotionIndex) {
       const emotion = emotions[emotionIndex];
       const display = document.getElementById('emotion-display');
       
-      // Mettre à jour le select du formulaire
-      const emotionSelect = document.getElementById('mce-EMOTION');
-      emotionSelect.value = emotion.name;
-      
       display.innerHTML = `
-        <h2 class="emotion-title" style="color: ${emotion.color}">${emotion.emoji} ${emotion.name.toUpperCase()}</h2>
+        <h2 class="emotion-title" style="color: ${emotion.color}">${emotion.name}</h2>
         <p class="emotion-description">${emotion.description}</p>
         
-        <h3 class="section-title">🔍 Je reconnais cette émotion quand :</h3>
+        <h3 class="section-title">Signaux physiques et mentaux</h3>
         <ul class="tips-list">
           ${emotion.signs.map(sign => `<li>• ${sign}</li>`).join('')}
         </ul>
         
-        <h3 class="section-title">💝 Comment accueillir cette émotion :</h3>
+        <h3 class="section-title">Comment accueillir cette émotion</h3>
         <ul class="tips-list">
           ${emotion.tips.map(tip => `<li>💡 ${tip}</li>`).join('')}
         </ul>
+        
+        <div style="text-align: center; margin-top: 30px;">
+          <a href="https://mailchi.mp/visionvibrancy/guide-emotions" class="mailchimp-button" target="_blank">
+            📧 Recevez votre guide personnalisé
+          </a>
+        </div>
       `;
+      
+      // Animation d'entrée
+      display.classList.add('fade-in');
       
       // Animation de pulsation pour le segment sélectionné
       const segments = document.querySelectorAll('.emotion-segment');
       segments.forEach(seg => seg.classList.remove('pulse'));
       segments[emotionIndex].classList.add('pulse');
-    }
-
-    // Gestion du formulaire Mailchimp - VERSION EXPERTE
-    document.getElementById('emotion-form').addEventListener('submit', function(e) {
-      e.preventDefault();
       
-      const submitBtn = document.getElementById('submit-btn');
-      const successMsg = document.getElementById('success-message');
-      const errorMsg = document.getElementById('error-message');
-      
-      // Validation des champs requis
-      const fname = document.getElementById('mce-FNAME').value.trim();
-      const email = document.getElementById('mce-EMAIL').value.trim();
-      
-      if (!fname || !email) {
-        errorMsg.textContent = '❌ Veuillez remplir tous les champs obligatoires.';
-        errorMsg.style.display = 'block';
-        successMsg.style.display = 'none';
-        return;
+      // Scroll automatique vers les détails sur mobile
+      if (window.innerWidth <= 768) {
+        setTimeout(() => {
+          display.scrollIntoView({ 
+            behavior: 'smooth', 
+            block: 'start' 
+          });
+        }, 100);
       }
-      
-      // Afficher le spinner
-      submitBtn.innerHTML = '<div class="loading-spinner"></div>Envoi en cours...';
-      submitBtn.disabled = true;
-      
-      // Construire l'URL Mailchimp avec les paramètres
-      const formData = {
-        FNAME: fname,
-        EMAIL: email,
-        EMOTION: document.getElementById('mce-EMOTION').value
-      };
-      
-      const params = new URLSearchParams(formData);
-      const mailchimpUrl = `http://eepurl.com/jgpkRM?${params.toString()}`;
-      
-      // Ouvrir Mailchimp dans un nouvel onglet
-      window.open(mailchimpUrl, '_blank');
-      
-      // Afficher le message de succès
-      successMsg.style.display = 'block';
-      errorMsg.style.display = 'none';
-      
-      // Réinitialiser après 3 secondes
-      setTimeout(() => {
-        submitBtn.innerHTML = '📧 Recevoir mon guide gratuit';
-        submitBtn.disabled = false;
-        successMsg.style.display = 'none';
-        this.reset();
-      }, 3000);
-    });
-
-    // Fonction pour télécharger le guide PDF - VERSION EXPERTE CORRIGÉE
-    function downloadPDFGuide() {
-      const pdfWindow = window.open('', '_blank');
-      pdfWindow.document.write(getCompletePDFContent());
-      pdfWindow.document.close();
     }
 
-    // Contenu PDF COMPLET - VERSION EXPERTE avec TOUTES les émotions
-    function getCompletePDFContent() {
-      return `<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guide Complet des Émotions - Vision Vibrancy</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            color: #5b4b57;
-            background: white;
-            font-size: 12px;
-        }
-        
-        .pdf-controls {
-            position: fixed;
-            top: 15px;
-            right: 15px;
-            z-index: 1000;
-            display: flex;
-            gap: 10px;
-        }
-        
-        .pdf-btn {
-            background: linear-gradient(45deg, #a87ca0, #dca2cb);
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            box-shadow: 0 3px 10px rgba(168, 124, 160, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .pdf-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(168, 124, 160, 0.4);
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            background: white;
-        }
-        
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            padding: 25px;
-            background: linear-gradient(135deg, #fdf3f6 0%, #f4e7f7 100%);
-            border-radius: 15px;
-            border: 2px solid #a87ca0;
-        }
-        
-        .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, #6A2C70 0%, #8E44AD 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-        
-        .title {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #a87ca0;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            color: #6e5e68;
-            margin-bottom: 15px;
-        }
-        
-        .author {
-            font-size: 1rem;
-            color: #a87ca0;
-            font-weight: 600;
-            margin-top: 15px;
-        }
-        
-        .intro-section {
-            background: linear-gradient(135deg, #fff2e6 0%, #f0f8ff 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border-left: 4px solid #a87ca0;
-        }
-        
-        .intro-title {
-            color: #a87ca0;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-        
-        .steps-section {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .step {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            border: 2px solid #f0f0f0;
-            text-align: center;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-        }
-        
-        .step-number {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-        
-        .step-1 { border-left: 4px solid #FF8C00; }
-        .step-1 .step-number { color: #FF8C00; }
-        
-        .step-2 { border-left: 4px solid #4682B4; }
-        .step-2 .step-number { color: #4682B4; }
-        
-        .step-3 { border-left: 4px solid #228B22; }
-        .step-3 .step-number { color: #228B22; }
-        
-        .emotions-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .emotion-card {
-            background: white;
-            border: 2px solid #f0f0f0;
-            border-radius: 10px;
-            padding: 15px;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-            page-break-inside: avoid;
-        }
-        
-        .emotion-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 10px;
-            padding-bottom: 8px;
-            border-bottom: 2px solid #f0f0f0;
-        }
-        
-        .emotion-emoji {
-            font-size: 1.5rem;
-            margin-right: 10px;
-        }
-        
-        .emotion-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #a87ca0;
-        }
-        
-        .emotion-description {
-            font-size: 0.8rem;
-            color: #6e5e68;
-            line-height: 1.4;
-            margin-bottom: 10px;
-            text-align: justify;
-        }
-        
-        .emotion-section {
-            margin: 8px 0;
-        }
-        
-        .emotion-section-title {
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #a87ca0;
-            margin-bottom: 6px;
-            border-bottom: 1px solid #dca2cb;
-            padding-bottom: 2px;
-        }
-        
-        .emotion-list {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .emotion-list li {
-            font-size: 0.7rem;
-            margin: 4px 0;
-            padding: 4px 8px;
-            background: linear-gradient(90deg, #f8f0f4 0%, #f4e7f7 100%);
-            border-radius: 4px;
-            border-left: 2px solid #dca2cb;
-            line-height: 1.2;
-        }
-        
-        .tools-section {
-            background: linear-gradient(135deg, #f0fff0 0%, #e6f3ff 100%);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 20px 0;
-            border: 2px solid #a87ca0;
-        }
-        
-        .tools-title {
-            color: #a87ca0;
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-align: center;
-        }
-        
-        .ritual-section {
-            background: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 10px 0;
-            border-left: 3px solid #87CEEB;
-        }
-        
-        .ritual-title {
-            color: #4682B4;
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-        
-        .ritual-steps {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .ritual-steps li {
-            background: #f8f9fa;
-            margin: 4px 0;
-            padding: 6px 10px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-        }
-        
-        .tracking-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            font-size: 0.75rem;
-        }
-        
-        .tracking-table th,
-        .tracking-table td {
-            border: 1px solid #ddd;
-            padding: 6px;
-            text-align: left;
-        }
-        
-        .tracking-table th {
-            background: #f0f0f0;
-            font-weight: 600;
-            color: #a87ca0;
-        }
-        
-        .affirmations-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8px;
-            margin: 15px 0;
-        }
-        
-        .affirmation {
-            background: white;
-            padding: 8px;
-            border-radius: 6px;
-            border-left: 2px solid #dca2cb;
-            font-size: 0.7rem;
-        }
-        
-        .footer {
-            text-align: center;
-            color: #a87ca0;
-            padding: 20px;
-            background: linear-gradient(135deg, #fdf3f6 0%, #f4e7f7 100%);
-            border-radius: 10px;
-            margin-top: 30px;
-            border: 2px solid #dca2cb;
-        }
-        
-        .footer h3 {
-            margin-bottom: 8px;
-        }
-        
-        @media print {
-            .pdf-controls { display: none; }
-            body { font-size: 10px; }
-            .container { margin: 0; padding: 10px; }
-            .emotion-card { page-break-inside: avoid; }
-            @page { margin: 0.5cm; size: A4; }
-        }
-        
-        @media (max-width: 768px) {
-            .emotions-grid { grid-template-columns: 1fr; }
-            .steps-section { grid-template-columns: 1fr; }
-            .affirmations-grid { grid-template-columns: 1fr; }
-        }
-    </style>
-</head>
-<body>
-    <div class="pdf-controls">
-        <button class="pdf-btn" onclick="window.print()">📄 Télécharger PDF</button>
-        <button class="pdf-btn" onclick="window.close()">✖️ Fermer</button>
-    </div>
-    
-    <div class="container">
-        <!-- En-tête -->
-        <div class="header">
-            <div class="logo">VISION VIBRANCY</div>
-            <div style="font-size: 2rem; margin: 10px 0;">🎭✨💝</div>
-            <h1 class="title">Guide Complet des Émotions</h1>
-            <p class="subtitle">Votre compagnon pour une transformation intérieure profonde</p>
-            <p class="author">Par Élise Ragain - Life Coach Holistique</p>
-        </div>
+    // Prévenir le zoom sur double-tap
+    let lastTouchEnd = 0;
+    document.addEventListener('touchend', function (event) {
+      const now = (new Date()).getTime();
+      if (now - lastTouchEnd <= 300) {
+        event.preventDefault();
+      }
+      lastTouchEnd = now;
+    }, false);
 
-        <!-- Introduction -->
-        <div class="intro-section">
-            <h3 class="intro-title">🌟 Bienvenue dans votre voyage émotionnel</h3>
-            <p>Ce guide vous accompagne pour reconnaître, comprendre et accueillir chacune de vos émotions avec bienveillance. Chaque émotion est un messager précieux qui mérite d'être écouté et respecté.</p>
-            <p style="margin-top: 10px;"><strong>Les émotions ne sont ni bonnes ni mauvaises</strong> - elles sont simplement des informations précieuses sur notre état intérieur et nos besoins profonds.</p>
-        </div>
-
-        <!-- Les 3 étapes -->
-        <h2 style="color: #a87ca0; text-align: center; margin: 20px 0;">🎯 Les 3 étapes de la transformation émotionnelle</h2>
-        <div class="steps-section">
-            <div class="step step-1">
-                <div class="step-number">1️⃣</div>
-                <h4>OBSERVER</h4>
-                <p>Remarquez ce qui se passe dans votre corps et votre esprit sans essayer de changer quoi que ce soit.</p>
-            </div>
-            <div class="step step-2">
-                <div class="step-number">2️⃣</div>
-                <h4>ACCUEILLIR</h4>
-                <p>Acceptez votre émotion avec bienveillance, comme vous accueilleriez un ami qui a besoin de votre attention.</p>
-            </div>
-            <div class="step step-3">
-                <div class="step-number">3️⃣</div>
-                <h4>TRANSFORMER</h4>
-                <p>Utilisez l'énergie de votre émotion pour nourrir votre croissance personnelle et vos actions alignées.</p>
-            </div>
-        </div>
-
-        <!-- Grille des TOUTES les émotions -->
-        <h2 style="color: #a87ca0; text-align: center; margin: 30px 0 20px;">🎭 Les 12 Émotions Fondamentales</h2>
-        <div class="emotions-grid">
-            ${emotions.map(emotion => `
-                <div class="emotion-card">
-                    <div class="emotion-header">
-                        <span class="emotion-emoji">${emotion.emoji}</span>
-                        <h3 class="emotion-name">${emotion.name.toUpperCase()}</h3>
-                    </div>
-                    <p class="emotion-description">${emotion.description}</p>
-                    
-                    <div class="emotion-section">
-                        <div class="emotion-section-title">🔍 Je reconnais cette émotion quand :</div>
-                        <ul class="emotion-list">
-                            ${emotion.signs.map(sign => `<li>• ${sign}</li>`).join('')}
-                        </ul>
-                    </div>
-                    
-                    <div class="emotion-section">
-                        <div class="emotion-section-title">💝 Comment l'accueillir :</div>
-                        <ul class="emotion-list">
-                            ${emotion.tips.map(tip => `<li>💡 ${tip}</li>`).join('')}
-                        </ul>
-                    </div>
-                </div>
-            `).join('')}
-        </div>
-
-        <!-- Outils pratiques -->
-        <div class="tools-section">
-            <h2 class="tools-title">🎯 Mes outils de transformation quotidienne</h2>
-            
-            <div class="ritual-section">
-                <h3 class="ritual-title">🌅 Rituel du matin - Check-in émotionnel</h3>
-                <p>Chaque matin, prenez 5 minutes pour vous connecter à votre état émotionnel :</p>
-                <ol class="ritual-steps">
-                    <li>🫁 Respirez profondément 3 fois pour vous centrer</li>
-                    <li>🔍 Scannez votre corps et votre esprit avec bienveillance</li>
-                    <li>📝 Notez les émotions présentes sans aucun jugement</li>
-                    <li>💝 Envoyez-vous de la compassion et de la bienveillance</li>
-                </ol>
-            </div>
-
-            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                <h3 style="color: #a87ca0; margin-bottom: 10px;">📊 Mon baromètre émotionnel hebdomadaire</h3>
-                <table class="tracking-table">
-                    <thead>
-                        <tr>
-                            <th>Jour</th>
-                            <th>Émotion dominante</th>
-                            <th>Message reçu</th>
-                            <th>Action prise</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>Lundi</td><td></td><td></td><td></td></tr>
-                        <tr><td>Mardi</td><td></td><td></td><td></td></tr>
-                        <tr><td>Mercredi</td><td></td><td></td><td></td></tr>
-                        <tr><td>Jeudi</td><td></td><td></td><td></td></tr>
-                        <tr><td>Vendredi</td><td></td><td></td><td></td></tr>
-                        <tr><td>Samedi</td><td></td><td></td><td></td></tr>
-                        <tr><td>Dimanche</td><td></td><td></td><td></td></tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0;">
-                <h3 style="color: #a87ca0; margin-bottom: 10px;">✨ Affirmations pour chaque émotion</h3>
-                <div class="affirmations-grid">
-                    <div class="affirmation">💛 <strong>Joie :</strong> "Je mérite de vivre pleinement ma joie"</div>
-                    <div class="affirmation">💙 <strong>Tristesse :</strong> "Ma tristesse mérite d'être accueillie"</div>
-                    <div class="affirmation">❤️ <strong>Colère :</strong> "Ma colère protège ce qui m'est cher"</div>
-                    <div class="affirmation">💜 <strong>Peur :</strong> "Ma peur me guide vers la prudence"</div>
-                    <div class="affirmation">🧡 <strong>Surprise :</strong> "Je m'ouvre aux nouvelles possibilités"</div>
-                    <div class="affirmation">💚 <strong>Dégoût :</strong> "Je respecte mes limites personnelles"</div>
-                    <div class="affirmation">💜 <strong>Anxiété :</strong> "Je reviens au moment présent"</div>
-                    <div class="affirmation">🤎 <strong>Honte :</strong> "J'accepte mon humanité imparfaite"</div>
-                    <div class="affirmation">🩶 <strong>Culpabilité :</strong> "Je grandis grâce à mes erreurs"</div>
-                    <div class="affirmation">💚 <strong>Envie :</strong> "Je transforme l'envie en inspiration"</div>
-                    <div class="affirmation">💙 <strong>Espoir :</strong> "Je nourris mon espoir par mes actions"</div>
-                    <div class="affirmation">💗 <strong>Amour :</strong> "J'exprime et reçois l'amour librement"</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <h3>🌟 Vision Vibrancy - Élise Ragain</h3>
-            <p>Votre accompagnatrice en transformation holistique</p>
-            <p style="margin-top: 10px;"><strong>✨ Continuez votre voyage avec la roue des émotions interactive ✨</strong></p>
-            <p style="margin-top: 8px; font-style: italic;">Pour aller plus loin dans votre exploration émotionnelle, utilisez notre roue interactive en ligne.</p>
-        </div>
-    </div>
-</body>
-</html>`;
-    }
-
-    // Initialisation au chargement de la page - VERSION EXPERTE
+    // Initialiser la roue au chargement
     document.addEventListener('DOMContentLoaded', () => {
       createWheel();
-      console.log('✅ Système Vision Vibrancy EXPERT initialisé avec succès - TOUTES les 12 émotions intégrées');
+      
+      // Animation d'entrée de la roue
+      setTimeout(() => {
+        document.querySelector('.wheel-svg').style.animation = 'fadeIn 0.8s ease-in';
+      }, 200);
     });
+
+    // Prévenir le scroll horizontal
+    document.addEventListener('touchmove', function(e) {
+      if (e.target.closest('.wheel-container')) {
+        e.preventDefault();
+      }
+    }, { passive: false });
   </script>
 </body>
 </html>
-  </script>
-</body>
-</html>
-Mise à jour version experte
