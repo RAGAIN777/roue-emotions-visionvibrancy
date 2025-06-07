@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide des Émotions - Vision Vibrancy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f8f6fc 0%, #f0ebf4 100%);
+            color: #333;
+            line-height: 1.6;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .container {
+            max-width: 100vw;
+            margin: 0 auto;
+            padding: 15px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px 0 30px;
+            border-bottom: 3px solid #8B5A96;
+            margin-bottom: 25px;
+        }
+
+        .main-title {
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            font-weight: bold;
+            color: #8B5A96;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            text-shadow: 0 2px 4px rgba(139, 90, 150, 0.3);
+        }
+
+        .subtitle {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .author {
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            color: #888;
+            font-style: italic;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            background: linear-gradient(45deg, #8B5A96, #b08cc4);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: clamp(0.7rem, 2vw, 0.8rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(139, 90, 150, 0.2);
+            touch-action: manipulation;
+        }
+
+        .nav-button:hover, .nav-button:active {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(139, 90, 150, 0.3);
+        }
+
+        .nav-button.active {
+            background: linear-gradient(45deg, #6A2C70, #8E44AD);
+            transform: scale(1.05);
+        }
+
+        .emotion-container {
+            display: none;
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(139, 90, 150, 0.15);
+            margin-bottom: 20px;
+            border: 2px solid #8B5A96;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .emotion-container.active {
+            display: block;
+        }
+
+        .emotion-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--emotion-color), transparent, var(--emotion-color));
+        }
+
+        .emotion-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .emotion-emoji {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .emotion-name {
+            font-size: clamp(1.5rem, 5vw, 2rem);
+            font-weight: bold;
+            color: var(--emotion-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .emotion-description {
+            font-size: clamp(1rem, 3vw, 1.1rem);
+            line-height: 1.6;
+            text-align: justify;
+            margin-bottom: 20px;
+            color: #444;
+            padding: 15px;
+            background: rgba(139, 90, 150, 0.05);
+            border-radius: 10px;
+        }
+
+        .emotion-message {
+            font-size: clamp(0.9rem, 2.8vw, 1rem);
+            color: var(--emotion-color);
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: rgba(139, 90, 150, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--emotion-color);
+        }
+
+        .emotion-action {
+            font-size: clamp(0.9rem, 2.8vw, 1rem);
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.5;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            border-left: 4px solid #8B5A96;
+        }
+
+        .emotion-action strong {
+            color: #8B5A96;
+        }
+
+        .emotion-vibration {
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            color: #777;
+            font-style: italic;
+            text-align: center;
+            padding: 12px;
+            background: linear-gradient(90deg, rgba(139, 90, 150, 0.1), rgba(139, 90, 150, 0.05), rgba(139, 90, 150, 0.1));
+            border-radius: 10px;
+            border-top: 1px dotted var(--emotion-color);
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 25px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .control-button {
+            background: linear-gradient(45deg, #8B5A96, #b08cc4);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(139, 90, 150, 0.3);
+            touch-action: manipulation;
+        }
+
+        .control-button:hover, .control-button:active {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(139, 90, 150, 0.4);
+        }
+
+        .control-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .emotion-counter {
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            color: #8B5A96;
+            font-weight: 600;
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #8B5A96, #b08cc4);
+            color: white;
+            padding: 25px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(139, 90, 150, 0.3);
+            margin: 25px 0;
+        }
+
+        .download-title {
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .download-description {
+            font-size: clamp(0.9rem, 2.8vw, 1rem);
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .download-button {
+            background: white;
+            color: #8B5A96;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            touch-action: manipulation;
+        }
+
+        .download-button:hover, .download-button:active {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            font-size: clamp(0.8rem, 2.5vw, 0.9rem);
+            color: #666;
+            background: rgba(139, 90, 150, 0.05);
+            border-radius: 15px;
+        }
+
+        .footer strong {
+            color: #8B5A96;
+        }
+
+        /* Couleurs spécifiques par émotion */
+        .joie { --emotion-color: #FFD700; }
+        .amour { --emotion-color: #FF69B4; }
+        .tristesse { --emotion-color: #4682B4; }
+        .colere { --emotion-color: #DC143C; }
+        .peur { --emotion-color: #9370DB; }
+        .espoir { --emotion-color: #32CD32; }
+        .envie { --emotion-color: #00CED1; }
+        .acceptation { --emotion-color: #DDA0DD; }
+        .anticipation { --emotion-color: #FF4500; }
+        .optimisme { --emotion-color: #FFB347; }
+        .degout { --emotion-color: #8FBC8F; }
+        .apprehension { --emotion-color: #CD853F; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 10px; }
+            .emotion-container { padding: 20px; }
+            .navigation { gap: 8px; }
+            .nav-button { padding: 6px 12px; }
+            .controls { justify-content: center; }
+        }
+
+        /* Mode impression */
+        @media print {
+            .navigation, .controls, .download-section { display: none; }
+            .emotion-container { display: block !important; page-break-after: always; }
+            body { background: white; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="main-title">Guide des Émotions</div>
+            <div class="subtitle">Roue des Émotions Interactive</div>
+            <div class="author">© Vision Vibrancy - Elise Ragain, Life Coach</div>
+        </div>
+
+        <div class="download-section">
+            <div class="download-title">📚 Votre Guide Personnel des Émotions</div>
+            <div class="download-description">
+                Explorez chaque émotion et découvrez comment les accueillir avec bienveillance
+            </div>
+            <a href="https://mailchi.mp/visionvibrancy/guide-emotions" class="download-button" target="_blank">
+                📧 Recevoir le Guide PDF
+            </a>
+            <button class="download-button" onclick="window.print()">
+                🖨️ Imprimer ce Guide
+            </button>
+        </div>
+
+        <div class="navigation" id="navigation">
+            <!-- Navigation générée par JavaScript -->
+        </div>
+
+        <div class="controls">
+            <button class="control-button" id="prevBtn" onclick="changeEmotion(-1)">⬅️ Précédent</button>
+            <div class="emotion-counter" id="emotionCounter">1 / 12</div>
+            <button class="control-button" id="nextBtn" onclick="changeEmotion(1)">Suivant ➡️</button>
+        </div>
+
+        <!-- Émotions -->
+        <div class="emotion-container active joie" data-emotion="0">
+            <div class="emotion-header">
+                <span class="emotion-emoji">🌟</span>
+                <div class="emotion-name">Joie</div>
+            </div>
+            <div class="emotion-description">
+                La joie est cette étincelle divine qui illumine notre être tout entier. Elle surgit spontanément lorsque nous sommes alignés avec notre essence profonde et que nous vivons des moments de grâce pure.
+            </div>
+            <div class="emotion-message">
+                "Tu es sur la bonne voie ! Continue à cultiver ce qui nourrit ton âme."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Savourez pleinement ces instants précieux. Ancrez cette sensation dans votre corps et partagez cette énergie positive autour de vous.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Haute fréquence énergétique, expansion, rayonnement
+            </div>
+        </div>
+
+        <div class="emotion-container amour" data-emotion="1">
+            <div class="emotion-header">
+                <span class="emotion-emoji">💖</span>
+                <div class="emotion-name">Amour</div>
+            </div>
+            <div class="emotion-description">
+                L'amour est la force créatrice universelle qui nous connecte à tout ce qui existe. Il transcende les barrières et nous révèle notre nature profondément interconnectée avec la vie.
+            </div>
+            <div class="emotion-message">
+                "Tu es aimé(e) et digne d'amour. Ouvre ton cœur à la beauté du monde."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Laissez cette chaleur vous envahir complètement. Exprimez votre gratitude et partagez cette énergie d'amour avec générosité.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Fréquence d'unité, compassion, connexion universelle
+            </div>
+        </div>
+
+        <div class="emotion-container tristesse" data-emotion="2">
+            <div class="emotion-header">
+                <span class="emotion-emoji">💧</span>
+                <div class="emotion-name">Tristesse</div>
+            </div>
+            <div class="emotion-description">
+                La tristesse est une émotion sacrée qui nous invite à honorer ce qui nous était précieux. Elle témoigne de notre capacité à aimer profondément et à être touchés par la beauté fragile de l'existence.
+            </div>
+            <div class="emotion-message">
+                "Il est temps de lâcher prise et d'accueillir la transformation qui s'opère en toi."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Permettez-vous de ressentir pleinement cette émotion. Pleurez si nécessaire. Honorez ce que vous perdez et cherchez du soutien.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Nettoyage émotionnel, libération, préparation au renouveau
+            </div>
+        </div>
+
+        <div class="emotion-container colere" data-emotion="3">
+            <div class="emotion-header">
+                <span class="emotion-emoji">🔥</span>
+                <div class="emotion-name">Colère</div>
+            </div>
+            <div class="emotion-description">
+                La colère est une énergie de transformation puissante qui surgit lorsque nos valeurs profondes sont bafouées. Elle nous signale qu'une limite a été franchie et qu'une action s'impose.
+            </div>
+            <div class="emotion-message">
+                "Quelque chose d'important pour toi n'est pas respecté. Il est temps d'agir avec discernement."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Respirez profondément avant d'agir. Identifiez la valeur blessée. Canalisez cette énergie vers une action constructive.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Force de changement, protection des valeurs, énergie d'action
+            </div>
+        </div>
+
+        <div class="emotion-container peur" data-emotion="4">
+            <div class="emotion-header">
+                <span class="emotion-emoji">⚡</span>
+                <div class="emotion-name">Peur</div>
+            </div>
+            <div class="emotion-description">
+                La peur est notre système d'alerte primordial qui nous protège des dangers. Dans notre monde moderne, elle nous signale souvent que nous nous approchons de nos limites et de notre zone de croissance.
+            </div>
+            <div class="emotion-message">
+                "Sois vigilant(e). Évalue la situation. Peut-être es-tu sur le point de grandir ?"
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Respirez lentement et profondément. Distinguez danger réel et peur imaginaire. Demandez-vous ce que cette peur vous enseigne.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Protection, prudence, invitation à la croissance personnelle
+            </div>
+        </div>
+
+        <div class="emotion-container espoir" data-emotion="5">
+            <div class="emotion-header">
+                <span class="emotion-emoji">🌅</span>
+                <div class="emotion-name">Espoir</div>
+            </div>
+            <div class="emotion-description">
+                L'espoir est cette lumière intérieure qui nous guide vers l'avenir malgré les difficultés présentes. Il témoigne de notre capacité innée à croire en la possibilité de jours meilleurs.
+            </div>
+            <div class="emotion-message">
+                "Garde confiance. De belles choses t'attendent. Continue d'avancer avec foi."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Nourrissez cette flamme précieuse par des visualisations positives. Prenez des actions concrètes vers vos rêves.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Optimisme, foi en l'avenir, énergie créatrice
+            </div>
+        </div>
+
+        <div class="emotion-container envie" data-emotion="6">
+            <div class="emotion-header">
+                <span class="emotion-emoji">💚</span>
+                <div class="emotion-name">Envie</div>
+            </div>
+            <div class="emotion-description">
+                L'envie révèle nos désirs cachés et nos aspirations profondes. Elle nous montre ce que nous admirons chez les autres et peut devenir un puissant moteur de transformation personnelle.
+            </div>
+            <div class="emotion-message">
+                "Regarde ce qui t'attire vraiment. Ces qualités existent aussi en toi."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Transformez l'envie en inspiration. Identifiez ce que vous admirez précisément et développez ces qualités en vous-même.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Désir de croissance, révélation des aspirations, développement
+            </div>
+        </div>
+
+        <div class="emotion-container acceptation" data-emotion="7">
+            <div class="emotion-header">
+                <span class="emotion-emoji">🕊️</span>
+                <div class="emotion-name">Acceptation</div>
+            </div>
+            <div class="emotion-description">
+                L'acceptation est un état de grâce où nous embrassons la réalité telle qu'elle est, sans résistance. Elle nous libère de la souffrance du déni et ouvre la voie à la paix intérieure.
+            </div>
+            <div class="emotion-message">
+                "Tu peux enfin poser tes armes. La paix est possible dans l'instant présent."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Respirez dans cette sérénité. Sentez le relâchement des tensions. Célébrez cette sagesse acquise et savourez cette paix.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Sérénité, lâcher-prise, harmonie avec le présent
+            </div>
+        </div>
+
+        <div class="emotion-container anticipation" data-emotion="8">
+            <div class="emotion-header">
+                <span class="emotion-emoji">🚀</span>
+                <div class="emotion-name">Anticipation</div>
+            </div>
+            <div class="emotion-description">
+                L'anticipation est cette énergie pétillante qui nous propulse vers l'avenir avec enthousiasme. Elle témoigne de notre capacité à créer et à nous projeter dans des possibilités excitantes.
+            </div>
+            <div class="emotion-message">
+                "De belles aventures t'attendent ! Prépare-toi à accueillir le nouveau."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Canalisez cette énergie en préparation constructive. Visualisez vos objectifs et prenez des actions concrètes tout en restant flexible.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Dynamisme créateur, projection positive, énergie d'accomplissement
+            </div>
+        </div>
+
+        <div class="emotion-container optimisme" data-emotion="9">
+            <div class="emotion-header">
+                <span class="emotion-emoji">☀️</span>
+                <div class="emotion-name">Optimisme</div>
+            </div>
+            <div class="emotion-description">
+                L'optimisme est cette disposition lumineuse de l'âme qui choisit de voir les possibilités plutôt que les obstacles. Il transforme notre perception du monde et attire les expériences positives.
+            </div>
+            <div class="emotion-message">
+                "Tout est possible ! Ton regard positif transforme ta réalité."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Cultivez consciemment cette perspective positive. Cherchez le bon côté dans chaque situation et partagez cette énergie contagieuse.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Confiance en la vie, attraction positive, rayonnement solaire
+            </div>
+        </div>
+
+        <div class="emotion-container degout" data-emotion="10">
+            <div class="emotion-header">
+                <span class="emotion-emoji">🤢</span>
+                <div class="emotion-name">Dégoût</div>
+            </div>
+            <div class="emotion-description">
+                Le dégoût est notre système de protection qui nous éloigne de ce qui pourrait nous nuire. Il révèle nos valeurs profondes et nous aide à maintenir notre intégrité physique et morale.
+            </div>
+            <div class="emotion-message">
+                "Quelque chose ne te convient pas. Écoute ton instinct et protège-toi."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Respectez ce signal d'alarme. Identifiez ce qui provoque cette réaction. Éloignez-vous de ce qui ne vous nourrit pas.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Protection instinctive, maintien de l'intégrité, purification
+            </div>
+        </div>
+
+        <div class="emotion-container apprehension" data-emotion="11">
+            <div class="emotion-header">
+                <span class="emotion-emoji">😰</span>
+                <div class="emotion-name">Appréhension</div>
+            </div>
+            <div class="emotion-description">
+                L'appréhension est cette inquiétude anticipatrice qui nous prépare mentalement aux défis à venir. Elle témoigne de notre intelligence émotionnelle et de notre capacité de prévoyance.
+            </div>
+            <div class="emotion-message">
+                "Prépare-toi avec sagesse. La prudence est une forme d'intelligence."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Utilisez cette énergie pour vous préparer adéquatement. Anticipez les solutions possibles. Transformez l'inquiétude en préparation.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Prudence sage, préparation consciente, intelligence anticipatrice
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>🌈 Chaque émotion est un guide précieux sur votre chemin de vie</strong><br>
+            En apprenant à les accueillir avec bienveillance, vous développez votre intelligence émotionnelle<br>
+            <strong>Vision Vibrancy - Elise Ragain, Life Coach - © 2025</strong></p>
+        </div>
+    </div>
+
+    <script>
+        const emotions = [
+            'Joie', 'Amour', 'Tristesse', 'Colère', 'Peur', 'Espoir',
+            'Envie', 'Acceptation', 'Anticipation', 'Optimisme', 'Dégoût', 'Appréhension'
+        ];
+
+        let currentEmotion = 0;
+        const totalEmotions = emotions.length;
+
+        function createNavigation() {
+            const nav = document.getElementById('navigation');
+            emotions.forEach((emotion, index) => {
+                const button = document.createElement('button');
+                button.className = 'nav-button';
+                button.textContent = emotion;
+                button.onclick = () => showEmotion(index);
+                if (index === 0) button.classList.add('active');
+                nav.appendChild(button);
+            });
+        }
+
+        function showEmotion(index) {
+            // Masquer toutes les émotions
+            document.querySelectorAll('.emotion-container').forEach(container => {
+                container.classList.remove('active');
+            });
+
+            // Désactiver tous les boutons de navigation
+            document.querySelectorAll('.nav-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            // Afficher l'émotion sélectionnée
+            const containers = document.querySelectorAll('.emotion-container');
+            const navButtons = document.querySelectorAll('.nav-button');
+            
+            if (containers[index] && navButtons[index]) {
+                containers[index].classList.add('active');
+                navButtons[index].classList.add('active');
+            }
+
+            // Mettre à jour le compteur
+            currentEmotion = index;
+            updateCounter();
+            updateControls();
+
+            // Vibration haptique si disponible
+            if ('vibrate' in navigator) {
+                navigator.vibrate(30);
+            }
+
+            // Scroll vers le haut sur mobile
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    document.querySelector('.emotion-container.active').scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start' 
+                    });
+                }, 100);
+            }
+        }
+
+        function changeEmotion(direction) {
+            const newIndex = currentEmotion + direction;
+            if (newIndex >= 0 && newIndex < totalEmotions) {
+                showEmotion(newIndex);
+            }
+        }
+
+        function updateCounter() {
+            document.getElementById('emotionCounter').textContent = 
+                `${currentEmotion + 1} / ${totalEmotions}`;
+        }
+
+        function updateControls() {
+            document.getElementById('prevBtn').disabled = currentEmotion === 0;
+            document.getElementById('nextBtn').disabled = currentEmotion === totalEmotions - 1;
+        }
+
+        // Gestion des touches clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') changeEmotion(-1);
+            if (e.key === 'ArrowRight') changeEmotion(1);
+        });
+
+        // Gestion des gestes tactiles
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        document.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        document.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            const swipeThreshold = 50;
+            const difference = touchStartX - touchEndX;
+
+            if (Math.abs(difference) > swipeThreshold) {
+                if (difference > 0) {
+                    // Swipe gauche = suivant
+                    changeEmotion(1);
+                } else {
+                    // Swipe droite = précédent  
+                    changeEmotion(-1);
+                }
+            }
+        }
+
+        // Prévenir le zoom sur double-tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function (event) {
+            const now = (new Date()).getTime();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', () => {
+            createNavigation();
+            updateCounter();
+            updateControls();
+        });
+    </script>
+</body>
+</html>
