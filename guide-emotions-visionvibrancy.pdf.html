@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guide des Émotions Vision Vibrancy</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 10mm;
+            background: linear-gradient(135deg, #f8f6fc 0%, #f0ebf4 100%);
+            color: #333;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 8mm;
+            padding-bottom: 4mm;
+            border-bottom: 3px solid #8B5A96;
+        }
+        
+        .main-title {
+            font-size: 24px;
+            font-weight: bold;
+            color: #8B5A96;
+            margin-bottom: 3mm;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 2mm;
+        }
+        
+        .author {
+            font-size: 10px;
+            color: #888;
+            font-style: italic;
+        }
+        
+        .emotions-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 3mm;
+            height: 200mm;
+            width: 100%;
+        }
+        
+        .emotion-card {
+            background: white;
+            border: 2px solid #8B5A96;
+            border-radius: 8px;
+            padding: 3mm;
+            box-shadow: 0 3px 10px rgba(139, 90, 150, 0.15);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emotion-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8B5A96, #b08cc4, #8B5A96);
+        }
+        
+        .emotion-header {
+            text-align: center;
+            margin-bottom: 2mm;
+        }
+        
+        .emotion-name {
+            font-size: 11px;
+            font-weight: bold;
+            color: #8B5A96;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1mm;
+        }
+        
+        .emotion-emoji {
+            font-size: 16px;
+            margin-bottom: 1mm;
+            display: block;
+        }
+        
+        .emotion-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .emotion-description {
+            font-size: 8px;
+            line-height: 1.3;
+            text-align: justify;
+            margin-bottom: 2mm;
+            color: #444;
+        }
+        
+        .emotion-message {
+            font-size: 7px;
+            color: #8B5A96;
+            font-weight: bold;
+            font-style: italic;
+            text-align: center;
+            margin-bottom: 2mm;
+            padding: 1mm;
+            background: rgba(139, 90, 150, 0.1);
+            border-radius: 4px;
+        }
+        
+        .emotion-action {
+            font-size: 7px;
+            color: #555;
+            margin-bottom: 1mm;
+            line-height: 1.2;
+        }
+        
+        .emotion-vibration {
+            font-size: 6px;
+            color: #777;
+            font-style: italic;
+            text-align: center;
+            margin-top: auto;
+            padding-top: 1mm;
+            border-top: 1px dotted #ddd;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 5mm;
+            font-size: 8px;
+            color: #666;
+        }
+        
+        /* Couleurs spécifiques par émotion */
+        .joie { border-color: #FFD700; }
+        .joie::before { background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700); }
+        
+        .amour { border-color: #FF69B4; }
+        .amour::before { background: linear-gradient(90deg, #FF69B4, #FF1493, #FF69B4); }
+        
+        .tristesse { border-color: #4682B4; }
+        .tristesse::before { background: linear-gradient(90deg, #4682B4, #5F9EA0, #4682B4); }
+        
+        .colere { border-color: #DC143C; }
+        .colere::before { background: linear-gradient(90deg, #DC143C, #B22222, #DC143C); }
+        
+        .peur { border-color: #9370DB; }
+        .peur::before { background: linear-gradient(90deg, #9370DB, #8A2BE2, #9370DB); }
+        
+        .espoir { border-color: #32CD32; }
+        .espoir::before { background: linear-gradient(90deg, #32CD32, #228B22, #32CD32); }
+        
+        .envie { border-color: #00CED1; }
+        .envie::before { background: linear-gradient(90deg, #00CED1, #20B2AA, #00CED1); }
+        
+        .acceptation { border-color: #DDA0DD; }
+        .acceptation::before { background: linear-gradient(90deg, #DDA0DD, #DA70D6, #DDA0DD); }
+        
+        .anticipation { border-color: #FF4500; }
+        .anticipation::before { background: linear-gradient(90deg, #FF4500, #FF6347, #FF4500); }
+        
+        .optimisme { border-color: #FFB347; }
+        .optimisme::before { background: linear-gradient(90deg, #FFB347, #FFA500, #FFB347); }
+        
+        .degout { border-color: #8FBC8F; }
+        .degout::before { background: linear-gradient(90deg, #8FBC8F, #9ACD32, #8FBC8F); }
+        
+        .apprehension { border-color: #CD853F; }
+        .apprehension::before { background: linear-gradient(90deg, #CD853F, #D2691E, #CD853F); }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <div class="main-title">Guide des Émotions</div>
+    <div class="subtitle">Roue des Émotions Interactive</div>
+    <div class="author">© Vision Vibrancy - Elise Ragain, Life Coach</div>
+</div>
+
+<div class="emotions-grid">
+    
+    <div class="emotion-card joie">
+        <div class="emotion-header">
+            <span class="emotion-emoji">🌟</span>
+            <div class="emotion-name">Joie</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                La joie est cette étincelle divine qui illumine notre être tout entier. Elle surgit spontanément lorsque nous sommes alignés avec notre essence profonde et que nous vivons des moments de grâce pure.
+            </div>
+            <div class="emotion-message">
+                "Tu es sur la bonne voie ! Continue à cultiver ce qui nourrit ton âme."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Savourez pleinement ces instants précieux. Ancrez cette sensation dans votre corps et partagez cette énergie positive autour de vous.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Haute fréquence énergétique, expansion, rayonnement
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card amour">
+        <div class="emotion-header">
+            <span class="emotion-emoji">💖</span>
+            <div class="emotion-name">Amour</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                L'amour est la force créatrice universelle qui nous connecte à tout ce qui existe. Il transcende les barrières et nous révèle notre nature profondément interconnectée avec la vie.
+            </div>
+            <div class="emotion-message">
+                "Tu es aimé(e) et digne d'amour. Ouvre ton cœur à la beauté du monde."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Laissez cette chaleur vous envahir complètement. Exprimez votre gratitude et partagez cette énergie d'amour avec générosité.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Fréquence d'unité, compassion, connexion universelle
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card tristesse">
+        <div class="emotion-header">
+            <span class="emotion-emoji">💧</span>
+            <div class="emotion-name">Tristesse</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                La tristesse est une émotion sacrée qui nous invite à honorer ce qui nous était précieux. Elle témoigne de notre capacité à aimer profondément et à être touchés par la beauté fragile de l'existence.
+            </div>
+            <div class="emotion-message">
+                "Il est temps de lâcher prise et d'accueillir la transformation qui s'opère en toi."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Permettez-vous de ressentir pleinement cette émotion. Pleurez si nécessaire. Honorez ce que vous perdez et cherchez du soutien.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Nettoyage émotionnel, libération, préparation au renouveau
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card colere">
+        <div class="emotion-header">
+            <span class="emotion-emoji">🔥</span>
+            <div class="emotion-name">Colère</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                La colère est une énergie de transformation puissante qui surgit lorsque nos valeurs profondes sont bafouées. Elle nous signale qu'une limite a été franchie et qu'une action s'impose.
+            </div>
+            <div class="emotion-message">
+                "Quelque chose d'important pour toi n'est pas respecté. Il est temps d'agir avec discernement."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Respirez profondément avant d'agir. Identifiez la valeur blessée. Canalisez cette énergie vers une action constructive.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Force de changement, protection des valeurs, énergie d'action
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card peur">
+        <div class="emotion-header">
+            <span class="emotion-emoji">⚡</span>
+            <div class="emotion-name">Peur</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                La peur est notre système d'alerte primordial qui nous protège des dangers. Dans notre monde moderne, elle nous signale souvent que nous nous approchons de nos limites et de notre zone de croissance.
+            </div>
+            <div class="emotion-message">
+                "Sois vigilant(e). Évalue la situation. Peut-être es-tu sur le point de grandir ?"
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Respirez lentement et profondément. Distinguez danger réel et peur imaginaire. Demandez-vous ce que cette peur vous enseigne.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Protection, prudence, invitation à la croissance personnelle
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card espoir">
+        <div class="emotion-header">
+            <span class="emotion-emoji">🌅</span>
+            <div class="emotion-name">Espoir</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                L'espoir est cette lumière intérieure qui nous guide vers l'avenir malgré les difficultés présentes. Il témoigne de notre capacité innée à croire en la possibilité de jours meilleurs.
+            </div>
+            <div class="emotion-message">
+                "Garde confiance. De belles choses t'attendent. Continue d'avancer avec foi."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Nourrissez cette flamme précieuse par des visualisations positives. Prenez des actions concrètes vers vos rêves.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Optimisme, foi en l'avenir, énergie créatrice
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card envie">
+        <div class="emotion-header">
+            <span class="emotion-emoji">💚</span>
+            <div class="emotion-name">Envie</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                L'envie révèle nos désirs cachés et nos aspirations profondes. Elle nous montre ce que nous admirons chez les autres et peut devenir un puissant moteur de transformation personnelle.
+            </div>
+            <div class="emotion-message">
+                "Regarde ce qui t'attire vraiment. Ces qualités existent aussi en toi."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Transformez l'envie en inspiration. Identifiez ce que vous admirez précisément et développez ces qualités en vous-même.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Désir de croissance, révélation des aspirations, développement
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card acceptation">
+        <div class="emotion-header">
+            <span class="emotion-emoji">🕊️</span>
+            <div class="emotion-name">Acceptation</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                L'acceptation est un état de grâce où nous embrassons la réalité telle qu'elle est, sans résistance. Elle nous libère de la souffrance du déni et ouvre la voie à la paix intérieure.
+            </div>
+            <div class="emotion-message">
+                "Tu peux enfin poser tes armes. La paix est possible dans l'instant présent."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Respirez dans cette sérénité. Sentez le relâchement des tensions. Célébrez cette sagesse acquise et savourez cette paix.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Sérénité, lâcher-prise, harmonie avec le présent
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card anticipation">
+        <div class="emotion-header">
+            <span class="emotion-emoji">🚀</span>
+            <div class="emotion-name">Anticipation</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                L'anticipation est cette énergie pétillante qui nous propulse vers l'avenir avec enthousiasme. Elle témoigne de notre capacité à créer et à nous projeter dans des possibilités excitantes.
+            </div>
+            <div class="emotion-message">
+                "De belles aventures t'attendent ! Prépare-toi à accueillir le nouveau."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Canalisez cette énergie en préparation constructive. Visualisez vos objectifs et prenez des actions concrètes tout en restant flexible.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Dynamisme créateur, projection positive, énergie d'accomplissement
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card optimisme">
+        <div class="emotion-header">
+            <span class="emotion-emoji">☀️</span>
+            <div class="emotion-name">Optimisme</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                L'optimisme est cette disposition lumineuse de l'âme qui choisit de voir les possibilités plutôt que les obstacles. Il transforme notre perception du monde et attire les expériences positives.
+            </div>
+            <div class="emotion-message">
+                "Tout est possible ! Ton regard positif transforme ta réalité."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Cultivez consciemment cette perspective positive. Cherchez le bon côté dans chaque situation et partagez cette énergie contagieuse.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Confiance en la vie, attraction positive, rayonnement solaire
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card degout">
+        <div class="emotion-header">
+            <span class="emotion-emoji">🤢</span>
+            <div class="emotion-name">Dégoût</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                Le dégoût est notre système de protection qui nous éloigne de ce qui pourrait nous nuire. Il révèle nos valeurs profondes et nous aide à maintenir notre intégrité physique et morale.
+            </div>
+            <div class="emotion-message">
+                "Quelque chose ne te convient pas. Écoute ton instinct et protège-toi."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Respectez ce signal d'alarme. Identifiez ce qui provoque cette réaction. Éloignez-vous de ce qui ne vous nourrit pas.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Protection instinctive, maintien de l'intégrité, purification
+            </div>
+        </div>
+    </div>
+
+    <div class="emotion-card apprehension">
+        <div class="emotion-header">
+            <span class="emotion-emoji">😰</span>
+            <div class="emotion-name">Appréhension</div>
+        </div>
+        <div class="emotion-content">
+            <div class="emotion-description">
+                L'appréhension est cette inquiétude anticipatrice qui nous prépare mentalement aux défis à venir. Elle témoigne de notre intelligence émotionnelle et de notre capacité de prévoyance.
+            </div>
+            <div class="emotion-message">
+                "Prépare-toi avec sagesse. La prudence est une forme d'intelligence."
+            </div>
+            <div class="emotion-action">
+                <strong>Action :</strong> Utilisez cette énergie pour vous préparer adéquatement. Anticipez les solutions possibles. Transformez l'inquiétude en préparation.
+            </div>
+            <div class="emotion-vibration">
+                Vibration : Prudence sage, préparation consciente, intelligence anticipatrice
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="footer">
+    <p><strong>🌈 Chaque émotion est un guide précieux sur votre chemin de vie</strong><br>
+    En apprenant à les accueillir avec bienveillance, vous développez votre intelligence émotionnelle<br>
+    <strong>Vision Vibrancy - Elise Ragain, Life Coach - © 2025</strong></p>
+</div>
+
+</body>
+</html>
