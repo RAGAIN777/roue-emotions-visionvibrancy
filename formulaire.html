@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recevez votre Guide Personnel des Émotions - Vision Vibrancy</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f8f6ff 0%, #ede7f6 50%, #f3e5f5 100%);
+            color: #2c3e50;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+        }
+
+        /* Arrière-plan doux comme la roue originale */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(156, 39, 176, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(103, 58, 183, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(233, 30, 99, 0.02) 0%, transparent 50%);
+            z-index: -1;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 24px;
+            padding: 50px 40px;
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(156, 39, 176, 0.1);
+            box-shadow: 
+                0 20px 60px rgba(156, 39, 176, 0.1),
+                0 8px 32px rgba(0, 0, 0, 0.05);
+        }
+
+        /* En-tête avec style VISION VIBRANCY */
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .brand-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: #9c27b0;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Section violette comme dans la roue originale */
+        .guide-section {
+            background: linear-gradient(135deg, #9c27b0, #673ab7);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 35px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guide-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-10px, -10px) rotate(180deg); }
+        }
+
+        .guide-section h1 {
+            font-size: 1.5em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .guide-section p {
+            font-size: 1em;
+            opacity: 0.95;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Roue des émotions miniature IDENTIQUE */
+        .emotion-wheel-container {
+            margin: 35px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .emotion-wheel-mini {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            position: relative;
+            background: conic-gradient(
+                from 0deg,
+                #e91e63 0deg 30deg,      /* Rose/Rouge (Colère) */
+                #ff9800 30deg 60deg,     /* Orange (Joie) */
+                #ffeb3b 60deg 90deg,     /* Jaune */
+                #4caf50 90deg 120deg,    /* Vert (Envie) */
+                #00bcd4 120deg 150deg,   /* Cyan (Fatigue) */
+                #2196f3 150deg 180deg,   /* Bleu (Tristesse) */
+                #3f51b5 180deg 210deg,   /* Bleu foncé */
+                #9c27b0 210deg 240deg,   /* Violet (Peur) */
+                #e91e63 240deg 270deg,   /* Rose */
+                #ff5722 270deg 300deg,   /* Orange-rouge */
+                #795548 300deg 330deg,   /* Marron */
+                #607d8b 330deg 360deg    /* Gris-bleu */
+            );
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 
+                0 8px 32px rgba(156, 39, 176, 0.2),
+                0 4px 16px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            animation: gentle-spin 20s linear infinite;
+        }
+
+        @keyframes gentle-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .wheel-center {
+            background: white;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2em;
+            color: #9c27b0;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            font-weight: bold;
+        }
+
+        .wheel-subtitle {
+            font-size: 0.9em;
+            color: #666;
+            text-align: center;
+            font-style: italic;
+        }
+
+        /* Formulaire avec style moderne */
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            background: #f8f6ff;
+            border: 2px solid #e8e0f5;
+            border-radius: 12px;
+            color: #2c3e50;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder {
+            color: #9c9c9c;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: #9c27b0;
+            background: white;
+            box-shadow: 
+                0 0 0 3px rgba(156, 39, 176, 0.1),
+                0 4px 16px rgba(156, 39, 176, 0.1);
+            transform: translateY(-1px);
+        }
+
+        /* Bouton avec le violet de la roue */
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            background: linear-gradient(135deg, #9c27b0, #673ab7);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            font-size: 1.1em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 15px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            transition: left 0.5s ease;
+        }
+
+        .submit-btn:hover::before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 12px 35px rgba(156, 39, 176, 0.3),
+                0 4px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .submit-btn:active {
+            transform: translateY(0);
+        }
+
+        /* Case à cocher newsletter */
+        .newsletter-consent {
+            margin: 30px 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f6ff, #ede7f6);
+            border-radius: 16px;
+            border: 1px solid rgba(156, 39, 176, 0.1);
+        }
+
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+            cursor: pointer;
+            line-height: 1.5;
+            position: relative;
+            font-size: 0.95em;
+            color: #2c3e50;
+        }
+
+        .checkbox-container input[type="checkbox"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+
+        .checkmark {
+            min-width: 22px;
+            height: 22px;
+            background: white;
+            border: 2px solid #9c27b0;
+            border-radius: 6px;
+            margin-right: 12px;
+            margin-top: 2px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .checkbox-container:hover .checkmark {
+            background: #f8f6ff;
+        }
+
+        .checkbox-container input:checked ~ .checkmark {
+            background: linear-gradient(135deg, #9c27b0, #673ab7);
+            border-color: #9c27b0;
+        }
+
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+            left: 6px;
+            top: 2px;
+            width: 6px;
+            height: 12px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+
+        .checkbox-container input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        .checkbox-text {
+            flex: 1;
+        }
+
+        .checkbox-text strong {
+            color: #9c27b0;
+            font-weight: 700;
+        }
+
+        /* Note de confidentialité */
+        .privacy-note {
+            font-size: 0.85em;
+            color: #666;
+            margin-top: 25px;
+            line-height: 1.4;
+            text-align: center;
+            background: #f8f6ff;
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(156, 39, 176, 0.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .container {
+                padding: 35px 25px;
+                margin: 15px;
+            }
+
+            .brand-title {
+                font-size: 1.5em;
+            }
+
+            .guide-section h1 {
+                font-size: 1.3em;
+            }
+
+            .emotion-wheel-mini {
+                width: 120px;
+                height: 120px;
+            }
+
+            .wheel-center {
+                width: 70px;
+                height: 70px;
+                font-size: 1.8em;
+            }
+
+            .form-group input {
+                padding: 14px 18px;
+                font-size: 16px; /* Évite le zoom sur iOS */
+            }
+
+            .submit-btn {
+                padding: 16px;
+                font-size: 1em;
+            }
+        }
+
+        /* Animation d'entrée */
+        .container {
+            animation: slideUp 0.8s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Loading state */
+        .loading {
+            pointer-events: none;
+            opacity: 0.7;
+        }
+
+        .loading .submit-btn {
+            background: linear-gradient(135deg, #bbb, #999);
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête comme Vision Vibrancy -->
+        <div class="header">
+            <div class="brand-title">Vision Vibrancy</div>
+        </div>
+
+        <!-- Section violette comme dans la roue originale -->
+        <div class="guide-section">
+            <h1>📚 Guide Complet des Émotions</h1>
+            <p>Recevez votre guide personnalisé pour mieux comprendre et accueillir vos émotions au quotidien</p>
+        </div>
+
+        <!-- Roue des émotions miniature IDENTIQUE -->
+        <div class="emotion-wheel-container">
+            <div class="emotion-wheel-mini">
+                <div class="wheel-center">
+                    🎯
+                </div>
+            </div>
+            <div class="wheel-subtitle">
+                Explorez et accueillez vos émotions avec bienveillance
+            </div>
+        </div>
+
+        <!-- Case à cocher newsletter obligatoire -->
+        <div class="newsletter-consent">
+            <label class="checkbox-container">
+                <input type="checkbox" id="newsletter" name="newsletter" checked required>
+                <span class="checkmark"></span>
+                <span class="checkbox-text">
+                    J'accepte de recevoir la newsletter mensuelle <strong>"Créatrices en action"</strong> 
+                    avec des conseils et ressources pour mon développement personnel. 
+                    Je peux me désabonner à tout moment.
+                </span>
+            </label>
+        </div>
+
+        <!-- Formulaire optimisé Mailchimp -->
+        <form id="guideForm" method="POST" novalidate>
+            <div class="form-group">
+                <label for="FNAME">Prénom *</label>
+                <input 
+                    type="text" 
+                    id="FNAME" 
+                    name="FNAME" 
+                    required 
+                    placeholder="Votre prénom"
+                    autocomplete="given-name"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="LNAME">Nom *</label>
+                <input 
+                    type="text" 
+                    id="LNAME" 
+                    name="LNAME" 
+                    required 
+                    placeholder="Votre nom"
+                    autocomplete="family-name"
+                >
+            </div>
+
+            <div class="form-group">
+                <label for="EMAIL">Adresse email *</label>
+                <input 
+                    type="email" 
+                    id="EMAIL" 
+                    name="EMAIL" 
+                    required 
+                    placeholder="votre@email.com"
+                    autocomplete="email"
+                >
+            </div>
+
+            <!-- Champs cachés pour Mailchimp -->
+            <input type="hidden" name="SOURCE" value="Roue des Émotions">
+            <input type="hidden" name="b_" value=""> <!-- Anti-bot Mailchimp -->
+
+            <button type="submit" class="submit-btn">
+                <span class="btn-text">📧 Recevoir le Guide Gratuit</span>
+            </button>
+        </form>
+
+        <div class="privacy-note">
+            🔒 Vos données sont protégées. Pas de spam, uniquement du contenu de qualité pour votre développement personnel.
+        </div>
+    </div>
+
+    <script>
+        // Configuration Mailchimp (à personnaliser)
+        const MAILCHIMP_CONFIG = {
+            // URL à remplacer par votre URL Mailchimp
+            actionURL: 'VOTRE_URL_MAILCHIMP_ICI',
+            // URL de redirection après inscription
+            successURL: 'guide.html',
+            // Messages
+            messages: {
+                success: 'Parfait ! Vérifiez votre email pour accéder au guide.',
+                error: 'Une erreur est survenue. Veuillez réessayer.',
+                validation: 'Veuillez remplir tous les champs obligatoires.'
+            }
+        };
+
+        // Gestion du formulaire
+        document.getElementById('guideForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validation des champs
+            const fname = document.getElementById('FNAME').value.trim();
+            const lname = document.getElementById('LNAME').value.trim();
+            const email = document.getElementById('EMAIL').value.trim();
+            const newsletterConsent = document.getElementById('newsletter').checked;
+
+            if (!fname || !lname || !email) {
+                showMessage(MAILCHIMP_CONFIG.messages.validation, 'error');
+                return;
+            }
+
+            if (!newsletterConsent) {
+                showMessage('Veuillez accepter de recevoir la newsletter pour continuer.', 'error');
+                return;
+            }
+
+            // Validation email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Veuillez entrer une adresse email valide.', 'error');
+                return;
+            }
+
+            // État de chargement
+            setLoadingState(true);
+
+            // Envoi vers Mailchimp
+            const formData = new FormData(this);
+            
+            // Simulation d'envoi (remplacer par l'URL Mailchimp réelle)
+            if (MAILCHIMP_CONFIG.actionURL === 'VOTRE_URL_MAILCHIMP_ICI') {
+                // Mode démonstration
+                setTimeout(() => {
+                    setLoadingState(false);
+                    showMessage(`Merci ${fname} ! En mode démonstration. Configurez Mailchimp pour activer l'envoi.`, 'success');
+                    
+                    // Redirection vers le guide
+                    setTimeout(() => {
+                        window.location.href = MAILCHIMP_CONFIG.successURL + '?welcome=true&name=' + encodeURIComponent(fname);
+                    }, 2000);
+                }, 1500);
+            } else {
+                // Envoi réel vers Mailchimp
+                fetch(MAILCHIMP_CONFIG.actionURL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Nécessaire pour Mailchimp
+                })
+                .then(() => {
+                    setLoadingState(false);
+                    showMessage(MAILCHIMP_CONFIG.messages.success, 'success');
+                    
+                    // Redirection vers le guide
+                    setTimeout(() => {
+                        window.location.href = MAILCHIMP_CONFIG.successURL + '?welcome=true&name=' + encodeURIComponent(fname);
+                    }, 2000);
+                })
+                .catch(error => {
+                    setLoadingState(false);
+                    console.error('Erreur Mailchimp:', error);
+                    showMessage(MAILCHIMP_CONFIG.messages.error, 'error');
+                });
+            }
+        });
+
+        // Gestion de l'état de chargement
+        function setLoadingState(loading) {
+            const form = document.getElementById('guideForm');
+            const btn = document.querySelector('.submit-btn');
+            const btnText = document.querySelector('.btn-text');
+
+            if (loading) {
+                form.classList.add('loading');
+                btnText.textContent = '⏳ Envoi en cours...';
+                btn.disabled = true;
+            } else {
+                form.classList.remove('loading');
+                btnText.textContent = '📧 Recevoir le Guide Gratuit';
+                btn.disabled = false;
+            }
+        }
+
+        // Affichage des messages
+        function showMessage(message, type) {
+            // Supprimer les anciens messages
+            const existingMsg = document.querySelector('.message');
+            if (existingMsg) existingMsg.remove();
+
+            // Créer le nouveau message
+            const msgElement = document.createElement('div');
+            msgElement.className = `message message-${type}`;
+            msgElement.textContent = message;
+            msgElement.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                padding: 15px 25px;
+                border-radius: 12px;
+                color: white;
+                font-weight: 600;
+                z-index: 1000;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+                animation: slideDown 0.3s ease;
+                background: ${type === 'success' ? 'linear-gradient(135deg, #4caf50, #2e7d32)' : 'linear-gradient(135deg, #e91e63, #c2185b)'};
+            `;
+
+            document.body.appendChild(msgElement);
+
+            // Supprimer après 4 secondes
+            setTimeout(() => {
+                if (msgElement.parentNode) {
+                    msgElement.style.animation = 'slideUp 0.3s ease forwards';
+                    setTimeout(() => msgElement.remove(), 300);
+                }
+            }, 4000);
+        }
+
+        // Amélioration UX mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            // Auto-focus sur le premier champ (pas sur mobile pour éviter le zoom)
+            if (window.innerWidth > 768) {
+                setTimeout(() => {
+                    document.getElementById('FNAME').focus();
+                }, 500);
+            }
+
+            // Animation staggered des éléments
+            const elements = document.querySelectorAll('.form-group, .newsletter-consent, .submit-btn');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    el.style.transition = 'all 0.6s cubic-bezier(0.23, 1, 0.320, 1)';
+                    el.style.opacity = '1';
+                    el.style.transform = 'translateY(0)';
+                }, 200 + (100 * index));
+            });
+        });
+
+        // CSS pour les animations de message
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideDown {
+                from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+                to { transform: translateX(-50%) translateY(0); opacity: 1; }
+            }
+            @keyframes slideUp {
+                from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
