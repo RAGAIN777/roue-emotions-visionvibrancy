@@ -25,6 +25,244 @@
             padding: 20px;
         }
 
+        /* LEAD MAGNET - COULEURS PLUS CLAIRES */
+        .lead-magnet-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(167, 139, 250, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+
+        .lead-magnet-overlay.hidden {
+            display: none;
+        }
+
+        .newsletter-form {
+            background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 500px;
+            width: 90%;
+            color: #374151;
+            font-family: 'Arial', sans-serif;
+            animation: slideIn 0.5s ease;
+            border: 3px solid #a78bfa;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .form-title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #5b21b6;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .form-subtitle {
+            text-align: center;
+            font-size: 16px;
+            margin-bottom: 30px;
+            color: #6b7280;
+        }
+
+        .benefits-section {
+            background: rgba(167, 139, 250, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 25px 0;
+            border: 2px solid #a78bfa;
+        }
+
+        .benefits-title {
+            color: #5b21b6;
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #374151;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .benefits-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #374151;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #a78bfa;
+            border-radius: 10px;
+            font-size: 16px;
+            background: white;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+            color: #374151;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.3);
+        }
+        
+        .checkbox-group {
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(167, 139, 250, 0.1);
+            border-radius: 12px;
+            border: 2px solid #a78bfa;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+        
+        .checkbox-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 12px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: #a78bfa;
+        }
+        
+        .checkbox-item label {
+            cursor: pointer;
+            line-height: 1.4;
+            font-size: 14px;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(167, 139, 250, 0.4);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(167, 139, 250, 0.6);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .privacy-note {
+            text-align: center;
+            font-size: 12px;
+            margin-top: 20px;
+            line-height: 1.4;
+            color: #6b7280;
+        }
+        
+        .required {
+            color: #ef4444;
+            font-weight: bold;
+        }
+
+        .unlock-message {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+            display: none;
+            border: 2px solid rgba(16, 185, 129, 0.3);
+        }
+
+        .unlock-message.show {
+            display: block;
+            animation: pulse 0.5s ease;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* CONTENU PRINCIPAL */
+        .main-content {
+            filter: blur(3px);
+            pointer-events: none;
+            transition: all 0.5s ease;
+        }
+
+        .main-content.unlocked {
+            filter: none;
+            pointer-events: auto;
+        }
+
         .header {
             text-align: center;
             margin-bottom: 40px;
@@ -230,10 +468,10 @@
 
         .emotion-guide.active {
             display: block;
-            animation: slideIn 0.5s ease;
+            animation: slideInGuide 0.5s ease;
         }
 
-        @keyframes slideIn {
+        @keyframes slideInGuide {
             from {
                 opacity: 0;
                 transform: translateY(-20px);
@@ -321,23 +559,6 @@
             box-shadow: 0 5px 15px rgba(239, 68, 68, 0.3);
         }
 
-        .welcome-button {
-            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
-            color: white;
-            text-decoration: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            font-weight: bold;
-            display: inline-block;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
-        }
-
-        .welcome-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
-        }
-
         .final-section {
             background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
             border-radius: 20px;
@@ -359,8 +580,34 @@
             margin-bottom: 25px;
         }
 
+        .welcome-button {
+            background: linear-gradient(135deg, #a78bfa 0%, #8b5cf6 100%);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: bold;
+            display: inline-block;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .welcome-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
+            .newsletter-form {
+                margin: 10px;
+                padding: 30px 20px;
+            }
+            
+            .form-title {
+                font-size: 24px;
+            }
+
             .wheel-and-welcome {
                 flex-direction: column;
                 gap: 30px;
@@ -409,737 +656,559 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1 class="main-title">Guide Interactif des Émotions</h1>
-            <p class="subtitle">Découvrez et accueillez vos émotions avec bienveillance</p>
-        </div>
-
-        <div class="toggle-container">
-            <button class="toggle-btn active" onclick="showAdultWheel()">👥 Version Adultes</button>
-            <button class="toggle-btn" onclick="showChildrenWheel()">👶 Version Enfants</button>
-        </div>
-
-        <!-- Section Adultes -->
-        <div id="adult-section" class="section">
-            <div class="main-section">
-                <div class="instructions">
-                    <h3>🎯 Comment utiliser cette roue des émotions :</h3>
-                    <ol>
-                        <li>Prenez un moment pour vous connecter à ce que vous ressentez en ce moment</li>
-                        <li>Cliquez ou touchez l'émotion qui correspond le mieux à votre ressenti</li>
-                        <li>Découvrez les signaux de cette émotion et comment l'accueillir avec bienveillance</li>
-                        <li>Rappelez-vous : toutes les émotions sont légitimes et porteuses de messages précieux</li>
-                    </ol>
+    <!-- LEAD MAGNET OVERLAY -->
+    <div id="leadMagnetOverlay" class="lead-magnet-overlay">
+        <div class="newsletter-form">
+            <form action="https://visionvibrancy.us3.list-manage.com/subscribe/post?u=5fae4512ba6bf04ce94b237b8&amp;id=064218f5ec" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                
+                <h2 class="form-title">🌟 Guide Interactif des Émotions</h2>
+                <p class="form-subtitle">Découvrez les secrets pour comprendre et maîtriser vos émotions</p>
+                
+                <div class="benefits-section">
+                    <h4 class="benefits-title">🎁 Ce que vous allez recevoir :</h4>
+                    <ul class="benefits-list">
+                        <li>Roue des émotions interactive (adultes & enfants)</li>
+                        <li>12 guides détaillés pour chaque émotion</li>
+                        <li>Techniques pratiques de gestion émotionnelle</li>
+                        <li>Conseils pour accompagner vos enfants</li>
+                        <li>Accès immédiat et illimité</li>
+                    </ul>
                 </div>
-
-                <div class="wheel-and-welcome">
-                    <div class="wheel-container">
-                        <svg class="wheel-svg" viewBox="0 0 400 400">
-                            <!-- Joie (0°-30°) -->
-                            <path d="M 200,200 L 350,200 A 150,150 0 0,1 329.9,275 Z" fill="#f9e8a8" class="emotion-slice" onclick="showEmotionGuide('joie')"></path>
-                            <text x="310" y="230" class="emotion-text">Joie</text>
-
-                            <!-- Tristesse (30°-60°) -->
-                            <path d="M 200,200 L 329.9,275 A 150,150 0 0,1 275,329.9 Z" fill="#a8c8f5" class="emotion-slice" onclick="showEmotionGuide('tristesse')"></path>
-                            <text x="290" y="290" class="emotion-text">Tristesse</text>
-
-                            <!-- Colère (60°-90°) -->
-                            <path d="M 200,200 L 275,329.9 A 150,150 0 0,1 200,350 Z" fill="#f5a8a8" class="emotion-slice" onclick="showEmotionGuide('colere')"></path>
-                            <text x="230" y="320" class="emotion-text">Colère</text>
-
-                            <!-- Peur (90°-120°) -->
-                            <path d="M 200,200 L 200,350 A 150,150 0 0,1 125,329.9 Z" fill="#c4b5fd" class="emotion-slice" onclick="showEmotionGuide('peur')"></path>
-                            <text x="170" y="320" class="emotion-text">Peur</text>
-
-                            <!-- Envie (120°-150°) -->
-                            <path d="M 200,200 L 125,329.9 A 150,150 0 0,1 70.1,275 Z" fill="#a8e6cf" class="emotion-slice" onclick="showEmotionGuide('envie')"></path>
-                            <text x="110" y="290" class="emotion-text">Envie</text>
-
-                            <!-- Acceptation (150°-180°) -->
-                            <path d="M 200,200 L 70.1,275 A 150,150 0 0,1 50,200 Z" fill="#c4c9d4" class="emotion-slice" onclick="showEmotionGuide('acceptation')"></path>
-                            <text x="90" y="230" class="emotion-text">Acceptation</text>
-
-                            <!-- Amour (180°-210°) -->
-                            <path d="M 200,200 L 50,200 A 150,150 0 0,1 70.1,125 Z" fill="#f3a8c7" class="emotion-slice" onclick="showEmotionGuide('amour')"></path>
-                            <text x="90" y="170" class="emotion-text">Amour</text>
-
-                            <!-- Espérance (210°-240°) -->
-                            <path d="M 200,200 L 70.1,125 A 150,150 0 0,1 125,70.1 Z" fill="#a8e2f0" class="emotion-slice" onclick="showEmotionGuide('esperance')"></path>
-                            <text x="110" y="110" class="emotion-text">Espérance</text>
-
-                            <!-- Surprise (240°-270°) -->
-                            <path d="M 200,200 L 125,70.1 A 150,150 0 0,1 200,50 Z" fill="#f5c6a0" class="emotion-slice" onclick="showEmotionGuide('surprise')"></path>
-                            <text x="170" y="80" class="emotion-text">Surprise</text>
-
-                            <!-- Dégoût (270°-300°) -->
-                            <path d="M 200,200 L 200,50 A 150,150 0 0,1 275,70.1 Z" fill="#c9e5a3" class="emotion-slice" onclick="showEmotionGuide('degout')"></path>
-                            <text x="230" y="80" class="emotion-text">Dégoût</text>
-
-                            <!-- Anticipation (300°-330°) -->
-                            <path d="M 200,200 L 275,70.1 A 150,150 0 0,1 329.9,125 Z" fill="#e8b686" class="emotion-slice" onclick="showEmotionGuide('anticipation')"></path>
-                            <text x="290" y="110" class="emotion-text">Anticipation</text>
-
-                            <!-- Honte (330°-360°) -->
-                            <path d="M 200,200 L 329.9,125 A 150,150 0 0,1 350,200 Z" fill="#e8a2c1" class="emotion-slice" onclick="showEmotionGuide('honte')"></path>
-                            <text x="310" y="170" class="emotion-text">Honte</text>
-
-                            <!-- Centre -->
-                            <circle cx="200" cy="200" r="40" class="center-circle"></circle>
-                            <text x="200" y="200" class="center-text">ÉMOTIONS</text>
-                        </svg>
-                    </div>
-
-                    <div class="welcome-section">
-                        <div class="welcome-icon">🌈</div>
-                        <h3 class="welcome-title">Bienvenue dans votre exploration émotionnelle</h3>
-                        <p class="welcome-text">Cliquez sur une émotion de la roue pour découvrir sa signification et apprendre comment l'accueillir avec bienveillance.</p>
-                        <p class="welcome-quote">Chaque émotion est un messager précieux qui mérite d'être écouté.</p>
+                
+                <div class="form-group">
+                    <label for="mce-EMAIL">Adresse e-mail <span class="required">*</span></label>
+                    <input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mce-FNAME">Prénom <span class="required">*</span></label>
+                    <input type="text" value="" name="FNAME" id="mce-FNAME" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mce-LNAME">Nom de famille</label>
+                    <input type="text" value="" name="LNAME" id="mce-LNAME">
+                </div>
+                
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" value="1" name="group[2][1]" id="mce-group[2]-2-0" checked>
+                        <label for="mce-group[2]-2-0">
+                            ✨ <strong>OUI, je souhaite aussi recevoir la newsletter "Créatrice en Action"</strong><br>
+                            <small>Conseils exclusifs, inspirations et ressources pour développer votre potentiel créatif</small>
+                        </label>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Section Enfants -->
-        <div id="children-section" class="section hidden">
-            <div class="main-section">
-                <div class="instructions">
-                    <h3>🎯 Comment utiliser cette roue des émotions avec ton enfant :</h3>
-                    <ol>
-                        <li>Invitez votre enfant à identifier ce qu'il ressent en regardant les visages</li>
-                        <li>Cliquez ensemble sur l'émotion qui correspond à son ressenti</li>
-                        <li>Découvrez des conseils adaptés aux enfants et des astuces pour les parents</li>
-                        <li>Rappelez-vous : toutes les émotions sont normales et importantes</li>
-                    </ol>
+                
+                <div id="mce-responses" class="clear">
+                    <div class="response" id="mce-error-response" style="display:none"></div>
+                    <div class="response" id="mce-success-response" style="display:none"></div>
                 </div>
+                
+                <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                    <input type="text" name="b_5fae4512ba6bf04ce94b237b8_064218f5ec" tabindex="-1" value="">
+                </div>
+                
+                <button type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="submit-btn">
+                    🎁 Accéder au Guide Interactif
+                </button>
 
-                <div class="wheel-and-welcome">
-                    <div class="wheel-container">
-                        <svg class="wheel-svg children-wheel" viewBox="0 0 400 400">
-                            <!-- Mêmes segments mais avec emojis et couleurs pastels -->
-                            <path d="M 200,200 L 350,200 A 150,150 0 0,1 329.9,275 Z" fill="#f9e8a8" class="emotion-slice" onclick="showEmotionGuide('joie')"></path>
-                            <text x="310" y="230" class="emotion-text">😊</text>
+                <div id="unlockMessage" class="unlock-message">
+                    <strong>🎉 Parfait ! Votre accès est débloqué !</strong><br>
+                    Votre guide interactif va se charger dans 3 secondes...
+                </div>
+                
+                <p class="privacy-note">
+                    🔒 Vos données sont protégées et ne seront jamais partagées.<br>
+                    Vous pouvez vous désabonner à tout moment d'un simple clic.
+                </p>
+            </form>
+        </div>
+    </div>
 
-                            <path d="M 200,200 L 329.9,275 A 150,150 0 0,1 275,329.9 Z" fill="#a8c8f5" class="emotion-slice" onclick="showEmotionGuide('tristesse')"></path>
-                            <text x="290" y="290" class="emotion-text">😢</text>
+    <!-- CONTENU PRINCIPAL -->
+    <div id="mainContent" class="main-content">
+        <div class="container">
+            <div class="header">
+                <h1 class="main-title">Guide Interactif des Émotions</h1>
+                <p class="subtitle">Découvrez et accueillez vos émotions avec bienveillance</p>
+            </div>
 
-                            <path d="M 200,200 L 275,329.9 A 150,150 0 0,1 200,350 Z" fill="#f5a8a8" class="emotion-slice" onclick="showEmotionGuide('colere')"></path>
-                            <text x="230" y="320" class="emotion-text">😠</text>
+            <div class="toggle-container">
+                <button class="toggle-btn active" onclick="showAdultWheel()">👥 Version Adultes</button>
+                <button class="toggle-btn" onclick="showChildrenWheel()">👶 Version Enfants</button>
+            </div>
 
-                            <path d="M 200,200 L 200,350 A 150,150 0 0,1 125,329.9 Z" fill="#c4b5fd" class="emotion-slice" onclick="showEmotionGuide('peur')"></path>
-                            <text x="170" y="320" class="emotion-text">😨</text>
-
-                            <path d="M 200,200 L 125,329.9 A 150,150 0 0,1 70.1,275 Z" fill="#a8e6cf" class="emotion-slice" onclick="showEmotionGuide('envie')"></path>
-                            <text x="110" y="290" class="emotion-text">😒</text>
-
-                            <path d="M 200,200 L 70.1,275 A 150,150 0 0,1 50,200 Z" fill="#c4c9d4" class="emotion-slice" onclick="showEmotionGuide('acceptation')"></path>
-                            <text x="90" y="230" class="emotion-text">😌</text>
-
-                            <path d="M 200,200 L 50,200 A 150,150 0 0,1 70.1,125 Z" fill="#f3a8c7" class="emotion-slice" onclick="showEmotionGuide('amour')"></path>
-                            <text x="90" y="170" class="emotion-text">🥰</text>
-
-                            <path d="M 200,200 L 70.1,125 A 150,150 0 0,1 125,70.1 Z" fill="#a8e2f0" class="emotion-slice" onclick="showEmotionGuide('esperance')"></path>
-                            <text x="110" y="110" class="emotion-text">🌟</text>
-
-                            <path d="M 200,200 L 125,70.1 A 150,150 0 0,1 200,50 Z" fill="#f5c6a0" class="emotion-slice" onclick="showEmotionGuide('surprise')"></path>
-                            <text x="170" y="80" class="emotion-text">😲</text>
-
-                            <path d="M 200,200 L 200,50 A 150,150 0 0,1 275,70.1 Z" fill="#c9e5a3" class="emotion-slice" onclick="showEmotionGuide('degout')"></path>
-                            <text x="230" y="80" class="emotion-text">🤢</text>
-
-                            <path d="M 200,200 L 275,70.1 A 150,150 0 0,1 329.9,125 Z" fill="#e8b686" class="emotion-slice" onclick="showEmotionGuide('anticipation')"></path>
-                            <text x="290" y="110" class="emotion-text">🤗</text>
-
-                            <path d="M 200,200 L 329.9,125 A 150,150 0 0,1 350,200 Z" fill="#e8a2c1" class="emotion-slice" onclick="showEmotionGuide('honte')"></path>
-                            <text x="310" y="170" class="emotion-text">😳</text>
-
-                            <!-- Centre -->
-                            <circle cx="200" cy="200" r="40" class="center-circle"></circle>
-                            <text x="200" y="200" class="center-text">ÉMOTIONS</text>
-                        </svg>
+            <!-- Section Adultes -->
+            <div id="adult-section" class="section">
+                <div class="main-section">
+                    <div class="instructions">
+                        <h3>🎯 Comment utiliser cette roue des émotions :</h3>
+                        <ol>
+                            <li>Prenez un moment pour vous connecter à ce que vous ressentez en ce moment</li>
+                            <li>Cliquez ou touchez l'émotion qui correspond le mieux à votre ressenti</li>
+                            <li>Découvrez les signaux de cette émotion et comment l'accueillir avec bienveillance</li>
+                            <li>Rappelez-vous : toutes les émotions sont légitimes et porteuses de messages précieux</li>
+                        </ol>
                     </div>
 
-                    <div class="welcome-section">
-                        <div class="welcome-icon">🌈</div>
-                        <h3 class="welcome-title">Bienvenue dans le monde des émotions</h3>
-                        <p class="welcome-text">Clique sur un visage de la roue pour découvrir cette émotion et apprendre comment l'accueillir avec papa ou maman.</p>
-                        <p class="welcome-quote">Toutes tes émotions sont importantes et normales !</p>
+                    <div class="wheel-and-welcome">
+                        <div class="wheel-container">
+                            <svg class="wheel-svg" viewBox="0 0 400 400">
+                                <!-- Joie (0°-30°) -->
+                                <path d="M 200,200 L 350,200 A 150,150 0 0,1 329.9,275 Z" fill="#f9e8a8" class="emotion-slice" onclick="showEmotionGuide('joie')"></path>
+                                <text x="310" y="230" class="emotion-text">Joie</text>
+
+                                <!-- Tristesse (30°-60°) -->
+                                <path d="M 200,200 L 329.9,275 A 150,150 0 0,1 275,329.9 Z" fill="#a8c8f5" class="emotion-slice" onclick="showEmotionGuide('tristesse')"></path>
+                                <text x="290" y="290" class="emotion-text">Tristesse</text>
+
+                                <!-- Colère (60°-90°) -->
+                                <path d="M 200,200 L 275,329.9 A 150,150 0 0,1 200,350 Z" fill="#f5a8a8" class="emotion-slice" onclick="showEmotionGuide('colere')"></path>
+                                <text x="230" y="320" class="emotion-text">Colère</text>
+
+                                <!-- Peur (90°-120°) -->
+                                <path d="M 200,200 L 200,350 A 150,150 0 0,1 125,329.9 Z" fill="#c4b5fd" class="emotion-slice" onclick="showEmotionGuide('peur')"></path>
+                                <text x="170" y="320" class="emotion-text">Peur</text>
+
+                                <!-- Envie (120°-150°) -->
+                                <path d="M 200,200 L 125,329.9 A 150,150 0 0,1 70.1,275 Z" fill="#a8e6cf" class="emotion-slice" onclick="showEmotionGuide('envie')"></path>
+                                <text x="110" y="290" class="emotion-text">Envie</text>
+
+                                <!-- Acceptation (150°-180°) -->
+                                <path d="M 200,200 L 70.1,275 A 150,150 0 0,1 50,200 Z" fill="#c4c9d4" class="emotion-slice" onclick="showEmotionGuide('acceptation')"></path>
+                                <text x="90" y="230" class="emotion-text">Acceptation</text>
+
+                                <!-- Amour (180°-210°) -->
+                                <path d="M 200,200 L 50,200 A 150,150 0 0,1 70.1,125 Z" fill="#f3a8c7" class="emotion-slice" onclick="showEmotionGuide('amour')"></path>
+                                <text x="90" y="170" class="emotion-text">Amour</text>
+
+                                <!-- Espérance (210°-240°) -->
+                                <path d="M 200,200 L 70.1,125 A 150,150 0 0,1 125,70.1 Z" fill="#a8e2f0" class="emotion-slice" onclick="showEmotionGuide('esperance')"></path>
+                                <text x="110" y="110" class="emotion-text">Espérance</text>
+
+                                <!-- Surprise (240°-270°) -->
+                                <path d="M 200,200 L 125,70.1 A 150,150 0 0,1 200,50 Z" fill="#f5c6a0" class="emotion-slice" onclick="showEmotionGuide('surprise')"></path>
+                                <text x="170" y="80" class="emotion-text">Surprise</text>
+
+                                <!-- Dégoût (270°-300°) -->
+                                <path d="M 200,200 L 200,50 A 150,150 0 0,1 275,70.1 Z" fill="#c9e5a3" class="emotion-slice" onclick="showEmotionGuide('degout')"></path>
+                                <text x="230" y="80" class="emotion-text">Dégoût</text>
+
+                                <!-- Anticipation (300°-330°) -->
+                                <path d="M 200,200 L 275,70.1 A 150,150 0 0,1 329.9,125 Z" fill="#e8b686" class="emotion-slice" onclick="showEmotionGuide('anticipation')"></path>
+                                <text x="290" y="110" class="emotion-text">Anticipation</text>
+
+                                <!-- Honte (330°-360°) -->
+                                <path d="M 200,200 L 329.9,125 A 150,150 0 0,1 350,200 Z" fill="#e8a2c1" class="emotion-slice" onclick="showEmotionGuide('honte')"></path>
+                                <text x="310" y="170" class="emotion-text">Honte</text>
+
+                                <!-- Centre -->
+                                <circle cx="200" cy="200" r="40" class="center-circle"></circle>
+                                <text x="200" y="200" class="center-text">ÉMOTIONS</text>
+                            </svg>
+                        </div>
+
+                        <div class="welcome-section">
+                            <div class="welcome-icon">🌈</div>
+                            <h3 class="welcome-title">Bienvenue dans votre exploration émotionnelle</h3>
+                            <p class="welcome-text">Cliquez sur une émotion de la roue pour découvrir sa signification et apprendre comment l'accueillir avec bienveillance.</p>
+                            <p class="welcome-quote">Chaque émotion est un messager précieux qui mérite d'être écouté.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- GUIDES ADULTES -->
-        
-        <!-- Guide Joie -->
-        <div id="guide-joie" class="emotion-guide">
-            <h2>🌟 La Joie</h2>
-            <p class="description">La joie nous connecte à la beauté de la vie et nous aide à maintenir nos valeurs et nos standards personnels.</p>
+            <!-- Section Enfants -->
+            <div id="children-section" class="section hidden">
+                <div class="main-section">
+                    <div class="instructions">
+                        <h3>🎯 Comment utiliser cette roue des émotions avec ton enfant :</h3>
+                        <ol>
+                            <li>Invitez votre enfant à identifier ce qu'il ressent en regardant les visages</li>
+                            <li>Cliquez ensemble sur l'émotion qui correspond à son ressenti</li>
+                            <li>Découvrez des conseils adaptés aux enfants et des astuces pour les parents</li>
+                            <li>Rappelez-vous : toutes les émotions sont normales et importantes</li>
+                        </ol>
+                    </div>
+
+                    <div class="wheel-and-welcome">
+                        <div class="wheel-container">
+                            <svg class="wheel-svg children-wheel" viewBox="0 0 400 400">
+                                <!-- Joie -->
+                                <path d="M 200,200 L 350,200 A 150,150 0 0,1 329.9,275 Z" fill="#f9e8a8" class="emotion-slice" onclick="showEmotionGuide('joie')"></path>
+                                <text x="310" y="230" class="emotion-text">😊</text>
+
+                                <!-- Tristesse -->
+                                <path d="M 200,200 L 329.9,275 A 150,150 0 0,1 275,329.9 Z" fill="#a8c8f5" class="emotion-slice" onclick="showEmotionGuide('tristesse')"></path>
+                                <text x="290" y="290" class="emotion-text">😢</text>
+
+                                <!-- Colère -->
+                                <path d="M 200,200 L 275,329.9 A 150,150 0 0,1 200,350 Z" fill="#f5a8a8" class="emotion-slice" onclick="showEmotionGuide('colere')"></path>
+                                <text x="230" y="320" class="emotion-text">😠</text>
+
+                                <!-- Peur -->
+                                <path d="M 200,200 L 200,350 A 150,150 0 0,1 125,329.9 Z" fill="#c4b5fd" class="emotion-slice" onclick="showEmotionGuide('peur')"></path>
+                                <text x="170" y="320" class="emotion-text">😨</text>
+
+                                <!-- Envie -->
+                                <path d="M 200,200 L 125,329.9 A 150,150 0 0,1 70.1,275 Z" fill="#a8e6cf" class="emotion-slice" onclick="showEmotionGuide('envie')"></path>
+                                <text x="110" y="290" class="emotion-text">😒</text>
+
+                                <!-- Acceptation -->
+                                <path d="M 200,200 L 70.1,275 A 150,150 0 0,1 50,200 Z" fill="#c4c9d4" class="emotion-slice" onclick="showEmotionGuide('acceptation')"></path>
+                                <text x="90" y="230" class="emotion-text">😌</text>
+
+                                <!-- Amour -->
+                                <path d="M 200,200 L 50,200 A 150,150 0 0,1 70.1,125 Z" fill="#f3a8c7" class="emotion-slice" onclick="showEmotionGuide('amour')"></path>
+                                <text x="90" y="170" class="emotion-text">🥰</text>
+
+                                <!-- Espérance -->
+                                <path d="M 200,200 L 70.1,125 A 150,150 0 0,1 125,70.1 Z" fill="#a8e2f0" class="emotion-slice" onclick="showEmotionGuide('esperance')"></path>
+                                <text x="110" y="110" class="emotion-text">🌟</text>
+
+                                <!-- Surprise -->
+                                <path d="M 200,200 L 125,70.1 A 150,150 0 0,1 200,50 Z" fill="#f5c6a0" class="emotion-slice" onclick="showEmotionGuide('surprise')"></path>
+                                <text x="170" y="80" class="emotion-text">😲</text>
+
+                                <!-- Dégoût -->
+                                <path d="M 200,200 L 200,50 A 150,150 0 0,1 275,70.1 Z" fill="#c9e5a3" class="emotion-slice" onclick="showEmotionGuide('degout')"></path>
+                                <text x="230" y="80" class="emotion-text">🤢</text>
+
+                                <!-- Anticipation -->
+                                <path d="M 200,200 L 275,70.1 A 150,150 0 0,1 329.9,125 Z" fill="#e8b686" class="emotion-slice" onclick="showEmotionGuide('anticipation')"></path>
+                                <text x="290" y="110" class="emotion-text">🤗</text>
+
+                                <!-- Honte -->
+                                <path d="M 200,200 L 329.9,125 A 150,150 0 0,1 350,200 Z" fill="#e8a2c1" class="emotion-slice" onclick="showEmotionGuide('honte')"></path>
+                                <text x="310" y="170" class="emotion-text">😳</text>
+
+                                <!-- Centre -->
+                                <circle cx="200" cy="200" r="40" class="center-circle"></circle>
+                                <text x="200" y="200" class="center-text">ÉMOTIONS</text>
+                            </svg>
+                        </div>
+
+                        <div class="welcome-section">
+                            <div class="welcome-icon">🌈</div>
+                            <h3 class="welcome-title">Bienvenue dans le monde des émotions</h3>
+                            <p class="welcome-text">Clique sur un visage de la roue pour découvrir cette émotion et apprendre comment l'accueillir avec papa ou maman.</p>
+                            <p class="welcome-quote">Toutes tes émotions sont importantes et normales !</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GUIDES DES ÉMOTIONS -->
             
-            <div class="guide-content">
-                <h3>Comment gérer la joie :</h3>
-                <ul>
-                    <li><strong>Savourez le moment</strong> : Prenez le temps de ressentir pleinement cette émotion positive</li>
-                    <li><strong>Partagez votre bonheur</strong> : La joie partagée est une joie multipliée</li>
-                    <li><strong>Ancrez ce souvenir</strong> : Créez des rituels pour vous rappeler ces moments précieux</li>
-                    <li><strong>Exprimez votre gratitude</strong> : Remerciez pour ce qui vous apporte de la joie</li>
-                </ul>
+            <!-- Guide Joie -->
+            <div id="guide-joie" class="emotion-guide">
+                <h2>🌟 La Joie</h2>
+                <p class="description">La joie nous connecte à la beauté de la vie et nous aide à maintenir nos valeurs et nos standards personnels.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment gérer la joie :</h3>
+                    <ul>
+                        <li><strong>Savourez le moment</strong> : Prenez le temps de ressentir pleinement cette émotion positive</li>
+                        <li><strong>Partagez votre bonheur</strong> : La joie partagée est une joie multipliée</li>
+                        <li><strong>Ancrez ce souvenir</strong> : Créez des rituels pour vous rappeler ces moments précieux</li>
+                        <li><strong>Exprimez votre gratitude</strong> : Remerciez pour ce qui vous apporte de la joie</li>
+                    </ul>
+                </div>
+
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Tristesse -->
+            <div id="guide-tristesse" class="emotion-guide">
+                <h2>💙 La Tristesse</h2>
+                <p class="description">La tristesse nous aide à traiter les pertes et nous connecte à notre humanité profonde.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment gérer la tristesse :</h3>
+                    <ul>
+                        <li><strong>Accueillez cette émotion</strong> : La tristesse est légitime et nécessaire au processus de guérison</li>
+                        <li><strong>Permettez-vous de pleurer</strong> : Les larmes sont libératrices et apaisantes</li>
+                        <li><strong>Cherchez du soutien</strong> : Partagez vos sentiments avec une personne de confiance</li>
+                        <li><strong>Prenez soin de vous</strong> : Accordez-vous de la douceur et de la patience</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Tristesse -->
-        <div id="guide-tristesse" class="emotion-guide">
-            <h2>💙 La Tristesse</h2>
-            <p class="description">La tristesse nous aide à traiter les pertes et nous connecte à notre humanité profonde.</p>
-            
-            <div class="guide-content">
-                <h3>Comment gérer la tristesse :</h3>
-                <ul>
-                    <li><strong>Accueillez cette émotion</strong> : La tristesse est légitime et nécessaire au processus de guérison</li>
-                    <li><strong>Permettez-vous de pleurer</strong> : Les larmes sont libératrices et apaisantes</li>
-                    <li><strong>Cherchez du soutien</strong> : Partagez vos sentiments avec une personne de confiance</li>
-                    <li><strong>Prenez soin de vous</strong> : Accordez-vous de la douceur et de la patience</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Colère -->
+            <div id="guide-colere" class="emotion-guide">
+                <h2>🔥 La Colère</h2>
+                <p class="description">La colère nous signale qu'une limite a été franchie et nous donne l'énergie nécessaire pour agir.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment gérer la colère :</h3>
+                    <ul>
+                        <li><strong>Identifiez le déclencheur</strong> : Qu'est-ce qui a provoqué cette réaction ?</li>
+                        <li><strong>Respirez profondément</strong> : Calmez votre système nerveux avant d'agir</li>
+                        <li><strong>Exprimez-vous de manière constructive</strong> : Utilisez des "je" plutôt que des "tu"</li>
+                        <li><strong>Canalisez cette énergie</strong> : Transformez la colère en action positive</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Colère -->
-        <div id="guide-colere" class="emotion-guide">
-            <h2>🔥 La Colère</h2>
-            <p class="description">La colère nous signale qu'une limite a été franchie et nous donne l'énergie nécessaire pour agir.</p>
-            
-            <div class="guide-content">
-                <h3>Comment gérer la colère :</h3>
-                <ul>
-                    <li><strong>Identifiez le déclencheur</strong> : Qu'est-ce qui a provoqué cette réaction ?</li>
-                    <li><strong>Respirez profondément</strong> : Calmez votre système nerveux avant d'agir</li>
-                    <li><strong>Exprimez-vous de manière constructive</strong> : Utilisez des "je" plutôt que des "tu"</li>
-                    <li><strong>Canalisez cette énergie</strong> : Transformez la colère en action positive</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Peur -->
+            <div id="guide-peur" class="emotion-guide">
+                <h2>🛡️ La Peur</h2>
+                <p class="description">La peur nous protège des dangers et nous invite à être prudents face à l'inconnu.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment gérer la peur :</h3>
+                    <ul>
+                        <li><strong>Évaluez la menace réelle</strong> : Distinguez entre danger réel et perception</li>
+                        <li><strong>Respirez calmement</strong> : Régularisez votre respiration pour apaiser l'anxiété</li>
+                        <li><strong>Cherchez des informations</strong> : La connaissance diminue souvent la peur</li>
+                        <li><strong>Avancez par petits pas</strong> : Affrontez progressivement ce qui vous fait peur</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Peur -->
-        <div id="guide-peur" class="emotion-guide">
-            <h2>🛡️ La Peur</h2>
-            <p class="description">La peur nous protège des dangers et nous invite à être prudents face à l'inconnu.</p>
-            
-            <div class="guide-content">
-                <h3>Comment gérer la peur :</h3>
-                <ul>
-                    <li><strong>Évaluez la menace réelle</strong> : Distinguez entre danger réel et perception</li>
-                    <li><strong>Respirez calmement</strong> : Régularisez votre respiration pour apaiser l'anxiété</li>
-                    <li><strong>Cherchez des informations</strong> : La connaissance diminue souvent la peur</li>
-                    <li><strong>Avancez par petits pas</strong> : Affrontez progressivement ce qui vous fait peur</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Envie -->
+            <div id="guide-envie" class="emotion-guide">
+                <h2>👁️ L'Envie</h2>
+                <p class="description">L'envie nous renseigne sur nos désirs profonds et peut nous motiver à atteindre nos objectifs.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment gérer l'envie :</h3>
+                    <ul>
+                        <li><strong>Identifiez ce que vous désirez vraiment</strong> : Qu'est-ce qui se cache derrière cette envie ?</li>
+                        <li><strong>Transformez en inspiration</strong> : Utilisez l'envie comme motivation personnelle</li>
+                        <li><strong>Pratiquez la gratitude</strong> : Appréciez ce que vous avez déjà</li>
+                        <li><strong>Élaborez un plan d'action</strong> : Comment pouvez-vous obtenir ce que vous désirez ?</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Envie -->
-        <div id="guide-envie" class="emotion-guide">
-            <h2>👁️ L'Envie</h2>
-            <p class="description">L'envie nous renseigne sur nos désirs profonds et peut nous motiver à atteindre nos objectifs.</p>
-            
-            <div class="guide-content">
-                <h3>Comment gérer l'envie :</h3>
-                <ul>
-                    <li><strong>Identifiez ce que vous désirez vraiment</strong> : Qu'est-ce qui se cache derrière cette envie ?</li>
-                    <li><strong>Transformez en inspiration</strong> : Utilisez l'envie comme motivation personnelle</li>
-                    <li><strong>Pratiquez la gratitude</strong> : Appréciez ce que vous avez déjà</li>
-                    <li><strong>Élaborez un plan d'action</strong> : Comment pouvez-vous obtenir ce que vous désirez ?</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Acceptation -->
+            <div id="guide-acceptation" class="emotion-guide">
+                <h2>☮️ L'Acceptation</h2>
+                <p class="description">L'acceptation nous apporte la paix intérieure et nous aide à lâcher prise sur ce que nous ne pouvons pas contrôler.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment cultiver l'acceptation :</h3>
+                    <ul>
+                        <li><strong>Reconnaissez ce qui est</strong> : Acceptez la réalité sans résistance</li>
+                        <li><strong>Lâchez le contrôle</strong> : Concentrez-vous sur ce que vous pouvez influencer</li>
+                        <li><strong>Pratiquez la pleine conscience</strong> : Restez présent dans l'instant</li>
+                        <li><strong>Trouvez la sérénité</strong> : Cultivez un état d'esprit paisible</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Acceptation -->
-        <div id="guide-acceptation" class="emotion-guide">
-            <h2>☮️ L'Acceptation</h2>
-            <p class="description">L'acceptation nous apporte la paix intérieure et nous aide à lâcher prise sur ce que nous ne pouvons pas contrôler.</p>
-            
-            <div class="guide-content">
-                <h3>Comment cultiver l'acceptation :</h3>
-                <ul>
-                    <li><strong>Reconnaissez ce qui est</strong> : Acceptez la réalité sans résistance</li>
-                    <li><strong>Lâchez le contrôle</strong> : Concentrez-vous sur ce que vous pouvez influencer</li>
-                    <li><strong>Pratiquez la pleine conscience</strong> : Restez présent dans l'instant</li>
-                    <li><strong>Trouvez la sérénité</strong> : Cultivez un état d'esprit paisible</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Amour -->
+            <div id="guide-amour" class="emotion-guide">
+                <h2>💖 L'Amour</h2>
+                <p class="description">L'amour nous connecte aux autres et nous inspire à donner le meilleur de nous-mêmes.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment exprimer l'amour :</h3>
+                    <ul>
+                        <li><strong>Montrez votre affection</strong> : Exprimez vos sentiments par les mots et les gestes</li>
+                        <li><strong>Soyez présent</strong> : Offrez votre attention pleine et entière</li>
+                        <li><strong>Pratiquez la bienveillance</strong> : Agissez avec compassion et empathie</li>
+                        <li><strong>Cultivez l'amour de soi</strong> : N'oubliez pas de vous aimer également</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Amour -->
-        <div id="guide-amour" class="emotion-guide">
-            <h2>💖 L'Amour</h2>
-            <p class="description">L'amour nous connecte aux autres et nous inspire à donner le meilleur de nous-mêmes.</p>
-            
-            <div class="guide-content">
-                <h3>Comment exprimer l'amour :</h3>
-                <ul>
-                    <li><strong>Montrez votre affection</strong> : Exprimez vos sentiments par les mots et les gestes</li>
-                    <li><strong>Soyez présent</strong> : Offrez votre attention pleine et entière</li>
-                    <li><strong>Pratiquez la bienveillance</strong> : Agissez avec compassion et empathie</li>
-                    <li><strong>Cultivez l'amour de soi</strong> : N'oubliez pas de vous aimer également</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Espérance -->
+            <div id="guide-esperance" class="emotion-guide">
+                <h2>🌅 L'Espérance</h2>
+                <p class="description">L'espérance nous donne la force de persévérer et nous connecte à nos possibilités futures.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment nourrir l'espérance :</h3>
+                    <ul>
+                        <li><strong>Visualisez vos objectifs</strong> : Imaginez clairement ce que vous souhaitez atteindre</li>
+                        <li><strong>Entourez-vous de positif</strong> : Fréquentez des personnes qui vous élèvent</li>
+                        <li><strong>Célébrez les petites victoires</strong> : Reconnaissez chaque progrès</li>
+                        <li><strong>Gardez foi en l'avenir</strong> : Croyez en vos capacités de résilience</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Espérance -->
-        <div id="guide-esperance" class="emotion-guide">
-            <h2>🌅 L'Espérance</h2>
-            <p class="description">L'espérance nous donne la force de persévérer et nous connecte à nos possibilités futures.</p>
-            
-            <div class="guide-content">
-                <h3>Comment nourrir l'espérance :</h3>
-                <ul>
-                    <li><strong>Visualisez vos objectifs</strong> : Imaginez clairement ce que vous souhaitez atteindre</li>
-                    <li><strong>Entourez-vous de positif</strong> : Fréquentez des personnes qui vous élèvent</li>
-                    <li><strong>Célébrez les petites victoires</strong> : Reconnaissez chaque progrès</li>
-                    <li><strong>Gardez foi en l'avenir</strong> : Croyez en vos capacités de résilience</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Surprise -->
+            <div id="guide-surprise" class="emotion-guide">
+                <h2>⚡ La Surprise</h2>
+                <p class="description">La surprise nous rend réceptifs aux nouvelles expériences et stimule notre curiosité naturelle.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment accueillir la surprise :</h3>
+                    <ul>
+                        <li><strong>Restez ouvert</strong> : Accueillez l'inattendu avec curiosité</li>
+                        <li><strong>Observez sans juger</strong> : Prenez le temps d'analyser la situation</li>
+                        <li><strong>Adaptez-vous rapidement</strong> : Ajustez vos réactions selon le contexte</li>
+                        <li><strong>Appréciez la nouveauté</strong> : Voyez la surprise comme une opportunité d'apprentissage</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Surprise -->
-        <div id="guide-surprise" class="emotion-guide">
-            <h2>⚡ La Surprise</h2>
-            <p class="description">La surprise nous rend réceptifs aux nouvelles expériences et stimule notre curiosité naturelle.</p>
-            
-            <div class="guide-content">
-                <h3>Comment accueillir la surprise :</h3>
-                <ul>
-                    <li><strong>Restez ouvert</strong> : Accueillez l'inattendu avec curiosité</li>
-                    <li><strong>Observez sans juger</strong> : Prenez le temps d'analyser la situation</li>
-                    <li><strong>Adaptez-vous rapidement</strong> : Ajustez vos réactions selon le contexte</li>
-                    <li><strong>Appréciez la nouveauté</strong> : Voyez la surprise comme une opportunité d'apprentissage</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Dégoût -->
+            <div id="guide-degout" class="emotion-guide">
+                <h2>🤢 Le Dégoût</h2>
+                <p class="description">Le dégoût nous protège de ce qui pourrait nous nuire et nous aide à maintenir nos valeurs et nos standards personnels.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment gérer le dégoût :</h3>
+                    <ul>
+                        <li><strong>Identifiez la source</strong> : Qu'est-ce qui déclenche cette réaction ?</li>
+                        <li><strong>Respectez vos limites</strong> : Vos réactions sont valides</li>
+                        <li><strong>Communiquez vos besoins</strong> : Exprimez ce qui ne vous convient pas</li>
+                        <li><strong>Trouvez des alternatives</strong> : Cherchez des solutions qui vous respectent</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Dégoût -->
-        <div id="guide-degout" class="emotion-guide">
-            <h2>🤢 Le Dégoût</h2>
-            <p class="description">Le dégoût nous protège de ce qui pourrait nous nuire et nous aide à maintenir nos valeurs et nos standards personnels.</p>
-            
-            <div class="guide-content">
-                <h3>Comment gérer le dégoût :</h3>
-                <ul>
-                    <li><strong>Identifiez la source</strong> : Qu'est-ce qui déclenche cette réaction ?</li>
-                    <li><strong>Respectez vos limites</strong> : Vos réactions sont valides</li>
-                    <li><strong>Communiquez vos besoins</strong> : Exprimez ce qui ne vous convient pas</li>
-                    <li><strong>Trouvez des alternatives</strong> : Cherchez des solutions qui vous respectent</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Anticipation -->
+            <div id="guide-anticipation" class="emotion-guide">
+                <h2>🎯 L'Anticipation</h2>
+                <p class="description">L'anticipation nous prépare aux événements futurs et nous aide à planifier efficacement.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment gérer l'anticipation :</h3>
+                    <ul>
+                        <li><strong>Préparez-vous sereinement</strong> : Planifiez sans vous mettre de pression excessive</li>
+                        <li><strong>Restez dans le présent</strong> : Ne vous perdez pas dans les projections futures</li>
+                        <li><strong>Gérez l'impatience</strong> : Trouvez des activités apaisantes en attendant</li>
+                        <li><strong>Visualisez positivement</strong> : Imaginez les meilleurs scénarios possibles</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Anticipation -->
-        <div id="guide-anticipation" class="emotion-guide">
-            <h2>🎯 L'Anticipation</h2>
-            <p class="description">L'anticipation nous prépare aux événements futurs et nous aide à planifier efficacement.</p>
-            
-            <div class="guide-content">
-                <h3>Comment gérer l'anticipation :</h3>
-                <ul>
-                    <li><strong>Préparez-vous sereinement</strong> : Planifiez sans vous mettre de pression excessive</li>
-                    <li><strong>Restez dans le présent</strong> : Ne vous perdez pas dans les projections futures</li>
-                    <li><strong>Gérez l'impatience</strong> : Trouvez des activités apaisantes en attendant</li>
-                    <li><strong>Visualisez positivement</strong> : Imaginez les meilleurs scénarios possibles</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
+            <!-- Guide Honte -->
+            <div id="guide-honte" class="emotion-guide">
+                <h2>😔 La Honte</h2>
+                <p class="description">La honte nous indique quand nos actions ne sont pas alignées avec nos valeurs et peut nous encourager à nous améliorer.</p>
+                
+                <div class="guide-content">
+                    <h3>Comment transformer la honte :</h3>
+                    <ul>
+                        <li><strong>Distinguez honte et culpabilité</strong> : Vous n'êtes pas vos erreurs</li>
+                        <li><strong>Pratiquez l'auto-compassion</strong> : Traitez-vous avec bienveillance</li>
+                        <li><strong>Apprenez de l'expérience</strong> : Utilisez cette émotion pour grandir</li>
+                        <li><strong>Cherchez le pardon</strong> : Commencez par vous pardonner à vous-même</li>
+                    </ul>
+                </div>
 
-        <!-- Guide Honte -->
-        <div id="guide-honte" class="emotion-guide">
-            <h2>😔 La Honte</h2>
-            <p class="description">La honte nous indique quand nos actions ne sont pas alignées avec nos valeurs et peut nous encourager à nous améliorer.</p>
-            
-            <div class="guide-content">
-                <h3>Comment transformer la honte :</h3>
-                <ul>
-                    <li><strong>Distinguez honte et culpabilité</strong> : Vous n'êtes pas vos erreurs</li>
-                    <li><strong>Pratiquez l'auto-compassion</strong> : Traitez-vous avec bienveillance</li>
-                    <li><strong>Apprenez de l'expérience</strong> : Utilisez cette émotion pour grandir</li>
-                    <li><strong>Cherchez le pardon</strong> : Commencez par vous pardonner à vous-même</li>
-                </ul>
+                <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
             </div>
 
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- GUIDES ENFANTS -->
-        
-        <!-- Guide Joie Enfant -->
-        <div id="guide-child-joie" class="emotion-guide">
-            <h2>😊 Quand tu es content !</h2>
-            <p class="description">Quand tu ressens de la joie, c'est comme si ton cœur dansait ! Tu as envie de rire, de jouer et de partager ton bonheur avec tout le monde.</p>
-            
-            <div class="guide-content">
-                <h3>Que faire quand tu es joyeux :</h3>
-                <ul>
-                    <li><strong>Exprime ta joie</strong> : Danse, chante, souris autant que tu veux !</li>
-                    <li><strong>Partage ton bonheur</strong> : Raconte ce qui te rend heureux à papa et maman</li>
-                    <li><strong>Dis merci</strong> : Remercie pour ce moment magique</li>
-                    <li><strong>Garde ce souvenir</strong> : Dessine ou raconte ton moment de joie</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Célébrez avec lui</strong> : Montrez que vous partagez sa joie</li>
-                    <li><strong>Laissez-le s'exprimer</strong> : Permettez les manifestations physiques de joie</li>
-                    <li><strong>Créez des rituels</strong> : Photos, dessins, carnet de bonheurs</li>
-                    <li><strong>Enseignez la gratitude</strong> : "Pour quoi es-tu reconnaissant ?"</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Tristesse Enfant -->
-        <div id="guide-child-tristesse" class="emotion-guide">
-            <h2>😢 Quand tu as de la peine</h2>
-            <p class="description">Parfois tu te sens triste, comme si un petit nuage gris était dans ton cœur. C'est normal d'avoir de la peine, même les grands en ont !</p>
-            
-            <div class="guide-content">
-                <h3>Que faire quand tu es triste :</h3>
-                <ul>
-                    <li><strong>C'est normal de pleurer</strong> : Les larmes aident ton cœur à se sentir mieux</li>
-                    <li><strong>Demande un câlin</strong> : Papa, maman ou ta peluche peuvent te consoler</li>
-                    <li><strong>Raconte ta peine</strong> : Dis ce qui te rend triste</li>
-                    <li><strong>Prends ton temps</strong> : Tu n'es pas obligé d'être content tout de suite</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Accueillez ses larmes</strong> : "Je vois que tu as de la peine"</li>
-                    <li><strong>Offrez du réconfort physique</strong> : Câlins, bercements</li>
-                    <li><strong>Évitez de minimiser</strong> : Sa tristesse est réelle et importante</li>
-                    <li><strong>Restez disponible</strong> : Votre présence apaisante suffit souvent</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Colère Enfant -->
-        <div id="guide-child-colere" class="emotion-guide">
-            <h2>😠 Quand tu es en colère</h2>
-            <p class="description">Parfois tu sens comme un volcan dans ton ventre qui veut exploser ! La colère te dit que quelque chose ne va pas.</p>
-            
-            <div class="guide-content">
-                <h3>Que faire avec ta colère :</h3>
-                <ul>
-                    <li><strong>Respire comme un ballon</strong> : Gonfle ton ventre et souffle doucement</li>
-                    <li><strong>Dis ce qui ne va pas</strong> : "Je suis en colère parce que..."</li>
-                    <li><strong>Bouge ton corps</strong> : Tape dans un coussin, cours, saute</li>
-                    <li><strong>Demande de l'aide</strong> : Papa et maman peuvent t'aider à te calmer</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Restez calme et ferme</strong> : Votre sérénité l'aide à se réguler</li>
-                    <li><strong>Validez l'émotion</strong> : "Tu as le droit d'être en colère"</li>
-                    <li><strong>Proposez des exutoires sains</strong> : Activités physiques appropriées</li>
-                    <li><strong>Aidez à identifier le besoin</strong> : Qu'est-ce qui a déclenché cette colère ?</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Peur Enfant -->
-        <div id="guide-child-peur" class="emotion-guide">
-            <h2>😨 Quand tu as peur</h2>
-            <p class="description">Quand tu as peur, c'est comme si ton cœur battait très fort. Ta peur veut te protéger, mais parfois elle se trompe !</p>
-            
-            <div class="guide-content">
-                <h3>Que faire quand tu as peur :</h3>
-                <ul>
-                    <li><strong>Respire doucement</strong> : Inspire par le nez, souffle par la bouche</li>
-                    <li><strong>Cherche un adulte</strong> : Papa, maman ou quelqu'un en qui tu as confiance</li>
-                    <li><strong>Parle de ta peur</strong> : Dis ce qui te fait peur</li>
-                    <li><strong>Utilise ton objet magique</strong> : Peluche, doudou, ou objet réconfortant</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Prenez ses peurs au sérieux</strong> : Même si elles vous semblent irrationnelles</li>
-                    <li><strong>Rassurez avec tendresse</strong> : "Je suis là, tu es en sécurité"</li>
-                    <li><strong>Créez des rituels sécurisants</strong> : Vérifications, objets transitionnels</li>
-                    <li><strong>Développez sa confiance progressivement</strong> : Petits défis adaptés</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Envie Enfant -->
-        <div id="guide-child-envie" class="emotion-guide">
-            <h2>😒 Quand tu veux ce que les autres ont</h2>
-            <p class="description">Parfois tu regardes ce que ton copain a et tu le veux aussi ! C'est normal de vouloir des choses, ça te montre ce qui t'intéresse.</p>
-            
-            <div class="guide-content">
-                <h3>Que faire avec ton envie :</h3>
-                <ul>
-                    <li><strong>Dis ce que tu ressens</strong> : "J'aimerais avoir ça aussi"</li>
-                    <li><strong>Pense à tes propres trésors</strong> : Qu'est-ce que tu as de spécial ?</li>
-                    <li><strong>Demande gentiment</strong> : "Est-ce que je peux essayer ?"</li>
-                    <li><strong>Trouve une solution</strong> : Comment tu peux obtenir ce que tu veux ?</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Normalisez le sentiment</strong> : "C'est normal de vouloir des choses"</li>
-                    <li><strong>Aidez à identifier le désir</strong> : Qu'est-ce qui l'attire vraiment ?</li>
-                    <li><strong>Valorisez ce qu'il possède</strong> : Rappelez ses propres richesses</li>
-                    <li><strong>Enseignez la patience et l'effort</strong> : Comment travailler vers ses objectifs</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Acceptation Enfant -->
-        <div id="guide-child-acceptation" class="emotion-guide">
-            <h2>😌 Quand tu acceptes</h2>
-            <p class="description">L'acceptation, c'est comme prendre une grande respiration et dire "C'est comme ça". Tu te sens calme et en paix.</p>
-            
-            <div class="guide-content">
-                <h3>Comment grandir avec l'acceptation :</h3>
-                <ul>
-                    <li><strong>Respire profondément</strong> : Laisse ton corps se détendre</li>
-                    <li><strong>Dis "C'est comme ça"</strong> : Parfois on ne peut pas changer les choses</li>
-                    <li><strong>Trouve le bon côté</strong> : Qu'est-ce qui est bien quand même ?</li>
-                    <li><strong>Concentre-toi sur maintenant</strong> : Profite de ce moment présent</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Modélisez l'acceptation</strong> : Montrez comment vous gérez les frustrations</li>
-                    <li><strong>Enseignez la flexibilité</strong> : "Parfois les plans changent"</li>
-                    <li><strong>Valorisez les efforts</strong> : Plus que les résultats</li>
-                    <li><strong>Pratiquez ensemble</strong> : Exercices de respiration, mindfulness simple</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Amour Enfant -->
-        <div id="guide-child-amour" class="emotion-guide">
-            <h2>🥰 Quand tu aimes fort</h2>
-            <p class="description">L'amour, c'est comme un soleil chaud dans ton cœur ! Tu as envie de faire des câlins et de dire des mots doux aux personnes que tu aimes.</p>
-            
-            <div class="guide-content">
-                <h3>Comment exprimer ton amour :</h3>
-                <ul>
-                    <li><strong>Fais des câlins</strong> : Les personnes que tu aimes adorent tes câlins</li>
-                    <li><strong>Dis "Je t'aime"</strong> : Ces mots magiques font du bien</li>
-                    <li><strong>Fais des dessins</strong> : Dessine des cœurs pour ceux que tu aimes</li>
-                    <li><strong>Aide et partage</strong> : Montre ton amour par tes actions</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Accueillez ses démonstrations d'affection</strong> : Valorisez ses élans d'amour</li>
-                    <li><strong>Exprimez votre amour clairement</strong> : "Je t'aime tel que tu es"</li>
-                    <li><strong>Enseignez les différentes formes d'amour</strong> : Famille, amis, animaux</li>
-                    <li><strong>Créez des rituels affectifs</strong> : Mots doux, gestes tendres quotidiens</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Espérance Enfant -->
-        <div id="guide-child-esperance" class="emotion-guide">
-            <h2>🌟 Quand tu espères</h2>
-            <p class="description">L'espérance, c'est comme une petite étoile qui brille dans ton cœur ! Tu crois que de belles choses vont arriver.</p>
-            
-            <div class="guide-content">
-                <h3>Comment cultiver ton espoir :</h3>
-                <ul>
-                    <li><strong>Rêve grand</strong> : Imagine tout ce que tu veux faire quand tu seras grand</li>
-                    <li><strong>Fais des projets</strong> : Planifie des activités amusantes</li>
-                    <li><strong>Dessine tes rêves</strong> : Mets tes espoirs sur papier</li>
-                    <li><strong>Crois en toi</strong> : Tu peux réaliser de belles choses !</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Encouragez ses rêves</strong> : Même s'ils semblent grands ou irréalistes</li>
-                    <li><strong>Créez des projets ensemble</strong> : Donnez vie à ses espoirs</li>
-                    <li><strong>Racontez des histoires inspirantes</strong> : Nourrissez son imagination</li>
-                    <li><strong>Célébrez ses efforts</strong> : Chaque pas vers ses rêves compte</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Surprise Enfant -->
-        <div id="guide-child-surprise" class="emotion-guide">
-            <h2>😲 Quand tu es surpris</h2>
-            <p class="description">La surprise, c'est comme quand quelque chose d'inattendu arrive ! Tes yeux s'ouvrent grands et tu dis "Oh !"</p>
-            
-            <div class="guide-content">
-                <h3>Que faire quand tu es surpris :</h3>
-                <ul>
-                    <li><strong>Prends le temps de regarder</strong> : Observe ce qui t'étonne</li>
-                    <li><strong>Pose des questions</strong> : "Comment ça marche ?" "Pourquoi ?"</li>
-                    <li><strong>Partage ta surprise</strong> : Raconte ce qui t'a étonné</li>
-                    <li><strong>Garde ta curiosité</strong> : Le monde est plein de surprises !</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Partagez son émerveillement</strong> : "Wow ! As-tu vu ça ?"</li>
-                    <li><strong>Encouragez sa curiosité</strong> : Répondez à ses questions</li>
-                    <li><strong>Créez des moments de surprise</strong> : Petites découvertes du quotidien</li>
-                    <li><strong>Enseignez l'adaptation</strong> : "Parfois les choses sont différentes"</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Dégoût Enfant -->
-        <div id="guide-child-degout" class="emotion-guide">
-            <h2>🤢 Quand quelque chose te dégoûte</h2>
-            <p class="description">Le dégoût, c'est quand ton corps dit "Beurk !" Il te protège des choses qui pourraient te faire du mal.</p>
-            
-            <div class="guide-content">
-                <h3>Que faire avec ton dégoût :</h3>
-                <ul>
-                    <li><strong>Écoute ton corps</strong> : Il sait ce qui est bon pour toi</li>
-                    <li><strong>Dis ce qui te déplaît</strong> : "Je n'aime pas ça"</li>
-                    <li><strong>Demande une alternative</strong> : "Est-ce qu'il y a autre chose ?"</li>
-                    <li><strong>Reste poli</strong> : Même si tu n'aimes pas, sois gentil</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Respectez ses réactions</strong> : Le dégoût peut être protecteur</li>
-                    <li><strong>Ne forcez pas</strong> : Proposez sans contraindre</li>
-                    <li><strong>Explorez ensemble</strong> : "Qu'est-ce qui te déplaît exactement ?"</li>
-                    <li><strong>Offrez des alternatives</strong> : Trouvez d'autres options</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Anticipation Enfant -->
-        <div id="guide-child-anticipation" class="emotion-guide">
-            <h2>🤗 Quand tu as hâte</h2>
-            <p class="description">L'anticipation, c'est quand tu as très hâte que quelque chose arrive ! Comme avant ton anniversaire ou une sortie spéciale.</p>
-            
-            <div class="guide-content">
-                <h3>Comment gérer ton impatience :</h3>
-                <ul>
-                    <li><strong>Compte les dodos</strong> : Marque sur un calendrier les jours qui restent</li>
-                    <li><strong>Prépare-toi</strong> : Aide à organiser ce qui arrive</li>
-                    <li><strong>Profite de maintenant</strong> : Fais des choses amusantes en attendant</li>
-                    <li><strong>Imagine le moment</strong> : Rêve à ce qui va se passer</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Validez son excitation</strong> : "Tu as vraiment hâte !"</li>
-                    <li><strong>Aidez à visualiser l'attente</strong> : Calendriers, dessins</li>
-                    <li><strong>Occupez l'attente positivement</strong> : Activités préparatoires</li>
-                    <li><strong>Gérez l'anxiété si nécessaire</strong> : Si l'attente devient stressante</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Guide Honte Enfant -->
-        <div id="guide-child-honte" class="emotion-guide">
-            <h2>😳 Quand tu as honte</h2>
-            <p class="description">La honte, c'est quand tu as fait quelque chose et que tu te sens tout petit. Mais rappelle-toi : tu es toujours quelqu'un de bien, même si tu fais des erreurs !</p>
-            
-            <div class="guide-content">
-                <h3>Comment gérer ta honte :</h3>
-                <ul>
-                    <li><strong>Rappelle-toi que tu es aimé</strong> : Papa et maman t'aiment toujours</li>
-                    <li><strong>Dis pardon si besoin</strong> : "Je suis désolé de ce que j'ai fait"</li>
-                    <li><strong>Apprends de ton erreur</strong> : "La prochaine fois, je ferai différemment"</li>
-                    <li><strong>Pardonne-toi</strong> : Tout le monde fait des erreurs, même les grands</li>
-                </ul>
-            </div>
-
-            <div class="guide-content parent-tips">
-                <h3>💡 Comment accompagner votre enfant :</h3>
-                <ul>
-                    <li><strong>Séparez l'acte de l'enfant</strong> : "Ce comportement n'est pas acceptable, mais toi tu es formidable"</li>
-                    <li><strong>Évitez la honte publique</strong> : Gardez les réprimandes privées</li>
-                    <li><strong>Encouragez la réparation</strong> : "Comment peux-tu réparer ?"</li>
-                    <li><strong>Réaffirmez votre amour</strong> : "Je t'aime même quand tu fais des erreurs"</li>
-                </ul>
-            </div>
-
-            <button class="close-guide" onclick="closeGuide()">Fermer le guide</button>
-        </div>
-
-        <!-- Section finale -->
-        <div class="final-section">
-            <div class="final-content">
-                <h3>✨ Continuez votre voyage émotionnel</h3>
-                <p>Découvrez tous nos outils et accompagnements pour une vie émotionnelle épanouie</p>
-                <a href="https://www.visionvibrancy.fr" target="_blank" class="welcome-button">🌟 Visiter Vision Vibrancy</a>
+            <!-- Section finale -->
+            <div class="final-section">
+                <div class="final-content">
+                    <h3>✨ Continuez votre voyage émotionnel</h3>
+                    <p>Découvrez tous nos outils et accompagnements pour une vie émotionnelle épanouie</p>
+                    <a href="https://www.visionvibrancy.fr" target="_blank" class="welcome-button">🌟 Visiter Vision Vibrancy</a>
+                </div>
             </div>
         </div>
     </div>
 
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script>
+    <script type='text/javascript'>
+        (function($) {
+            window.fnames = new Array(); 
+            window.ftypes = new Array();
+            fnames[0]='EMAIL';ftypes[0]='email';
+            fnames[1]='FNAME';ftypes[1]='text';
+            fnames[2]='LNAME';ftypes[2]='text';
+        }(jQuery));
+        var $mcj = jQuery.noConflict(true);
+    </script>
+
     <script>
-        // Variable pour tracker le mode actuel
+        // Variables globales
         let currentMode = 'adult';
+        let isUnlocked = false;
+
+        // Gestion du formulaire Mailchimp
+        document.getElementById('mc-embedded-subscribe-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const emailInput = document.getElementById('mce-EMAIL');
+            const fnameInput = document.getElementById('mce-FNAME');
+            const submitBtn = document.getElementById('mc-embedded-subscribe');
+            const unlockMessage = document.getElementById('unlockMessage');
+            
+            // Validation
+            if (!emailInput.value || !fnameInput.value) {
+                alert('Veuillez remplir tous les champs obligatoires');
+                return;
+            }
+            
+            if (!emailInput.validity.valid) {
+                alert('Veuillez entrer une adresse email valide');
+                return;
+            }
+            
+            // Désactiver le bouton
+            submitBtn.disabled = true;
+            submitBtn.textContent = '🔄 Inscription en cours...';
+            
+            // Soumission du formulaire
+            const formData = new FormData(this);
+            
+            fetch(this.action, {
+                method: 'POST',
+                body: formData,
+                mode: 'no-cors'
+            }).then(() => {
+                // Afficher le message de succès
+                unlockMessage.classList.add('show');
+                document.getElementById('mc-embedded-subscribe-form').style.display = 'none';
+                
+                // Débloquer après 3 secondes
+                setTimeout(() => {
+                    unlockAccess();
+                }, 3000);
+                
+            }).catch(() => {
+                // Même en cas d'erreur, débloquer l'accès
+                unlockMessage.classList.add('show');
+                document.getElementById('mc-embedded-subscribe-form').style.display = 'none';
+                
+                setTimeout(() => {
+                    unlockAccess();
+                }, 3000);
+            });
+        });
+
+        function unlockAccess() {
+            isUnlocked = true;
+            document.getElementById('leadMagnetOverlay').classList.add('hidden');
+            document.getElementById('mainContent').classList.add('unlocked');
+            showAdultWheel();
+        }
 
         function showAdultWheel() {
+            if (!isUnlocked) return;
+            
             currentMode = 'adult';
             document.getElementById('adult-section').classList.remove('hidden');
             document.getElementById('children-section').classList.add('hidden');
@@ -1149,6 +1218,8 @@
         }
 
         function showChildrenWheel() {
+            if (!isUnlocked) return;
+            
             currentMode = 'children';
             document.getElementById('adult-section').classList.add('hidden');
             document.getElementById('children-section').classList.remove('hidden');
@@ -1158,24 +1229,15 @@
         }
 
         function showEmotionGuide(emotion) {
+            if (!isUnlocked) return;
+            
             closeGuide();
             
-            // Si on est en mode enfant, utiliser les guides enfants
-            if (currentMode === 'children') {
-                const guideId = 'guide-child-' + emotion;
-                const guide = document.getElementById(guideId);
-                if (guide) {
-                    guide.classList.add('active');
-                    guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            } else {
-                // Si on est en mode adulte, utiliser les guides adultes
-                const guideId = 'guide-' + emotion;
-                const guide = document.getElementById(guideId);
-                if (guide) {
-                    guide.classList.add('active');
-                    guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+            const guideId = 'guide-' + emotion;
+            const guide = document.getElementById(guideId);
+            if (guide) {
+                guide.classList.add('active');
+                guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         }
 
@@ -1185,11 +1247,6 @@
                 guide.classList.remove('active');
             });
         }
-
-        // Initialisation
-        document.addEventListener('DOMContentLoaded', function() {
-            showAdultWheel();
-        });
     </script>
 </body>
 </html>
