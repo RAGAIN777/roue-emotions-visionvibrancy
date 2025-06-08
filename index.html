@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Guide Interactif des Émotions - Vision Vibrancy</title>
     <style>
         * {
@@ -17,6 +17,9 @@
             color: #333;
             line-height: 1.6;
             min-height: 100vh;
+            /* Fixes pour mobile */
+            -webkit-overflow-scrolling: touch;
+            overflow-x: hidden;
         }
 
         .container {
@@ -35,9 +38,11 @@
             background: rgba(167, 139, 250, 0.95);
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             z-index: 1000;
             backdrop-filter: blur(5px);
+            overflow-y: auto;
+            padding: 20px 0;
         }
 
         .lead-magnet-overlay.hidden {
@@ -46,7 +51,7 @@
 
         .newsletter-form {
             background: linear-gradient(135deg, #e0e7ff 0%, #c7d2fe 100%);
-            padding: 40px;
+            padding: 30px;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             max-width: 500px;
@@ -55,6 +60,9 @@
             font-family: 'Arial', sans-serif;
             animation: slideIn 0.5s ease;
             border: 3px solid #a78bfa;
+            margin: 20px auto;
+            max-height: calc(100vh - 40px);
+            overflow-y: auto;
         }
 
         @keyframes slideIn {
@@ -203,6 +211,8 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             box-shadow: 0 8px 20px rgba(167, 139, 250, 0.4);
+            min-height: 50px; /* Taille minimum pour mobile */
+            touch-action: manipulation; /* Améliore les interactions tactiles */
         }
         
         .submit-btn:hover {
@@ -301,6 +311,8 @@
             cursor: pointer;
             transition: all 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            min-height: 50px; /* Taille minimum pour mobile */
+            touch-action: manipulation;
         }
 
         .toggle-btn.active {
@@ -351,9 +363,12 @@
             transition: all 0.3s ease;
             stroke: rgba(255,255,255,0.8);
             stroke-width: 2;
+            cursor: pointer;
+            /* Améliore les interactions tactiles sur mobile */
+            touch-action: manipulation;
         }
 
-        .emotion-slice:hover {
+        .emotion-slice:hover, .emotion-slice:active {
             transform: scale(1.05);
             filter: brightness(1.1);
             stroke-width: 3;
@@ -597,15 +612,69 @@
             box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
         }
 
-        /* Responsive */
+        /* Responsive - MOBILE FIRST */
         @media (max-width: 768px) {
+            .lead-magnet-overlay {
+                padding: 10px 0;
+                align-items: flex-start;
+            }
+            
             .newsletter-form {
-                margin: 10px;
-                padding: 30px 20px;
+                margin: 10px auto;
+                padding: 20px 15px;
+                width: 95%;
+                max-height: calc(100vh - 20px);
+                border-radius: 15px;
             }
             
             .form-title {
-                font-size: 24px;
+                font-size: 22px;
+                margin-bottom: 10px;
+            }
+            
+            .form-subtitle {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+            
+            .benefits-section {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .benefits-title {
+                font-size: 16px;
+            }
+            
+            .benefits-list li {
+                font-size: 13px;
+            }
+            
+            .form-group {
+                margin-bottom: 15px;
+            }
+            
+            .form-group input {
+                padding: 12px;
+                font-size: 16px; /* Empêche le zoom automatique sur iOS */
+            }
+            
+            .checkbox-group {
+                padding: 15px;
+                margin: 20px 0;
+            }
+            
+            .submit-btn {
+                padding: 15px;
+                font-size: 16px;
+                margin-bottom: 10px;
+                min-height: 50px;
+            }
+            
+            .privacy-note {
+                font-size: 11px;
+                margin-top: 15px;
+                margin-bottom: 20px; /* Espace supplémentaire en bas */
             }
 
             .wheel-and-welcome {
@@ -640,6 +709,46 @@
         }
 
         @media (max-width: 480px) {
+            .lead-magnet-overlay {
+                padding: 5px 0;
+            }
+            
+            .newsletter-form {
+                margin: 5px auto;
+                padding: 15px 10px;
+                width: 98%;
+                max-height: calc(100vh - 10px);
+            }
+            
+            .form-title {
+                font-size: 20px;
+            }
+            
+            .benefits-section {
+                padding: 12px;
+                margin: 15px 0;
+            }
+            
+            .benefits-list li {
+                font-size: 12px;
+                margin: 8px 0;
+            }
+            
+            .form-group input {
+                padding: 10px;
+            }
+            
+            .submit-btn {
+                padding: 12px;
+                font-size: 15px;
+                min-height: 50px;
+                margin-bottom: 15px;
+            }
+            
+            .privacy-note {
+                margin-bottom: 25px; /* Plus d'espace en bas */
+            }
+
             .wheel-svg {
                 width: 320px;
                 height: 320px;
@@ -651,6 +760,36 @@
 
             .children-wheel .emotion-text {
                 font-size: 18px;
+            }
+        }
+        
+        /* Fix pour les très petits écrans */
+        @media (max-width: 360px) {
+            .newsletter-form {
+                padding: 10px 8px;
+                margin: 2px auto;
+            }
+            
+            .form-title {
+                font-size: 18px;
+            }
+            
+            .benefits-section {
+                padding: 10px;
+            }
+            
+            .submit-btn {
+                min-height: 50px;
+                margin-bottom: 20px;
+            }
+            
+            .privacy-note {
+                margin-bottom: 30px;
+            }
+            
+            .wheel-svg {
+                width: 280px;
+                height: 280px;
             }
         }
     </style>
@@ -1237,7 +1376,14 @@
             const guide = document.getElementById(guideId);
             if (guide) {
                 guide.classList.add('active');
-                guide.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Délai pour l'animation puis scroll
+                setTimeout(() => {
+                    guide.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }, 100);
             }
         }
 
@@ -1247,6 +1393,28 @@
                 guide.classList.remove('active');
             });
         }
+
+        // Amélioration pour les événements tactiles sur mobile
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ajout d'événements tactiles pour les éléments SVG
+            const emotionSlices = document.querySelectorAll('.emotion-slice');
+            emotionSlices.forEach(slice => {
+                // Support des événements tactiles
+                slice.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    this.style.transform = 'scale(1.05)';
+                    this.style.filter = 'brightness(1.1)';
+                }, { passive: false });
+                
+                slice.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    this.style.transform = '';
+                    this.style.filter = '';
+                    // Déclencher le clic
+                    this.click();
+                }, { passive: false });
+            });
+        });
     </script>
 </body>
 </html>
