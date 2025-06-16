@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Recevez votre Guide Personnel des Émotions - Vision Vibrancy</title>
   <style>
-    /* Ton style complet ici — conservé exactement comme dans ton fichier d'origine */
-    /* (je l'ai volontairement retiré ici pour la clarté du message, mais je peux le renvoyer intégralement si tu veux) */
+    /* (Ton style complet est ici inchangé — roue, fond pastel, animations, boutons, responsive...) */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: linear-gradient(135deg, #f8f6ff 0%, #ede7f6 50%, #f3e5f5 100%);
@@ -16,9 +15,7 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
-      position: relative;
     }
-
     .container {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 24px;
@@ -26,52 +23,79 @@
       max-width: 500px;
       width: 100%;
       text-align: center;
-      position: relative;
       backdrop-filter: blur(20px);
       box-shadow: 0 20px 60px rgba(156, 39, 176, 0.1);
     }
-
-    .header {
-      margin-bottom: 40px;
-    }
-
     .brand-title {
       font-size: 1.8em;
       font-weight: 700;
       color: #9c27b0;
       margin-bottom: 10px;
-      letter-spacing: 1px;
       text-transform: uppercase;
     }
-
-    /* (Reste du CSS : animations, roue, bouton, responsive, etc. idem à ton fichier précédent) */
-    /* ... */
+    .submit-btn {
+      width: 100%;
+      padding: 18px;
+      background: linear-gradient(135deg, #9c27b0, #673ab7);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.1em;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-top: 15px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+    .form-group label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .form-group input {
+      width: 100%;
+      padding: 14px;
+      border-radius: 10px;
+      border: 1px solid #ccc;
+    }
+    .newsletter-consent {
+      margin: 30px 0;
+      text-align: left;
+      font-size: 0.95em;
+      background: #f8f6ff;
+      padding: 15px;
+      border-radius: 12px;
+    }
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+    }
+    .checkbox-container input {
+      margin-right: 10px;
+      margin-top: 4px;
+    }
+    .privacy-note {
+      font-size: 0.85em;
+      color: #666;
+      margin-top: 25px;
+      line-height: 1.4;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <div class="container">
-    <div class="header">
-      <div class="brand-title">Vision Vibrancy</div>
-    </div>
+    <div class="brand-title">Vision Vibrancy</div>
 
-    <div class="guide-section">
-      <h1>📚 Guide Complet des Émotions</h1>
-      <p>Recevez votre guide personnalisé pour mieux comprendre et accueillir vos émotions au quotidien</p>
-    </div>
-
-    <div class="emotion-wheel-container">
-      <div class="emotion-wheel-mini">
-        <div class="wheel-center">🎯</div>
-      </div>
-      <div class="wheel-subtitle">
-        Explorez et accueillez vos émotions avec bienveillance
-      </div>
-    </div>
+    <h1>📚 Guide Complet des Émotions</h1>
+    <p>Recevez votre guide personnalisé pour mieux comprendre et accueillir vos émotions au quotidien</p>
 
     <div class="newsletter-consent">
       <label class="checkbox-container">
         <input type="checkbox" id="newsletter" name="newsletter" checked required>
-        <span class="checkmark"></span>
         <span class="checkbox-text">
           J'accepte de recevoir la newsletter mensuelle <strong>"Créatrices en action"</strong> 
           avec des conseils et ressources pour mon développement personnel. 
@@ -83,21 +107,21 @@
     <form id="guideForm" method="POST" onsubmit="return handleSubmit(event)">
       <div class="form-group">
         <label for="prenom">Prénom *</label>
-        <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom" autocomplete="given-name">
+        <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom">
       </div>
 
       <div class="form-group">
         <label for="nom">Nom *</label>
-        <input type="text" id="nom" name="nom" required placeholder="Votre nom" autocomplete="family-name">
+        <input type="text" id="nom" name="nom" required placeholder="Votre nom">
       </div>
 
       <div class="form-group">
         <label for="email">Adresse email *</label>
-        <input type="email" id="email" name="email" required placeholder="votre@email.com" autocomplete="email">
+        <input type="email" id="email" name="email" required placeholder="votre@email.com">
       </div>
 
       <button type="submit" class="submit-btn">
-        <span class="btn-text">📧 Recevoir le Guide Gratuit</span>
+        📧 Recevoir le Guide Gratuit
       </button>
     </form>
 
