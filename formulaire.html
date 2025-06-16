@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recevez votre Guide Personnel des Émotions - Vision Vibrancy</title>
   <style>
-    /* (Ton style complet est ici inchangé — roue, fond pastel, animations, boutons, responsive...) */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       background: linear-gradient(135deg, #f8f6ff 0%, #ede7f6 50%, #f3e5f5 100%);
@@ -15,7 +20,23 @@
       align-items: center;
       justify-content: center;
       padding: 20px;
+      position: relative;
     }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(156, 39, 176, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(103, 58, 183, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(233, 30, 99, 0.02) 0%, transparent 50%);
+      z-index: -1;
+    }
+
     .container {
       background: rgba(255, 255, 255, 0.95);
       border-radius: 24px;
@@ -23,16 +44,160 @@
       max-width: 500px;
       width: 100%;
       text-align: center;
+      position: relative;
       backdrop-filter: blur(20px);
-      box-shadow: 0 20px 60px rgba(156, 39, 176, 0.1);
+      border: 1px solid rgba(156, 39, 176, 0.1);
+      box-shadow: 
+        0 20px 60px rgba(156, 39, 176, 0.1),
+        0 8px 32px rgba(0, 0, 0, 0.05);
     }
+
+    .header {
+      margin-bottom: 40px;
+    }
+
     .brand-title {
       font-size: 1.8em;
       font-weight: 700;
       color: #9c27b0;
       margin-bottom: 10px;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
+
+    .guide-section {
+      background: linear-gradient(135deg, #9c27b0, #673ab7);
+      color: white;
+      padding: 30px;
+      border-radius: 20px;
+      margin-bottom: 35px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .guide-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) rotate(0deg); }
+      50% { transform: translate(-10px, -10px) rotate(180deg); }
+    }
+
+    .guide-section h1 {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-bottom: 15px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .guide-section p {
+      font-size: 1em;
+      opacity: 0.95;
+      line-height: 1.5;
+      position: relative;
+      z-index: 2;
+    }
+
+    .emotion-wheel-container {
+      margin: 35px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .emotion-wheel-mini {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: conic-gradient(
+        from 0deg,
+        #e91e63 0deg 30deg,
+        #ff9800 30deg 60deg,
+        #ffeb3b 60deg 90deg,
+        #4caf50 90deg 120deg,
+        #00bcd4 120deg 150deg,
+        #2196f3 150deg 180deg,
+        #3f51b5 180deg 210deg,
+        #9c27b0 210deg 240deg,
+        #e91e63 240deg 270deg,
+        #ff5722 270deg 300deg,
+        #795548 300deg 330deg,
+        #607d8b 330deg 360deg
+      );
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: gentle-spin 20s linear infinite;
+      margin-bottom: 20px;
+      box-shadow: 0 8px 32px rgba(156, 39, 176, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    @keyframes gentle-spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .wheel-center {
+      background: white;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2em;
+      color: #9c27b0;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      font-weight: bold;
+    }
+
+    .wheel-subtitle {
+      font-size: 0.9em;
+      color: #666;
+      text-align: center;
+      font-style: italic;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      color: #2c3e50;
+      font-weight: 600;
+      margin-bottom: 8px;
+      font-size: 0.95em;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 16px 20px;
+      background: #f8f6ff;
+      border: 2px solid #e8e0f5;
+      border-radius: 12px;
+      color: #2c3e50;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #9c27b0;
+      background: white;
+      box-shadow: 0 0 0 3px rgba(156, 39, 176, 0.1), 0 4px 16px rgba(156, 39, 176, 0.1);
+    }
+
     .submit-btn {
       width: 100%;
       padding: 18px;
@@ -43,40 +208,17 @@
       font-size: 1.1em;
       font-weight: 700;
       cursor: pointer;
+      transition: all 0.3s ease;
       text-transform: uppercase;
+      letter-spacing: 0.5px;
       margin-top: 15px;
     }
-    .form-group {
-      margin-bottom: 20px;
-      text-align: left;
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(156, 39, 176, 0.3), 0 4px 16px rgba(0, 0, 0, 0.1);
     }
-    .form-group label {
-      display: block;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-    .form-group input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: 1px solid #ccc;
-    }
-    .newsletter-consent {
-      margin: 30px 0;
-      text-align: left;
-      font-size: 0.95em;
-      background: #f8f6ff;
-      padding: 15px;
-      border-radius: 12px;
-    }
-    .checkbox-container {
-      display: flex;
-      align-items: flex-start;
-    }
-    .checkbox-container input {
-      margin-right: 10px;
-      margin-top: 4px;
-    }
+
     .privacy-note {
       font-size: 0.85em;
       color: #666;
@@ -88,78 +230,102 @@
 </head>
 <body>
   <div class="container">
-    <div class="brand-title">Vision Vibrancy</div>
+    <div class="header">
+      <div class="brand-title">Vision Vibrancy</div>
+    </div>
 
-    <h1>📚 Guide Complet des Émotions</h1>
-    <p>Recevez votre guide personnalisé pour mieux comprendre et accueillir vos émotions au quotidien</p>
+    <div class="guide-section">
+      <h1>📚 Guide Complet des Émotions</h1>
+      <p>Recevez votre guide personnalisé pour mieux comprendre et accueillir vos émotions au quotidien</p>
+    </div>
+
+    <div class="emotion-wheel-container">
+      <div class="emotion-wheel-mini">
+        <div class="wheel-center">
+          🎯
+        </div>
+      </div>
+      <div class="wheel-subtitle">
+        Explorez et accueillez vos émotions avec bienveillance
+      </div>
+    </div>
 
     <div class="newsletter-consent">
       <label class="checkbox-container">
         <input type="checkbox" id="newsletter" name="newsletter" checked required>
+        <span class="checkmark"></span>
         <span class="checkbox-text">
-          J'accepte de recevoir la newsletter mensuelle <strong>"Créatrices en action"</strong> 
-          avec des conseils et ressources pour mon développement personnel. 
+          J'accepte de recevoir la newsletter mensuelle <strong>"Créatrices en action"</strong>
+          avec des conseils et ressources pour mon développement personnel.
           Je peux me désabonner à tout moment.
         </span>
       </label>
     </div>
 
-    <form id="guideForm" method="POST" onsubmit="return handleSubmit(event)">
+    <form id="guideForm" method="POST">
       <div class="form-group">
-        <label for="prenom">Prénom *</label>
-        <input type="text" id="prenom" name="prenom" required placeholder="Votre prénom">
+        <label for="FNAME">Prénom *</label>
+        <input type="text" id="FNAME" name="FNAME" required placeholder="Votre prénom" autocomplete="given-name">
       </div>
 
       <div class="form-group">
-        <label for="nom">Nom *</label>
-        <input type="text" id="nom" name="nom" required placeholder="Votre nom">
+        <label for="LNAME">Nom *</label>
+        <input type="text" id="LNAME" name="LNAME" required placeholder="Votre nom" autocomplete="family-name">
       </div>
 
       <div class="form-group">
-        <label for="email">Adresse email *</label>
-        <input type="email" id="email" name="email" required placeholder="votre@email.com">
+        <label for="EMAIL">Adresse email *</label>
+        <input type="email" id="EMAIL" name="EMAIL" required placeholder="votre@email.com" autocomplete="email">
       </div>
 
       <button type="submit" class="submit-btn">
-        📧 Recevoir le Guide Gratuit
+        <span class="btn-text">📧 Recevoir le Guide Gratuit</span>
       </button>
     </form>
 
     <div class="privacy-note">
-      🔒 Vos données sont protégées. Pas de spam, uniquement du contenu de qualité pour votre développement personnel.
+      🔐 Vos données sont protégées. Pas de spam, uniquement du contenu de qualité pour votre développement personnel.
     </div>
   </div>
 
   <script>
-    function handleSubmit(e) {
+    document.getElementById('guideForm').addEventListener('submit', function(e) {
       e.preventDefault();
 
-      const prenom = document.getElementById('prenom').value.trim();
-      const nom = document.getElementById('nom').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const consent = document.getElementById('newsletter').checked;
+      const form = e.target;
+      const fname = form.FNAME.value.trim();
+      const lname = form.LNAME.value.trim();
+      const email = form.EMAIL.value.trim();
+      const newsletter = form.newsletter.checked;
 
-      if (!prenom || !nom || !email || !consent) {
-        alert("Veuillez remplir tous les champs et accepter la newsletter.");
-        return false;
+      if (!fname || !lname || !email || !newsletter) {
+        alert("Merci de remplir tous les champs et de cocher la case newsletter.");
+        return;
       }
 
-      const formData = new FormData();
-      formData.append("prenom", prenom);
-      formData.append("nom", nom);
-      formData.append("email", email);
+      const data = {
+        FNAME: fname,
+        LNAME: lname,
+        EMAIL: email
+      };
 
       fetch("https://script.google.com/macros/s/AKfycbzkVmYXU89L_TYAkd7nb6PTUOezYMHdvWevMQKjCDIjI6eTGseRfjPmSCFEKYgQB4MF/exec", {
         method: "POST",
-        body: formData
-      }).then(() => {
-        window.location.href = "https://ragain777.github.io/roue-emotions-visionvibrancy/roue.html";
-      }).catch(() => {
-        alert("Une erreur est survenue. Veuillez réessayer.");
+        mode: "no-cors",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        alert("🎉 Merci ! Le guide va vous être envoyé par email.");
+        form.reset();
+      })
+      .catch((error) => {
+        console.error("Erreur d'envoi:", error);
+        alert("Une erreur est survenue. Veuillez réessayer plus tard.");
       });
-
-      return false;
-    }
+    });
   </script>
 </body>
 </html>
