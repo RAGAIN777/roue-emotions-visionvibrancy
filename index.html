@@ -1412,84 +1412,77 @@
                 initializeEmotionWheel();
             }, 100);
         }
-
-        function showEmotionGuide(emotion) {
-            if (!isUnlocked) return;
-            
-            closeGuide();
-            
-            const guideId = 'guide-' + emotion;
-            const guide = document.getElementById(guideId);
-            if (guide) {
-                guide.classList.add('active');
-                // Délai pour l'animation puis scroll
-                setTimeout(() => {
-                    guide.scrollIntoView({ 
-                        behavior: 'smooth', 
-                        block: 'start',
-                        inline: 'nearest'
-                    });
-                }, 100);
-            }
-        }
-
-        function closeGuide() {
-            const allGuides = document.querySelectorAll('.emotion-guide');
-            allGuides.forEach(guide => {
-                guide.classList.remove('active');
-            });
-        }
-
-        // Gestion améliorée des événements mobile/desktop
-        function initializeEmotionWheel() {
-            const emotionSlices = document.querySelectorAll('.emotion-slice');
-            
-            emotionSlices.forEach(slice => {
-                // Récupération de l'émotion depuis l'attribut onclick
-                const onclickAttr = slice.getAttribute('onclick');
-                if (!onclickAttr) return;
-                
-                const emotionMatch = onclickAttr.match(/showEmotionGuide\('(\w+)'\)/);
-                if (!emotionMatch) return;
-                
-                const emotion = emotionMatch[1];
-                
-                // Suppression de l'ancien onclick pour éviter les conflits
-                slice.removeAttribute('onclick');
-                
-                // Gestion unifiée des événements
-                let touchStarted = false;
-                
-                // Événement tactile (mobile)
-                slice.addEventListener('touchstart', function(e) {
-                    touchStarted = true;
-                    this.classList.add('touched');
-                }, { passive: true });
-                
-                slice.addEventListener('touchend', function(e) {
-                    if (touchStarted) {
-                        e.preventDefault();
-                        this.classList.remove('touched');
-                        showEmotionGuide(emotion);
-                        touchStarted = false;
-                    }
-                }, { passive: false });
-                
-                slice.addEventListener('touchcancel', function() {
-                    touchStarted = false;
-                    this.classList.remove('touched');
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    function showEmotionGuide(emotion) {
+        closeGuide();
+        const guideId = 'guide-' + emotion;
+        const guide = document.getElementById(guideId);
+        if (guide) {
+            guide.classList.add('active');
+            setTimeout(() => {
+                guide.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start',
+                    inline: 'nearest'
                 });
-                
-                // Événement clic (desktop)
-                slice.addEventListener('click', function(e) {
-                    if (!touchStarted) {
-                        e.preventDefault();
-                        showEmotionGuide(emotion);
-                    }
-                });
-            });
+            }, 100);
         }
     }
+
+    function closeGuide() {
+        const allGuides = document.querySelectorAll('.emotion-guide');
+        allGuides.forEach(guide => {
+            guide.classList.remove('active');
+        });
+    }
+
+    function initializeEmotionWheel() {
+        const emotionSlices = document.querySelectorAll('.emotion-slice');
+
+        emotionSlices.forEach(slice => {
+            const onclickAttr = slice.getAttribute('onclick');
+            if (!onclickAttr) return;
+
+            const emotionMatch = onclickAttr.match(/showEmotionGuide\('(\w+)'\)/);
+            if (!emotionMatch) return;
+
+            const emotion = emotionMatch[1];
+
+            slice.removeAttribute('onclick');
+
+            let touchStarted = false;
+
+            slice.addEventListener('touchstart', function(e) {
+                touchStarted = true;
+                this.classList.add('touched');
+            }, { passive: true });
+
+            slice.addEventListener('touchend', function(e) {
+                if (touchStarted) {
+                    e.preventDefault();
+                    this.classList.remove('touched');
+                    showEmotionGuide(emotion);
+                    touchStarted = false;
+                }
+            }, { passive: false });
+
+            slice.addEventListener('touchcancel', function() {
+                touchStarted = false;
+                this.classList.remove('touched');
+            });
+
+            slice.addEventListener('click', function(e) {
+                if (!touchStarted) {
+                    e.preventDefault();
+                    showEmotionGuide(emotion);
+                }
+            });
+        });
+    }
+
+    // Initialisation de la roue
+    initializeEmotionWheel();
 
     // Formulaire de déverrouillage
     const form = document.getElementById("mc-embedded-subscribe-form");
@@ -1514,8 +1507,5 @@
             mainContent.classList.add("unlocked");
         }, 3000);
     });
-
 });
 </script>
-</body>
-</html>
