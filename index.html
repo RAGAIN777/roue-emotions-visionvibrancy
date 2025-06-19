@@ -1295,7 +1295,7 @@
                 <div class="final-content">
                     <h3>✨ Continuez votre voyage émotionnel</h3>
                     <p>Découvrez tous nos outils et accompagnements pour une vie émotionnelle épanouie</p>
-                    <a href="https://www.visionvibrancy.fr" target="_blank" class="welcome-button">🌟 Visiter Vision Vibrancy</a>
+                    <a href="https://www.visionvibrancy.com" target="_blank" class="welcome-button">🌟 Visiter Vision Vibrancy</a>
                 </div>
             </div>
         </div>
@@ -1489,11 +1489,33 @@
                 });
             });
         }
+    }
 
-        // Initialisation au chargement du DOM
-        document.addEventListener('DOMContentLoaded', function() {
-            initializeEmotionWheel();
-        });
-    </script>
+    // Formulaire de déverrouillage
+    const form = document.getElementById("mc-embedded-subscribe-form");
+    const overlay = document.getElementById("leadMagnetOverlay");
+    const unlockMessage = document.getElementById("unlockMessage");
+    const mainContent = document.querySelector(".main-content");
+
+    let isSubmitted = false;
+
+    form.addEventListener("submit", function (e) {
+        if (isSubmitted) return;
+
+        const email = document.getElementById("mce-EMAIL").value;
+        if (!email || !email.includes("@")) return;
+
+        isSubmitted = true;
+
+        unlockMessage.classList.add("show");
+
+        setTimeout(() => {
+            overlay.classList.add("hidden");
+            mainContent.classList.add("unlocked");
+        }, 3000);
+    });
+
+});
+</script>
 </body>
 </html>
